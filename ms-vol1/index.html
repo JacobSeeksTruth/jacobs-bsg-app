@@ -46,7 +46,7 @@
             
             <div class="control-buttons" id="gameControls">
                 <button class="btn-hint" id="showHintBtn">💡 Look at Hint</button>
-                <button class="btn-main-menu" id="newVerseBtn">🔄 Main Menu</button>
+                <button class="btn-back-main" id="newVerseBtn">Back to Main</button>
             </div>
             
             <div class="drop-title">Your Verse <span class="hint-text">(Tap to remove • Hold a word to insert before/after)</span></div>
@@ -68,18 +68,13 @@
             <div id="successBlock" class="success-message hidden">
                 <span>🎉 Well done! You've perfectly completed the verse from memory!</span>
                 <div class="success-nav">
-                    <button class="btn-next" id="nextTrackBtn">Next Track ➔</button>
+                    <button class="btn-next" id="nextTrackBtn">Next Verse ➔</button>
                     <div class="success-second-row">
                         <button class="btn-retry" id="retryBtn">Retry</button>
-                        <button class="btn-dir" id="backToDirBtn">Back to Directory</button>
+                        <button class="btn-back-menu" id="backToDirBtn">Back to Menu</button>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Main Menu link -->
-        <div class="bible-study-menu">
-            <a id="bibleStudyMenuBtn" href="https://jacobseekstruth.github.io/jacobs-bsg-app/" class="text-link-btn">Main Menu</a>
         </div>
     </div>
 
@@ -96,7 +91,6 @@
                 </label>
             </div>
 
-            <!-- Music Player -->
             <div class="option-row">
                 <label for="musicToggle"><strong>Background Music</strong></label>
                 <label class="switch">
@@ -176,13 +170,21 @@
             
             <p>Congratulations on finishing every track! These verses form a beautiful path of faith.</p>
             
-            <p>In the beginning God created all things. This same God so loved the world that He gave His only Son so that whoever believes in Him will have eternal life.</p>
+            <div class="divider"></div>
             
-            <p>We have all sinned and fall short of God’s glory. The wages of sin is death, but the free gift of God is eternal life in Christ Jesus.</p>
+            <h3 class="devotional-heading">Devotional</h3>
             
-            <p>Trust in the Lord with all your heart. Seek first His kingdom and righteousness. The Lord is your Shepherd; you shall not want. You can do all things through Christ who strengthens you. And we know that for those who love God, all things work together for good.</p>
-            
-            <p class="closing">Receive His love. Follow Jesus in trusting obedience. He will lead, strengthen, and guide you every step of the way.</p>
+            <div class="devotional-body">
+                <p>In the beginning God created all things <span class="verse-ref">(Genesis 1:1)</span>. This same God so loved the world that He gave His only Son so that whoever believes in Him will have eternal life <span class="verse-ref">(John 3:16)</span>.</p>
+                
+                <p>We have all sinned and fall short of God’s glory <span class="verse-ref">(Romans 3:23)</span>. The wages of sin is death, but the free gift of God is eternal life in Christ Jesus <span class="verse-ref">(Romans 6:23)</span>.</p>
+                
+                <p>Trust in the Lord with all your heart <span class="verse-ref">(Proverbs 3:5)</span>. Seek first His kingdom and righteousness <span class="verse-ref">(Matthew 6:33)</span>. The Lord is your Shepherd; you shall not want <span class="verse-ref">(Psalm 23:1)</span>.</p>
+                
+                <p>You can do all things through Christ who strengthens you <span class="verse-ref">(Philippians 4:13)</span>. And we know that for those who love God, all things work together for good <span class="verse-ref">(Romans 8:28)</span>.</p>
+                
+                <p class="closing">Receive His love. Follow Jesus in trusting obedience. He will lead, strengthen, and guide you every step of the way.</p>
+            </div>
 
             <!-- Verse Dropdown -->
             <div class="devotional-verse-select">
