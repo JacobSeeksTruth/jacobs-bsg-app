@@ -10,7 +10,6 @@
     --card-bg: #ffffff;
     --pool-bg: #e8eef4;
     --link-blue: #2563eb;
-    --light-blue: #e0f2fe;
 }
 
 body.dark-mode {
@@ -25,7 +24,6 @@ body.dark-mode {
     --card-bg: #1e293b;
     --pool-bg: #0f172a;
     --link-blue: #60a5fa;
-    --light-blue: #0c4a6e;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -475,6 +473,7 @@ input:checked + .slider:before { transform: translateX(24px); }
     border: 1px solid var(--border-color);
     border-radius: 10px;
     padding: 12px;
+    margin-bottom: 12px;
 }
 .music-title {
     font-size: 15px;
@@ -530,7 +529,7 @@ body.dark-mode .song-subtitle { color: #94a3b8; }
 
 /* Options Sections */
 .options-section {
-    margin: 12px 0;
+    margin: 14px 0;
     border: 1px solid var(--border-color);
     border-radius: 10px;
     overflow: hidden;
@@ -542,7 +541,6 @@ body.dark-mode .song-subtitle { color: #94a3b8; }
     font-size: 15px;
     cursor: pointer;
     color: var(--primary-color);
-    text-align: left;
 }
 .section-content {
     padding: 14px;
@@ -552,65 +550,43 @@ body.dark-mode .song-subtitle { color: #94a3b8; }
 .lang-desc { margin-bottom: 12px; color: #64748b; }
 body.dark-mode .lang-desc { color: #94a3b8; }
 
-.left-align { text-align: left !important; }
-
-.updates-date {
-    font-weight: 600;
-    color: var(--primary-color);
-}
-
-/* Hebrew / Greek headers */
-.lang-group { margin-top: 12px; }
-.lang-header {
-    padding: 10px 12px;
+.lang-title {
+    text-align: center;
     font-weight: 700;
-    font-size: 15px;
-    cursor: pointer;
-    text-align: left;
-    border-radius: 8px;
-    margin-bottom: 8px;
-}
-.hebrew-header, .greek-header {
-    background: var(--light-blue);
+    margin: 12px 0 10px;
     color: var(--primary-color);
 }
-
-.lang-group-content { padding-left: 4px; }
-
-/* Individual verse dropdowns */
-.verse-dropdown {
+.lang-entry {
+    margin-bottom: 16px;
+    padding-bottom: 12px;
     border-bottom: 1px solid var(--border-color);
-    margin-bottom: 6px;
-    padding-bottom: 6px;
-}
-.verse-dropdown:last-child { border-bottom: none; }
-
-.verse-title {
-    font-size: 14px;
-    font-weight: 600;
-    color: #94a3b8;               /* light gray */
-    cursor: pointer;
-    padding: 6px 0;
-    text-align: left;
-}
-body.dark-mode .verse-title { color: #64748b; }
-
-.verse-body {
-    display: none;
     font-size: 13.5px;
-    line-height: 1.55;
-    padding: 6px 0 10px;
-    text-align: left;
 }
-.verse-dropdown.open .verse-body {
-    display: block;
-}
-
-.verse-body .orig {
+.lang-entry:last-child { border-bottom: none; }
+.lang-entry .orig {
     font-size: 15px;
     display: block;
     margin: 4px 0;
-    direction: rtl;
+    direction: rtl; /* helps Hebrew display */
+}
+.updates-date {
+    text-align: center;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+/* Custom Verse Box */
+.custom-verse-box {
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    padding: 16px;
+    margin-top: 16px;
+    background: var(--light-bg);
+}
+.custom-verse-box h4 {
+    margin: 0 0 12px;
+    text-align: center;
+    color: var(--primary-color);
 }
 
 /* Hint */
@@ -675,13 +651,6 @@ body.dark-mode .verse-title { color: #64748b; }
 .verse-ref {
     color: var(--link-blue);
     font-weight: 600;
-}
-.verse-ref.clickable {
-    cursor: pointer;
-    text-decoration: underline;
-}
-.verse-ref.clickable:hover {
-    opacity: 0.85;
 }
 
 .reward-content .closing {
