@@ -6,7 +6,19 @@
     --border-color: #e2e8f0;
     --light-bg: #f8fafc;
     --card-bg: #ffffff;
-    --success-color: #10b981;
+    --muted-text: #64748b;
+}
+
+body.dark-mode {
+    --bg-color: #0f172a;
+    --a;
+    --primary-color: #93c5fd;
+    --accent-color: #60a5fa;
+    --text-color: #e2e8f0;
+    --border-color: #334155;
+    --light-bg: #1e293b;
+    --card-bg: #1e293b;
+    --muted-text: #94a3b8;
 }
 
 *, *::before, *::after {
@@ -27,6 +39,7 @@ body {
     justify-content: center;
     min-height: 100vh;
     line-height: 1.5;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .container {
@@ -39,6 +52,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 28px;
+    transition: background-color 0.3s;
 }
 
 /* Header */
@@ -56,7 +70,7 @@ h1 {
 h2 {
     font-size: 16px;
     font-weight: 500;
-    color: #64748b;
+    color: var(--muted-text);
     margin: 0 0 14px 0;
 }
 
@@ -70,10 +84,11 @@ h2 {
     padding: 6px 12px;
     border-radius: 6px;
     transition: background 0.2s;
+    font-family: inherit;
 }
 
 .text-btn:hover {
-    background: #eff6ff;
+    background: rgba(58, 123, 213, 0.1);
 }
 
 /* Volume Section */
@@ -82,6 +97,7 @@ h2 {
     border: 2px dashed var(--border-color);
     border-radius: 14px;
     padding: 20px 16px;
+    transition: background-color 0.3s, border-color 0.3s;
 }
 
 .section-title {
@@ -97,7 +113,7 @@ h2 {
 .volume-btn {
     display: block;
     width: 100%;
-    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    background: linear-gradient(135deg, #3a6073, #3a7bd5);
     color: white;
     text-decoration: none;
     text-align: center;
@@ -106,7 +122,7 @@ h2 {
     font-size: 16px;
     font-weight: 700;
     transition: opacity 0.2s, transform 0.1s;
-    box-shadow: 0 4px 12px rgba(58, 96, 115, 0.2);
+    box-shadow: 0 4px 12px rgba(58, 96, 115, 0.25);
 }
 
 .volume-btn:hover {
@@ -117,26 +133,30 @@ h2 {
     transform: scale(0.98);
 }
 
-/* Footer */
+/* Footer / Theme Toggle */
 .footer {
     text-align: center;
     padding-top: 8px;
     border-top: 1px solid var(--border-color);
 }
 
-.text-link-btn {
+.theme-btn {
+    background: none;
+    border: 1px solid var(--border-color);
+    color: var(--muted-text);
     font-size: 13px;
-    color: #64748b;
-    text-decoration: none;
-    font-weight: 500;
-    padding: 6px 12px;
-    border-radius: 6px;
-    transition: color 0.2s, background 0.2s;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 8px 18px;
+    border-radius: 20px;
+    transition: all 0.2s;
+    font-family: inherit;
 }
 
-.text-link-btn:hover {
-    color: var(--primary-color);
+.theme-btn:hover {
     background: var(--light-bg);
+    color: var(--primary-color);
+    border-color: var(--primary-color);
 }
 
 /* Modal */
@@ -170,8 +190,10 @@ h2 {
     width: 100%;
     max-height: 85vh;
     overflow-y: auto;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
     text-align: left;
+    color: var(--text-color);
+    transition: background-color 0.3s;
 }
 
 .modal-content h3 {
@@ -183,7 +205,7 @@ h2 {
 
 .learn-more-text p {
     font-size: 15.5px;
-    line-height: 1.6;
+    line-height: 1.65;
     margin: 0 0 14px 0;
     color: var(--text-color);
 }
@@ -206,13 +228,23 @@ h2 {
     font-weight: 700;
     cursor: pointer;
     transition: background 0.2s;
+    font-family: inherit;
+}
+
+body.dark-mode .btn-back {
+    background: #334155;
+    color: #e2e8f0;
 }
 
 .btn-back:hover {
     background: #cbd5e1;
 }
 
-/* Mobile adjustments */
+body.dark-mode .btn-back:hover {
+    background: #475569;
+}
+
+/* Mobile */
 @media (max-width: 480px) {
     body {
         padding: 12px;
