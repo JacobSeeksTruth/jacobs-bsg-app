@@ -178,7 +178,7 @@ body.dark-mode .reward-item.unlocked {
 }
 .reward-item.unlocked .devotional-blue { color: var(--link-blue); }
 
-/* Options button – same gray as Close Options */
+/* Options button – gray (same as Close Options) */
 .btn-options {
     background: #e2e8f0 !important;
     color: var(--text-color) !important;
@@ -564,20 +564,20 @@ body.dark-mode .lang-desc { color: #94a3b8; }
     margin: 12px 0;
 }
 
-/* Hebrew / Greek headers */
+/* Hebrew / Greek headers – centered, bold, light-blue background */
 .lang-header {
     padding: 10px 12px;
     font-weight: 700;
     font-size: 15px;
     cursor: pointer;
     border-radius: 8px;
-    margin: 8px 0 6px;
+    margin: 8px 0 10px;
+    text-align: center;
 }
 .hebrew-header,
 .greek-header {
-    background: #dbeafe; /* light blue */
+    background: #dbeafe;
     color: #1e40af;
-    text-align: left;
 }
 body.dark-mode .hebrew-header,
 body.dark-mode .greek-header {
@@ -591,42 +591,39 @@ body.dark-mode .greek-header {
 
 /* Individual verse dropdowns */
 .verse-dropdown {
-    margin: 4px 0;
+    margin: 4px 0 8px;
 }
 .verse-title {
-    font-weight: 600;
+    font-weight: 700;          /* bold */
     font-size: 14px;
     cursor: pointer;
     padding: 6px 0;
-    color: #94a3b8; /* light gray */
-}
-body.dark-mode .verse-title {
     color: #64748b;
 }
-.verse-title.light-gray {
+body.dark-mode .verse-title {
     color: #94a3b8;
 }
 .verse-body {
-    padding: 6px 0 10px;
+    padding: 6px 0 14px;       /* extra space after each verse */
     font-size: 13.5px;
+    line-height: 1.55;
 }
 .verse-body.hidden {
     display: none;
 }
-.lang-entry .orig,
 .verse-body .orig {
     font-size: 15px;
     display: block;
     margin: 4px 0;
-    direction: rtl; /* helps Hebrew */
+    direction: rtl;
 }
 
+/* Latest Updates – left aligned + un-bolded */
 .updates-date {
-    font-weight: 600;
-    color: var(--primary-color);
-}
-.updates-date.left-align {
     text-align: left;
+    font-weight: 400;
+    color: var(--text-color);
+    margin: 0;
 }
 
 /* Hint */
