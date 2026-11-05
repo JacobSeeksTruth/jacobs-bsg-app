@@ -71,7 +71,6 @@ const curriculumVerses = [
     }}
 ];
 
-// Short hint phrases
 const hintPhrases = {
     "Genesis 1:1": "In the beginning",
     "John 3:16": "He gave his only Son",
@@ -195,13 +194,15 @@ function initGame() {
 
     document.getElementById('verseDisplayHeader').innerText = currentReference;
 
-    // Prepare Hint modal
     const cleanRef = currentReference.split('(')[0].trim();
     document.getElementById('hintRef').innerText = currentReference;
     document.getElementById('hintPhrase').innerText = hintPhrases[cleanRef] || "Remember the key phrase...";
     document.getElementById('hintText').innerText = currentVerseText;
     document.getElementById('hintText').classList.add('hidden');
-    document.getElementById('seeFullVerseBtn').textContent = "See Full Verse";
+
+    const seeBtn = document.getElementById('seeFullVerseBtn');
+    seeBtn.textContent = "See Full Verse";
+    seeBtn.classList.remove('hide-mode');
 
     const wordPool = document.getElementById('wordPool');
     const dropZone = document.getElementById('dropZone');
@@ -360,7 +361,6 @@ function applyDarkMode(enabled) {
     localStorage.setItem('darkMode', enabled ? 'true' : 'false');
 }
 
-// ===== Music =====
 function setupMusic() {
     const audio = document.getElementById('bgMusic');
     const source = document.getElementById('audioSource');
@@ -420,7 +420,6 @@ function setupMusic() {
         muteBtn.textContent = isMusicMuted ? 'Unmute' : 'Mute';
     });
 
-    // Select Song
     selectSongBtn.addEventListener('click', () => {
         songSelectModal.classList.add('open');
     });
@@ -452,7 +451,6 @@ function setupMusic() {
     });
 }
 
-// ===== INIT =====
 document.addEventListener('DOMContentLoaded', () => {
     const savedDark = localStorage.getItem('darkMode') === 'true';
     document.getElementById('darkModeToggle').checked = savedDark;
@@ -463,7 +461,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('versionSelect')?.addEventListener('change', renderCurriculum);
 
-    // Options
     document.getElementById('optionsBtn')?.addEventListener('click', () => toggleOptions(true));
     document.getElementById('closeOptionsBtn')?.addEventListener('click', () => toggleOptions(false));
     document.getElementById('optionsModal')?.addEventListener('click', (e) => {
@@ -479,7 +476,6 @@ document.addEventListener('DOMContentLoaded', () => {
         initGame();
     });
 
-    // Insert
     document.getElementById('insertBeforeBtn')?.addEventListener('click', () => {
         insertPosition = 'before';
         document.getElementById('insertBeforeBtn').style.outline = '2px solid #0369a1';
@@ -492,32 +488,32 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     document.getElementById('cancelInsertBtn')?.addEventListener('click', clearInsertMode);
 
-    // Game
     document.getElementById('showHintBtn')?.addEventListener('click', () => toggleHint(true));
     document.getElementById('closeHintBtn')?.addEventListener('click', () => toggleHint(false));
     document.getElementById('newVerseBtn')?.addEventListener('click', goToMainMenu);
 
-    // See Full Verse toggle
+    // See Full Verse / Hide Full Verse
     document.getElementById('seeFullVerseBtn')?.addEventListener('click', () => {
         const full = document.getElementById('hintText');
         const btn = document.getElementById('seeFullVerseBtn');
+        
         if (full.classList.contains('hidden')) {
             full.classList.remove('hidden');
             btn.textContent = "Hide Full Verse";
+            btn.classList.add('hide-mode');
         } else {
             full.classList.add('hidden');
             btn.textContent = "See Full Verse";
+            btn.classList.remove('hide-mode');
         }
     });
 
-    // Success
     document.getElementById('nextTrackBtn')?.addEventListener('click', goToNextTrack);
     document.getElementById('retryBtn')?.addEventListener('click', retryPuzzle);
     document.getElementById('backToDirBtn')?.addEventListener('click', goToMainMenu);
 
     document.getElementById('closeRewardBtn')?.addEventListener('click', () => toggleRewardModal(false));
 
-    // Devotional verse dropdown
     document.getElementById('devotionalVerseSelect')?.addEventListener('change', (e) => {
         const ref = e.target.value;
         const display = document.getElementById('devotionalVerseDisplay');
@@ -529,7 +525,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Modal backgrounds
     document.getElementById('hintModal')?.addEventListener('click', (e) => {
         if (e.target.id === 'hintModal') toggleHint(false);
     });
