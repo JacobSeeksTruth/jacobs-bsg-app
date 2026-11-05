@@ -659,4 +659,79 @@ body.dark-mode .verse-title { color: #64748b; }
 
 .devotional-heading {
     text-align: center;
-   
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 8px 0 16px;
+}
+
+.devotional-body p {
+    text-align: left;
+    font-size: 15.5px;
+    line-height: 1.65;
+    margin-bottom: 14px;
+}
+
+.verse-ref {
+    color: var(--link-blue);
+    font-weight: 600;
+}
+.verse-ref.clickable {
+    cursor: pointer;
+    text-decoration: underline;
+}
+.verse-ref.clickable:hover {
+    opacity: 0.85;
+}
+
+.reward-content .closing {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.devotional-verse-select {
+    margin: 8px 0 16px;
+    text-align: left;
+}
+.devotional-verse-select label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+#devotionalVerseSelect {
+    width: 100%;
+    padding: 11px 12px;
+    border-radius: 8px;
+    border: 2px solid var(--border-color);
+    font-size: 15px;
+    background: var(--card-bg);
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+.devotional-verse-display {
+    background: var(--light-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 14px;
+    font-size: 15px;
+    line-height: 1.55;
+    margin-top: 8px;
+    text-align: center;
+    font-style: italic;
+}
+.devotional-verse-display strong {
+    display: block;
+    margin-bottom: 6px;
+    font-style: normal;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    body { padding: 10px; }
+    .container { padding: 14px; }
+    h1 { font-size: 20px; }
+    .sub-line1 { font-size: 15px; }
+    .sub-line2 { font-size: 14px; }
+    .insert-buttons { grid-template-columns: 1fr 1fr; }
+    .btn-cancel-insert { grid-column: 1 / -1; }
+}
