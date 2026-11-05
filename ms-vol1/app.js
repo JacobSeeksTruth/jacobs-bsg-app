@@ -372,8 +372,6 @@ function applyDarkMode(enabled) {
 function setupMusic() {
     const audio = document.getElementById('bgMusic');
     const source = document.getElementById('audioSource');
-    const musicToggle = document.getElementById('musicToggle');
-    const musicControls = document.getElementById('musicControls');
     const playPauseBtn = document.getElementById('playPauseBtn');
     const restartBtn = document.getElementById('restartMusicBtn');
     const muteBtn = document.getElementById('muteMusicBtn');
@@ -381,22 +379,6 @@ function setupMusic() {
     const songSelectModal = document.getElementById('songSelectModal');
     const closeSongSelectBtn = document.getElementById('closeSongSelectBtn');
     const currentSongTitle = document.getElementById('currentSongTitle');
-
-    const musicEnabled = localStorage.getItem('musicEnabled') === 'true';
-    musicToggle.checked = musicEnabled;
-    if (musicEnabled) musicControls.classList.remove('hidden');
-
-    musicToggle.addEventListener('change', (e) => {
-        const enabled = e.target.checked;
-        localStorage.setItem('musicEnabled', enabled ? 'true' : 'false');
-        musicControls.classList.toggle('hidden', !enabled);
-        if (!enabled) {
-            audio.pause();
-            playPauseBtn.textContent = 'Play';
-            playPauseBtn.classList.remove('btn-pause');
-            playPauseBtn.classList.add('btn-play');
-        }
-    });
 
     playPauseBtn.addEventListener('click', () => {
         if (audio.paused) {
@@ -448,7 +430,7 @@ function setupMusic() {
             audio.pause();
             source.src = newSrc;
             audio.load();
-            currentSongTitle.textContent = newTitle;   // only the song name
+            currentSongTitle.textContent = newTitle;
             
             playPauseBtn.textContent = 'Play';
             playPauseBtn.classList.remove('btn-pause');
@@ -475,12 +457,24 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target.id === 'optionsModal') toggleOptions(false);
     });
 
-    // Toggle sections in Options
+    // Section toggles
+    document.getElementById('musicToggleBtn')?.addEventListener('click', () => {
+        document.getElementById('musicContent').classList.toggle('hidden');
+    });
     document.getElementById('langToggleBtn')?.addEventListener('click', () => {
         document.getElementById('langContent').classList.toggle('hidden');
     });
+    document.getElementById('hebrewToggleBtn')?.addEventListener('click', () => {
+        document.getElementById('hebrewContent').classList.toggle('hidden');
+    });
+    document.getElementById('greekToggleBtn')?.addEventListener('click', () => {
+        document.getElementById('greekContent').classList.toggle('hidden');
+    });
     document.getElementById('updatesToggleBtn')?.addEventListener('click', () => {
         document.getElementById('updatesContent').classList.toggle('hidden');
+    });
+    document.getElementById('customToggleBtn')?.addEventListener('click', () => {
+        document.getElementById('customContent').classList.toggle('hidden');
     });
 
     document.getElementById('darkModeToggle')?.addEventListener('change', (e) => {
@@ -529,7 +523,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('closeRewardBtn')?.addEventListener('click', () => toggleRewardModal(false));
 
-    // Devotional verse now uses current translation
+    // Devotional verse selector
     document.getElementById('devotionalVerseSelect')?.addEventListener('change', (e) => {
         const ref = e.target.value;
         const display = document.getElementById('devotionalVerseDisplay');
@@ -543,6 +537,17 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             display.classList.add('hidden');
         }
+    });
+
+    // Clickable verse references in Devotional
+    document.querySelectorAll('.verse-ref.clickable').forEach(el => {
+        el.addEventListener('click', () => {
+            const ref = el.getAttribute('data-ref');
+            const select = document.getElementById('devotionalVerseSelect');
+            select.value = ref;
+            // Trigger the change event
+            select.dispatchEvent(new Event('change'));
+        });
     });
 
     document.getElementById('hintModal')?.addEventListener('click', (e) => {
