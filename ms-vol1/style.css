@@ -5,7 +5,6 @@
     --piece-color: #ffffff;
     --text-color: #2c3e50;
     --success-color: #10b981;
-    --gold-color: #d97706;
     --border-color: #e2e8f0;
     --light-bg: #f8fafc;
     --card-bg: #ffffff;
@@ -20,7 +19,6 @@ body.dark-mode {
     --piece-color: #1e293b;
     --text-color: #e2e8f0;
     --success-color: #34d399;
-    --gold-color: #fbbf24;
     --border-color: #334155;
     --light-bg: #1e293b;
     --card-bg: #1e293b;
@@ -55,16 +53,32 @@ body {
     transition: background-color 0.3s;
 }
 
-h1 { text-align: center; color: var(--primary-color); font-size: 22px; margin: 0 0 6px; font-weight: 700; }
+h1 {
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 22px;
+    margin: 0 0 6px;
+    font-weight: 700;
+}
 
-.subtitle { display: flex; flex-direction: column; gap: 2px; margin-bottom: 20px; text-align: center; }
+.subtitle {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-bottom: 20px;
+    text-align: center;
+}
 .sub-line1 { font-size: 16px; font-weight: 600; color: var(--primary-color); }
 .sub-line2 { font-size: 15px; font-weight: 500; color: #718096; }
 body.dark-mode .sub-line2 { color: #94a3b8; }
 
 .hidden { display: none !important; }
 
-.setup-zone, .game-zone { display: flex; flex-direction: column; gap: 14px; }
+.setup-zone, .game-zone {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
 
 .version-select-container {
     background: var(--light-bg);
@@ -199,11 +213,21 @@ button {
 button:active { transform: scale(0.98); }
 
 .control-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
 .btn-hint { background: #e2e8f0 !important; color: var(--text-color) !important; }
 body.dark-mode .btn-hint { background: #334155 !important; color: #e2e8f0 !important; }
-.btn-main-menu { background: linear-gradient(135deg, #2563eb, #3b82f6) !important; }
 
-.verse-header { text-align: center; font-weight: 700; color: var(--primary-color); font-size: 17px; }
+.btn-back-main {
+    background: linear-gradient(135deg, #2563eb, #3b82f6) !important;
+    color: white !important;
+}
+
+.verse-header {
+    text-align: center;
+    font-weight: 700;
+    color: var(--primary-color);
+    font-size: 17px;
+}
 
 .pool-title, .drop-title {
     font-size: 13px;
@@ -211,7 +235,9 @@ body.dark-mode .btn-hint { background: #334155 !important; color: #e2e8f0 !impor
     color: #718096;
     margin-bottom: 2px;
 }
-body.dark-mode .pool-title, body.dark-mode .drop-title { color: #94a3b8; }
+body.dark-mode .pool-title,
+body.dark-mode .drop-title { color: #94a3b8; }
+
 .hint-text { font-weight: 500; font-size: 12px; color: #94a3b8; }
 
 .word-pool, .drop-zone {
@@ -223,8 +249,15 @@ body.dark-mode .pool-title, body.dark-mode .drop-title { color: #94a3b8; }
     border-radius: 12px;
     align-content: flex-start;
 }
-.drop-zone { border: 2px solid var(--border-color); background: var(--card-bg); gap: 6px 4px; }
-.word-pool { background: var(--pool-bg); border: 2px dashed #94a3b8; }
+.drop-zone {
+    border: 2px solid var(--border-color);
+    background: var(--card-bg);
+    gap: 6px 4px;
+}
+.word-pool {
+    background: var(--pool-bg);
+    border: 2px dashed #94a3b8;
+}
 
 .word-piece {
     background-color: var(--piece-color);
@@ -266,13 +299,25 @@ body.dark-mode .word-piece.insert-target { background: #0c4a6e !important; }
     gap: 8px;
 }
 body.dark-mode .insert-controls { background: #0c4a6e; border-color: #0369a1; }
+
 .insert-label { font-size: 13px; font-weight: 600; color: #0369a1; }
 body.dark-mode .insert-label { color: #7dd3fc; }
+
 .insert-buttons { display: grid; grid-template-columns: 1fr 1fr auto; gap: 8px; }
-.btn-insert { background: linear-gradient(135deg, #0ea5e9, #0284c7) !important; padding: 10px 8px !important; font-size: 14px !important; }
-.btn-cancel-insert { background: #e2e8f0 !important; color: #334155 !important; padding: 10px 12px !important; font-size: 14px !important; }
+.btn-insert {
+    background: linear-gradient(135deg, #0ea5e9, #0284c7) !important;
+    padding: 10px 8px !important;
+    font-size: 14px !important;
+}
+.btn-cancel-insert {
+    background: #e2e8f0 !important;
+    color: #334155 !important;
+    padding: 10px 12px !important;
+    font-size: 14px !important;
+}
 body.dark-mode .btn-cancel-insert { background: #334155 !important; color: #e2e8f0 !important; }
 
+/* Success Message */
 .success-message {
     text-align: center;
     padding: 18px;
@@ -286,12 +331,21 @@ body.dark-mode .btn-cancel-insert { background: #334155 !important; color: #e2e8
     gap: 14px;
 }
 body.dark-mode .success-message { background: #064e3b; color: #6ee7b7; }
+
 .success-nav { display: flex; flex-direction: column; gap: 10px; }
 .success-second-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.btn-next { background: linear-gradient(135deg, var(--success-color), #059669) !important; }
-.btn-retry { background: linear-gradient(135deg, #f59e0b, #d97706) !important; }
-.btn-dir { background: #cbd5e1 !important; color: #334155 !important; }
-body.dark-mode .btn-dir { background: #475569 !important; color: #e2e8f0 !important; }
+
+.btn-next {
+    background: linear-gradient(135deg, var(--success-color), #059669) !important;
+}
+.btn-retry {
+    background: #94a3b8 !important;          /* Gray */
+    color: white !important;
+}
+.btn-back-menu {
+    background: linear-gradient(135deg, #2563eb, #3b82f6) !important; /* Blue */
+    color: white !important;
+}
 
 /* Modals */
 .modal {
@@ -324,15 +378,32 @@ body.dark-mode .btn-dir { background: #475569 !important; color: #e2e8f0 !import
 }
 
 .modal-content h3 { margin-top: 0; color: var(--primary-color); font-size: 18px; }
-.btn-close-modal { margin-top: 12px; background: #e2e8f0 !important; color: var(--text-color) !important; }
+
+.btn-close-modal {
+    margin-top: 12px;
+    background: #e2e8f0 !important;
+    color: var(--text-color) !important;
+}
 body.dark-mode .btn-close-modal { background: #334155 !important; }
 
 /* Options */
 .options-content { text-align: left; }
 .options-content h3 { text-align: center; }
 .options-content h4 { margin: 12px 0 8px; color: var(--primary-color); }
-.option-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-.field-label { font-weight: 700; font-size: 14px; margin-bottom: 4px; display: block; }
+
+.option-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.field-label {
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 4px;
+    display: block;
+}
 
 textarea, input[type="text"] {
     width: 100%;
@@ -346,20 +417,29 @@ textarea, input[type="text"] {
     margin-bottom: 12px;
 }
 
-/* Toggle */
-.switch { position: relative; display: inline-block; width: 52px; height: 28px; }
+/* Toggle Switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 52px;
+    height: 28px;
+}
 .switch input { opacity: 0; width: 0; height: 0; }
 .slider {
-    position: absolute; cursor: pointer;
+    position: absolute;
+    cursor: pointer;
     top: 0; left: 0; right: 0; bottom: 0;
     background-color: #cbd5e1;
     transition: .3s;
     border-radius: 28px;
 }
 .slider:before {
-    position: absolute; content: "";
-    height: 22px; width: 22px;
-    left: 3px; bottom: 3px;
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 3px;
+    bottom: 3px;
     background-color: white;
     transition: .3s;
     border-radius: 50%;
@@ -418,27 +498,31 @@ input:checked + .slider:before { transform: translateX(24px); }
     font-size: 15px !important;
     text-align: left !important;
 }
-.song-option:hover { background: #e2e8f0 !important; }
-body.dark-mode .song-option:hover { background: #334155 !important; }
 
 /* Hint Modal */
 .hint-phrase {
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 400;               /* Un-bolded */
     color: var(--primary-color);
     margin: 12px 0;
     font-style: italic;
 }
+
 .btn-see-full {
-    background: linear-gradient(135deg, #3b82f6, #2563eb) !important;
+    background: linear-gradient(135deg, #10b981, #059669) !important; /* Green */
     margin-bottom: 12px;
     font-size: 14px !important;
     padding: 10px !important;
 }
+.btn-see-full.hide-mode {
+    background: linear-gradient(135deg, #3b82f6, #2563eb) !important; /* Blue when Hide */
+}
+
 .full-verse {
     font-size: 16px;
     line-height: 1.6;
-    text-align: left;
+    text-align: center;             /* Centered */
+    font-style: italic;             /* Italics */
     background: var(--light-bg);
     padding: 14px;
     border-radius: 10px;
@@ -452,9 +536,37 @@ body.dark-mode .song-option:hover { background: #334155 !important; }
     font-size: 19px;
     text-align: center;
 }
-.reward-content .divider { height: 1px; background: var(--border-color); margin-bottom: 16px; }
-.reward-content p { text-align: left; font-size: 15.5px; line-height: 1.6; margin-bottom: 14px; }
-.reward-content .closing { font-weight: 600; color: var(--primary-color); }
+
+.reward-content .divider {
+    height: 1px;
+    background: var(--border-color);
+    margin: 16px 0;
+}
+
+.devotional-heading {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 8px 0 16px;
+}
+
+.devotional-body p {
+    text-align: left;
+    font-size: 15.5px;
+    line-height: 1.65;
+    margin-bottom: 14px;
+}
+
+.verse-ref {
+    color: var(--link-blue);
+    font-weight: 600;
+}
+
+.reward-content .closing {
+    font-weight: 600;
+    color: var(--primary-color);
+}
 
 .devotional-verse-select {
     margin: 20px 0 16px;
@@ -485,24 +597,7 @@ body.dark-mode .song-option:hover { background: #334155 !important; }
     margin-top: 8px;
 }
 
-/* Footer */
-.bible-study-menu {
-    margin-top: 24px;
-    text-align: center;
-    padding-top: 12px;
-    border-top: 1px solid var(--border-color);
-}
-.text-link-btn {
-    font-size: 13px;
-    color: #64748b;
-    text-decoration: none;
-    font-weight: 500;
-    padding: 6px 12px;
-    border-radius: 6px;
-}
-.text-link-btn:hover { color: var(--primary-color); background: var(--light-bg); }
-body.dark-mode .text-link-btn { color: #94a3b8; }
-
+/* Mobile */
 @media (max-width: 480px) {
     body { padding: 10px; }
     .container { padding: 14px; }
