@@ -178,7 +178,15 @@ function clearInsertMode() {
 function updatePuzzleStatus() {
     const statusEl = document.getElementById('puzzleStatus');
     if (!statusEl) return;
-    const isMastered = currentActiveId !== null && masteredVerses.includes(currentActiveId);
+
+    // Hide status completely for custom verses
+    if (currentActiveId === null) {
+        statusEl.classList.add('hidden');
+        return;
+    }
+
+    statusEl.classList.remove('hidden');
+    const isMastered = masteredVerses.includes(currentActiveId);
     statusEl.textContent = isMastered ? "Status: Mastered" : "Status: Not Done";
     statusEl.classList.toggle('mastered', isMastered);
 }
@@ -215,7 +223,11 @@ function initGame() {
     dropZone.innerHTML = "";
     
     document.getElementById('successBlock').classList.add('hidden');
-    document.getElementById('gameControls').classList.remove('hidden');
+
+    // Show correct controls based on custom vs curriculum
+    const isCustom = currentActiveId === null;
+    document.getElementById('gameControls').classList.toggle('hidden', isCustom);
+    document.getElementById('customControls').classList.toggle('hidden', !isCustom);
 
     let indexedWords = originalWordsArray.map((word, index) => ({ word, index }));
     for (let i = indexedWords.length - 1; i > 0; i--) {
@@ -313,6 +325,7 @@ function checkWinState() {
         }
         document.getElementById('successBlock').classList.remove('hidden');
         document.getElementById('gameControls').classList.add('hidden');
+        document.getElementById('customControls').classList.add('hidden');
         updatePuzzleStatus();
         clearInsertMode();
     }
@@ -325,6 +338,17 @@ function goToMainMenu() {
     document.getElementById('successBlock').classList.add('hidden');
     currentActiveId = null;
     renderCurriculum();
+}
+
+function goToOptionsFromCustom() {
+    clearInsertMode();
+    document.getElementById('gameView').classList.add('hidden');
+    document.getElementById('setupView').classList.remove('hidden');
+    document.getElementById('successBlock').classList.add('hidden');
+    currentActiveId = null;
+    // Re-open Options modal and expand the Custom Verse section
+    toggleOptions(true);
+    document.getElementById('customVerseContent').classList.remove('hidden');
 }
 
 function goToNextTrack() {
@@ -479,7 +503,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('greekContent').classList.toggle('hidden');
     });
 
-    // Individual verse dropdowns (start expanded)
+    // Individual verse dropdowns
     document.querySelectorAll('[data-verse-toggle]').forEach(title => {
         title.addEventListener('click', () => {
             const body = title.nextElementSibling;
@@ -492,9 +516,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.getElementById('generateBtn')?.addEventListener('click', () => {
-        currentActiveId = null;
+        currentActiveId = null; // mark as custom
         initGame();
     });
+
+    // Custom Back button → return to Options
+    document.getElementById('customBackBtn')?.addEventListener('click', goToOptionsFromCustom);
 
     document.getElementById('insertBeforeBtn')?.addEventListener('click', () => {
         insertPosition = 'before';
