@@ -81,11 +81,8 @@ const hintPhrases = {
     "Psalm 23:1": "My shepherd",
     "Romans 8:28": "Those who love God",
     "Joshua 1:9": "Be strong and courageous",
-    "Matthew 6:33": "Seek first the kingdom"
+    "Matthew 6:33": "Seek the kingdom"
 };
-
-const esvLookup = {};
-curriculumVerses.forEach(v => { esvLookup[v.ref] = v.translations.ESV; });
 
 let originalWordsArray = [];
 let currentVerseText = "";
@@ -178,6 +175,14 @@ function clearInsertMode() {
     document.getElementById('insertControls')?.classList.add('hidden');
 }
 
+function updatePuzzleStatus() {
+    const statusEl = document.getElementById('puzzleStatus');
+    if (!statusEl) return;
+    const isMastered = currentActiveId !== null && masteredVerses.includes(currentActiveId);
+    statusEl.textContent = isMastered ? "Status: Mastered" : "Status: Not Done";
+    statusEl.classList.toggle('mastered', isMastered);
+}
+
 function initGame() {
     clearInsertMode();
     
@@ -221,6 +226,8 @@ function initGame() {
     indexedWords.forEach(item => {
         wordPool.appendChild(createWordPiece(item.word));
     });
+
+    updatePuzzleStatus();
 
     document.getElementById('setupView').classList.add('hidden');
     document.getElementById('gameView').classList.remove('hidden');
@@ -306,6 +313,7 @@ function checkWinState() {
         }
         document.getElementById('successBlock').classList.remove('hidden');
         document.getElementById('gameControls').classList.add('hidden');
+        updatePuzzleStatus();
         clearInsertMode();
     }
 }
@@ -440,7 +448,7 @@ function setupMusic() {
             audio.pause();
             source.src = newSrc;
             audio.load();
-            currentSongTitle.textContent = `Djivan Gasparyan – ${newTitle}`;
+            currentSongTitle.textContent = newTitle;   // only the song name
             
             playPauseBtn.textContent = 'Play';
             playPauseBtn.classList.remove('btn-pause');
@@ -465,6 +473,14 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('closeOptionsBtn')?.addEventListener('click', () => toggleOptions(false));
     document.getElementById('optionsModal')?.addEventListener('click', (e) => {
         if (e.target.id === 'optionsModal') toggleOptions(false);
+    });
+
+    // Toggle sections in Options
+    document.getElementById('langToggleBtn')?.addEventListener('click', () => {
+        document.getElementById('langContent').classList.toggle('hidden');
+    });
+    document.getElementById('updatesToggleBtn')?.addEventListener('click', () => {
+        document.getElementById('updatesContent').classList.toggle('hidden');
     });
 
     document.getElementById('darkModeToggle')?.addEventListener('change', (e) => {
@@ -492,7 +508,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('closeHintBtn')?.addEventListener('click', () => toggleHint(false));
     document.getElementById('newVerseBtn')?.addEventListener('click', goToMainMenu);
 
-    // See Full Verse / Hide Full Verse
     document.getElementById('seeFullVerseBtn')?.addEventListener('click', () => {
         const full = document.getElementById('hintText');
         const btn = document.getElementById('seeFullVerseBtn');
@@ -514,12 +529,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('closeRewardBtn')?.addEventListener('click', () => toggleRewardModal(false));
 
+    // Devotional verse now uses current translation
     document.getElementById('devotionalVerseSelect')?.addEventListener('change', (e) => {
         const ref = e.target.value;
         const display = document.getElementById('devotionalVerseDisplay');
-        if (ref && esvLookup[ref]) {
-            display.innerHTML = `<strong>${ref}</strong><br>${esvLookup[ref]}`;
-            display.classList.remove('hidden');
+        if (ref) {
+            const verseObj = curriculumVerses.find(v => v.ref === ref);
+            const t = getSelectedTranslation();
+            if (verseObj && verseObj.translations[t]) {
+                display.innerHTML = `<strong>${ref} (${t})</strong><br>${verseObj.translations[t]}`;
+                display.classList.remove('hidden');
+            }
         } else {
             display.classList.add('hidden');
         }
