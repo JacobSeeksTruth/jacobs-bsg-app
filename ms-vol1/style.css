@@ -178,7 +178,7 @@ body.dark-mode .reward-item.unlocked {
 }
 .reward-item.unlocked .devotional-blue { color: var(--link-blue); }
 
-/* Options button – gray (same as Close Options) */
+/* Options button – gray */
 .btn-options {
     background: #e2e8f0 !important;
     color: var(--text-color) !important;
@@ -229,6 +229,9 @@ button {
 button:active { transform: scale(0.98); }
 
 .control-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.control-buttons.custom-only {
+    grid-template-columns: 1fr;
+}
 
 .btn-hint { background: #e2e8f0 !important; color: var(--text-color) !important; }
 body.dark-mode .btn-hint { background: #334155 !important; color: #e2e8f0 !important; }
@@ -236,6 +239,16 @@ body.dark-mode .btn-hint { background: #334155 !important; color: #e2e8f0 !impor
 .btn-back-main {
     background: linear-gradient(135deg, #2563eb, #3b82f6) !important;
     color: white !important;
+}
+
+/* Custom verse Back button – gray */
+.btn-custom-back {
+    background: #e2e8f0 !important;
+    color: var(--text-color) !important;
+}
+body.dark-mode .btn-custom-back {
+    background: #334155 !important;
+    color: #e2e8f0 !important;
 }
 
 .verse-header {
@@ -558,13 +571,21 @@ body.dark-mode .song-subtitle { color: #94a3b8; }
 .lang-desc { margin-bottom: 12px; color: #64748b; }
 body.dark-mode .lang-desc { color: #94a3b8; }
 
+.instruction-text {
+    font-size: 13px;
+    color: #64748b;
+    margin: 8px 0 14px;
+    font-style: italic;
+}
+body.dark-mode .instruction-text { color: #94a3b8; }
+
 .divider {
     height: 1px;
     background: var(--border-color);
     margin: 12px 0;
 }
 
-/* Hebrew / Greek headers – centered, bold, light-blue background */
+/* Hebrew / Greek headers */
 .lang-header {
     padding: 10px 12px;
     font-weight: 700;
@@ -594,7 +615,7 @@ body.dark-mode .greek-header {
     margin: 4px 0 8px;
 }
 .verse-title {
-    font-weight: 700;          /* bold */
+    font-weight: 700;
     font-size: 14px;
     cursor: pointer;
     padding: 6px 0;
@@ -604,7 +625,7 @@ body.dark-mode .verse-title {
     color: #94a3b8;
 }
 .verse-body {
-    padding: 6px 0 14px;       /* extra space after each verse */
+    padding: 6px 0 14px;
     font-size: 13.5px;
     line-height: 1.55;
 }
@@ -618,7 +639,7 @@ body.dark-mode .verse-title {
     direction: rtl;
 }
 
-/* Latest Updates – left aligned + un-bolded */
+/* Latest Updates */
 .updates-date {
     text-align: left;
     font-weight: 400;
