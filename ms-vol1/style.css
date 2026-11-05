@@ -10,6 +10,7 @@
     --card-bg: #ffffff;
     --pool-bg: #e8eef4;
     --link-blue: #2563eb;
+    --light-blue: #e0f2fe;
 }
 
 body.dark-mode {
@@ -24,6 +25,7 @@ body.dark-mode {
     --card-bg: #1e293b;
     --pool-bg: #0f172a;
     --link-blue: #60a5fa;
+    --light-blue: #0c4a6e;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -473,7 +475,6 @@ input:checked + .slider:before { transform: translateX(24px); }
     border: 1px solid var(--border-color);
     border-radius: 10px;
     padding: 12px;
-    margin-bottom: 12px;
 }
 .music-title {
     font-size: 15px;
@@ -529,7 +530,7 @@ body.dark-mode .song-subtitle { color: #94a3b8; }
 
 /* Options Sections */
 .options-section {
-    margin: 14px 0;
+    margin: 12px 0;
     border: 1px solid var(--border-color);
     border-radius: 10px;
     overflow: hidden;
@@ -541,6 +542,7 @@ body.dark-mode .song-subtitle { color: #94a3b8; }
     font-size: 15px;
     cursor: pointer;
     color: var(--primary-color);
+    text-align: left;
 }
 .section-content {
     padding: 14px;
@@ -550,43 +552,65 @@ body.dark-mode .song-subtitle { color: #94a3b8; }
 .lang-desc { margin-bottom: 12px; color: #64748b; }
 body.dark-mode .lang-desc { color: #94a3b8; }
 
-.lang-title {
-    text-align: center;
-    font-weight: 700;
-    margin: 12px 0 10px;
-    color: var(--primary-color);
-}
-.lang-entry {
-    margin-bottom: 16px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid var(--border-color);
-    font-size: 13.5px;
-}
-.lang-entry:last-child { border-bottom: none; }
-.lang-entry .orig {
-    font-size: 15px;
-    display: block;
-    margin: 4px 0;
-    direction: rtl; /* helps Hebrew display */
-}
+.left-align { text-align: left !important; }
+
 .updates-date {
-    text-align: center;
     font-weight: 600;
     color: var(--primary-color);
 }
 
-/* Custom Verse Box */
-.custom-verse-box {
-    border: 2px solid var(--border-color);
-    border-radius: 12px;
-    padding: 16px;
-    margin-top: 16px;
-    background: var(--light-bg);
+/* Hebrew / Greek headers */
+.lang-group { margin-top: 12px; }
+.lang-header {
+    padding: 10px 12px;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    text-align: left;
+    border-radius: 8px;
+    margin-bottom: 8px;
 }
-.custom-verse-box h4 {
-    margin: 0 0 12px;
-    text-align: center;
+.hebrew-header, .greek-header {
+    background: var(--light-blue);
     color: var(--primary-color);
+}
+
+.lang-group-content { padding-left: 4px; }
+
+/* Individual verse dropdowns */
+.verse-dropdown {
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 6px;
+    padding-bottom: 6px;
+}
+.verse-dropdown:last-child { border-bottom: none; }
+
+.verse-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #94a3b8;               /* light gray */
+    cursor: pointer;
+    padding: 6px 0;
+    text-align: left;
+}
+body.dark-mode .verse-title { color: #64748b; }
+
+.verse-body {
+    display: none;
+    font-size: 13.5px;
+    line-height: 1.55;
+    padding: 6px 0 10px;
+    text-align: left;
+}
+.verse-dropdown.open .verse-body {
+    display: block;
+}
+
+.verse-body .orig {
+    font-size: 15px;
+    display: block;
+    margin: 4px 0;
+    direction: rtl;
 }
 
 /* Hint */
@@ -635,72 +659,4 @@ body.dark-mode .lang-desc { color: #94a3b8; }
 
 .devotional-heading {
     text-align: center;
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--primary-color);
-    margin: 8px 0 16px;
-}
-
-.devotional-body p {
-    text-align: left;
-    font-size: 15.5px;
-    line-height: 1.65;
-    margin-bottom: 14px;
-}
-
-.verse-ref {
-    color: var(--link-blue);
-    font-weight: 600;
-}
-
-.reward-content .closing {
-    font-weight: 600;
-    color: var(--primary-color);
-}
-
-.devotional-verse-select {
-    margin: 8px 0 16px;
-    text-align: left;
-}
-.devotional-verse-select label {
-    display: block;
-    margin-bottom: 6px;
-    font-size: 14px;
-}
-#devotionalVerseSelect {
-    width: 100%;
-    padding: 11px 12px;
-    border-radius: 8px;
-    border: 2px solid var(--border-color);
-    font-size: 15px;
-    background: var(--card-bg);
-    color: var(--text-color);
-    margin-bottom: 10px;
-}
-.devotional-verse-display {
-    background: var(--light-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 10px;
-    padding: 14px;
-    font-size: 15px;
-    line-height: 1.55;
-    margin-top: 8px;
-    text-align: center;
-    font-style: italic;
-}
-.devotional-verse-display strong {
-    display: block;
-    margin-bottom: 6px;
-    font-style: normal;
-}
-
-/* Mobile */
-@media (max-width: 480px) {
-    body { padding: 10px; }
-    .container { padding: 14px; }
-    h1 { font-size: 20px; }
-    .sub-line1 { font-size: 15px; }
-    .sub-line2 { font-size: 14px; }
-    .insert-buttons { grid-template-columns: 1fr 1fr; }
-    .btn-cancel-insert { grid-column: 1 / -1; }
-}
+   
