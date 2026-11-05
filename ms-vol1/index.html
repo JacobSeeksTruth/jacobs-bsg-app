@@ -38,6 +38,9 @@
             <a id="downloadGuideBtn" class="btn-download" href="#" target="_blank" rel="noopener">
                 Download Full Study Guide
             </a>
+
+            <!-- Main Menu only on this screen -->
+            <a href="https://jacobseekstruth.github.io/jacobs-bsg-app/" class="text-link-btn main-menu-link">Main Menu</a>
         </div>
 
         <!-- GAME VIEW -->
@@ -75,6 +78,9 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Status at bottom of puzzle -->
+            <div id="puzzleStatus" class="puzzle-status">Status: Not Done</div>
         </div>
     </div>
 
@@ -100,7 +106,7 @@
             </div>
             
             <div id="musicControls" class="music-controls hidden">
-                <p class="music-title" id="currentSongTitle">Djivan Gasparyan – Your Strong Mind</p>
+                <p class="music-title" id="currentSongTitle">Your Strong Mind</p>
                 
                 <div class="music-buttons">
                     <button id="playPauseBtn" class="btn-music btn-play">Play</button>
@@ -117,16 +123,97 @@
                 </audio>
             </div>
 
-            <div class="divider"></div>
+            <!-- Hebrew / Greek Section -->
+            <div class="options-section">
+                <div class="section-header" id="langToggleBtn">Hebrew or Greek Translations ▾</div>
+                <div id="langContent" class="section-content hidden">
+                    <p class="lang-desc">Different Bible translations add crucial context missed in English. Wherever available, I’ve included original Hebrew or Greek insights to capture these deeper meanings.</p>
+                    
+                    <div class="divider"></div>
+                    <h4 class="lang-title">Hebrew</h4>
+                    <div class="lang-entry">
+                        <strong>Genesis 1:1</strong><br>
+                        <span class="orig">בְּרֵאשִׁית בָּרָא אֱלֹהִים אֵת הַשָּׁמַיִם וְאֵת הָאָרֶץ</span><br>
+                        <em>Bereshit bara Elohim et hashamayim ve-et ha-aretz</em><br>
+                        Literal: “In beginning created God the heavens and the earth.”
+                    </div>
+                    <div class="lang-entry">
+                        <strong>Proverbs 3:5</strong><br>
+                        <span class="orig">בְּטַח אֶל־יְהוָה בְּכָל־לִבֶּךָ וְאֶל־בִּינָתְךָ אַל־תִּשָּׁעֵן</span><br>
+                        <em>Betach el-YHWH bechol-libbecha ve-el-binatecha al-tishaen</em><br>
+                        Literal: “Trust in Yahweh with all your heart, and on your understanding do not lean.”
+                    </div>
+                    <div class="lang-entry">
+                        <strong>Psalm 23:1</strong><br>
+                        <span class="orig">יְהוָה רֹעִי לֹא אֶחְסָר</span><br>
+                        <em>YHWH ro’i lo echsar</em><br>
+                        Literal: “Yahweh is my shepherd; I shall not lack.”
+                    </div>
+                    <div class="lang-entry">
+                        <strong>Joshua 1:9</strong><br>
+                        <span class="orig">חֲזַק וֶאֱמָץ ... כִּי עִמְּךָ יְהוָה אֱלֹהֶיךָ</span><br>
+                        <em>Chazak ve-ematz ... ki imm’cha YHWH elohecha</em><br>
+                        Literal: “Be strong and courageous ... for with you is Yahweh your God...”
+                    </div>
 
-            <h4>Custom Verse Puzzle</h4>
-            <label class="field-label">Custom Verse Text:</label>
-            <textarea id="verseInput" placeholder="Type or paste any target verse here..."></textarea>
-            
-            <label class="field-label">Verse Reference:</label>
-            <input type="text" id="referenceInput" placeholder="e.g., John 3:16">
-            
-            <button id="generateBtn">Start Custom Puzzle</button>
+                    <div class="divider"></div>
+                    <h4 class="lang-title">Greek</h4>
+                    <div class="lang-entry">
+                        <strong>John 3:16</strong><br>
+                        <span class="orig">Οὕτως γὰρ ἠγάπησεν ὁ Θεὸς τὸν κόσμον...</span><br>
+                        <em>Houtōs gar ēgapēsen ho Theos ton kosmon...</em><br>
+                        Literal: “For thus God loved the world...”
+                    </div>
+                    <div class="lang-entry">
+                        <strong>Romans 3:23</strong><br>
+                        <span class="orig">πάντες γὰρ ἥμαρτον καὶ ὑστεροῦνται τῆς δόξης τοῦ Θεοῦ</span><br>
+                        <em>Pantes gar hēmarton kai hysterountai tēs doxēs tou Theou</em><br>
+                        Literal: “For all sinned and fall short of the glory of God”
+                    </div>
+                    <div class="lang-entry">
+                        <strong>Romans 6:23</strong><br>
+                        <span class="orig">τὰ γὰρ ὀψώνια τῆς ἁμαρτίας θάνατος, τὸ δὲ χάρισμα τοῦ Θεοῦ ζωὴ αἰώνιος...</span><br>
+                        Literal: “For the wages of sin is death, but the gift of God is eternal life...”
+                    </div>
+                    <div class="lang-entry">
+                        <strong>Philippians 4:13</strong><br>
+                        <span class="orig">πάντα ἰσχύω ἐν τῷ ἐνδυναμοῦντί με</span><br>
+                        <em>Panta ischyō en tō endynamounti me</em><br>
+                        Literal: “I have strength for all things in the one strengthening me”
+                    </div>
+                    <div class="lang-entry">
+                        <strong>Romans 8:28</strong><br>
+                        <span class="orig">Οἴδαμεν δὲ ὅτι τοῖς ἀγαπῶσιν τὸν Θεὸν πάντα συνεργεῖ εἰς ἀγαθόν...</span><br>
+                        Literal: “We know that to those loving God all things work together for good...”
+                    </div>
+                    <div class="lang-entry">
+                        <strong>Matthew 6:33</strong><br>
+                        <span class="orig">ζητεῖτε δὲ πρῶτον τὴν βασιλείαν ... καὶ τὴν δικαιοσύνην αὐτοῦ</span><br>
+                        <em>Zēteite de prōton tēn basileian ... kai tēn dikaiosynēn autou</em><br>
+                        Literal: “But seek first the kingdom ... and His righteousness”
+                    </div>
+                </div>
+            </div>
+
+            <!-- Latest Updates -->
+            <div class="options-section">
+                <div class="section-header" id="updatesToggleBtn">Latest Updates ▾</div>
+                <div id="updatesContent" class="section-content hidden">
+                    <p class="updates-date">Published on 11/5/2026</p>
+                </div>
+            </div>
+
+            <!-- Custom Verse (bordered) -->
+            <div class="custom-verse-box">
+                <h4>Memorize a Custom Verse</h4>
+                <label class="field-label">Add Custom Verse Text:</label>
+                <textarea id="verseInput" placeholder="Type or paste any target verse here..."></textarea>
+                
+                <label class="field-label">Verse Reference:</label>
+                <input type="text" id="referenceInput" placeholder="e.g., John 3:16">
+                
+                <button id="generateBtn">Start Custom Puzzle</button>
+            </div>
 
             <button id="closeOptionsBtn" class="btn-close-modal" style="margin-top: 16px;">Close Options</button>
         </div>
@@ -136,6 +223,7 @@
     <div id="songSelectModal" class="modal">
         <div class="modal-content">
             <h3>Select a Song</h3>
+            <p class="song-subtitle">Songs by Djivan Gasparyan</p>
             <div class="song-list">
                 <button class="song-option" data-src="https://archive.org/download/06-your-strong-mind/46.%20I%20Will%20Not%20Be%20Sad%20In%20This%20World%20-%20Djivan%20Gasparyan%20%28CD%20RIP%29/06%20Your%20Strong%20Mind.FLAC" data-title="Your Strong Mind">Your Strong Mind</button>
                 <button class="song-option" data-src="https://archive.org/download/09-apricot-tree/59.%20Djivan%20Gasparyan%20-%20Moon%20Shines%20At%20Night%20%28CD%20RIP%29/09%20Apricot%20Tree.FLAC" data-title="Apricot Tree">Apricot Tree</button>
@@ -162,7 +250,7 @@
             <h2 class="devotional-title">Walking in the Love of God Through Faithful Obedience</h2>
             <div class="divider"></div>
             
-            <p>Congratulations on finishing every track! These verses form a beautiful path of faith.</p>
+            <p>Congratulations on finishing every verse! These verses form a beautiful path of faith.</p>
             
             <div class="divider"></div>
             
@@ -180,8 +268,10 @@
                 <p class="closing">Receive His love. Follow Jesus in trusting obedience. He will lead, strengthen, and guide you every step of the way.</p>
             </div>
 
+            <div class="divider"></div>
+
             <div class="devotional-verse-select">
-                <label for="devotionalVerseSelect"><strong>View a Verse (ESV):</strong></label>
+                <label for="devotionalVerseSelect"><strong>View a Verse:</strong></label>
                 <select id="devotionalVerseSelect">
                     <option value="">— Select a verse —</option>
                     <option value="Genesis 1:1">Genesis 1:1</option>
