@@ -1,0 +1,85 @@
+<div class="container">
+    <h1>Jacob’s Bible Study Guide</h1>
+    <h2>Memorize Scripture (Vol. 1): Walking in God’s Love</h2>
+    
+    <!-- SETUP VIEW -->
+    <div id="setupView" class="setup-zone">
+        
+        <!-- Translation Selector -->
+        <div class="version-select-container">
+            <label for="versionSelect"><strong>Bible Translation:</strong></label>
+            <select id="versionSelect">
+                <option value="ESV" selected>ESV (English Standard Version)</option>
+                <option value="NIV">NIV (New International Version)</option>
+                <option value="KJV">KJV (King James Version)</option>
+                <option value="NLT">NLT (New Living Translation)</option>
+            </select>
+        </div>
+        
+        <!-- Pre-selected Volume List -->
+        <div class="volume-container">
+            <div class="volume-title">📖 Select a Curriculum Verse:</div>
+            <div class="verse-grid" id="curriculumGrid">
+                <!-- Loaded dynamically by JS -->
+            </div>
+            <!-- Reward Container -->
+            <div id="rewardContainer"></div>
+        </div>
+
+        <div style="text-align: center; color: #94a3b8; font-weight: bold; font-size: 13px;">— OR CHOOSE YOUR OWN —</div>
+
+        <label style="font-weight: bold; font-size: 14px;">Custom Verse Text:</label>
+        <textarea id="verseInput" placeholder="Type or paste any target verse here..."></textarea>
+        
+        <label style="font-weight: bold; font-size: 14px;">Verse Reference:</label>
+        <input type="text" id="referenceInput" placeholder="e.g., John 3:16">
+        
+        <button id="generateBtn">Start Custom Puzzle</button>
+    </div>
+
+    <!-- GAME VIEW -->
+    <div id="gameView" class="game-zone hidden">
+        <div id="verseDisplayHeader" style="text-align: center; font-weight: bold; color: var(--primary-color); font-size: 18px;"></div>
+        
+        <div class="control-buttons" id="gameControls">
+            <button class="btn-hint" id="showHintBtn">💡 Look at Hint</button>
+            <button class="btn-hint btn-hide-verse-blue" id="newVerseBtn">🔄 Main Menu</button>
+        </div>
+        
+        <div class="drop-title">Your Verse (Tap cards to remove):</div>
+        <div id="dropZone" class="drop-zone"></div>
+
+        <div class="pool-title">Scrambled Word Pieces (Tap cards to pick):</div>
+        <div id="wordPool" class="word-pool"></div>
+        
+        <div id="successBlock" class="success-message hidden">
+            <span>🎉 Well done! You've perfectly completed the verse from memory!</span>
+            <div class="success-nav">
+                <button class="btn-next" id="nextTrackBtn">Next Track ➔</button>
+                <button class="btn-dir" id="backToDirBtn">Back to Directory</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- HINT MODAL -->
+<div id="hintModal" class="modal">
+    <div class="modal-content">
+        <h3 id="hintRef" style="margin-top:0; color: var(--primary-color);"></h3>
+        <p id="hintText" class="invisible-click-target"></p>
+    </div>
+</div>
+
+<!-- REWARD MODAL -->
+<div id="rewardModal" class="modal">
+    <div class="modal-content" style="max-width: 550px;">
+        <h2 style="color: var(--gold-color); margin-bottom: 10px; font-size: 20px;">Walking in the Love of God Through Faithful Obedience</h2>
+        <div style="height: 1px; background: #e2e8f0; margin-bottom: 15px;"></div>
+        <p>Congratulations on finishing every track! These verses form a beautiful path of faith.</p>
+        <p>In the beginning God created all things (Genesis 1:1). This same God so loved the world that He gave His only Son so that whoever believes in Him will have eternal life (John 3:16).</p>
+        <p>We have all sinned and fall short of God’s glory (Romans 3:23). The wages of sin is death, but the free gift of God is eternal life in Christ Jesus (Romans 6:23). Jesus is the way, the truth, and the life—no one comes to the Father except through Him (John 14:6).</p>
+        <p>Trust in the Lord with all your heart (Proverbs 3:5). Seek first His kingdom and righteousness (Matthew 6:33). The Lord is your Shepherd; you shall not want (Psalm 23:1). You can do all things through Christ who strengthens you (Philippians 4:13). And we know that for those who love God, all things work together for good (Romans 8:28).</p>
+        <p style="font-weight: 500; color: var(--primary-color); text-align: left; margin-top: 20px;">Receive His love. Follow Jesus in trusting obedience. He will lead, strengthen, and guide you every step of the way.</p>
+        <button style="width:100%; background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); margin-top: 15px;" id="closeRewardBtn">Close Devotional Message</button>
+    </div>
+</div>
