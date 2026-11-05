@@ -198,6 +198,17 @@ body.dark-mode .reward-item.unlocked {
     cursor: pointer;
 }
 
+.text-link-btn {
+    display: block;
+    text-align: center;
+    margin-top: 14px;
+    color: var(--accent-color);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+.text-link-btn:hover { text-decoration: underline; }
+
 button {
     background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
     color: white;
@@ -317,7 +328,6 @@ body.dark-mode .insert-label { color: #7dd3fc; }
 }
 body.dark-mode .btn-cancel-insert { background: #334155 !important; color: #e2e8f0 !important; }
 
-/* Success Message */
 .success-message {
     text-align: center;
     padding: 18px;
@@ -339,13 +349,24 @@ body.dark-mode .success-message { background: #064e3b; color: #6ee7b7; }
     background: linear-gradient(135deg, var(--success-color), #059669) !important;
 }
 .btn-retry {
-    background: #94a3b8 !important;          /* Gray */
+    background: #94a3b8 !important;
     color: white !important;
 }
 .btn-back-menu {
-    background: linear-gradient(135deg, #2563eb, #3b82f6) !important; /* Blue */
+    background: linear-gradient(135deg, #2563eb, #3b82f6) !important;
     color: white !important;
 }
+
+.puzzle-status {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: #64748b;
+    margin-top: 8px;
+    padding: 8px;
+}
+body.dark-mode .puzzle-status { color: #94a3b8; }
+.puzzle-status.mastered { color: var(--success-color); }
 
 /* Modals */
 .modal {
@@ -389,7 +410,6 @@ body.dark-mode .btn-close-modal { background: #334155 !important; }
 /* Options */
 .options-content { text-align: left; }
 .options-content h3 { text-align: center; }
-.options-content h4 { margin: 12px 0 8px; color: var(--primary-color); }
 
 .option-row {
     display: flex;
@@ -447,7 +467,7 @@ textarea, input[type="text"] {
 input:checked + .slider { background-color: var(--accent-color); }
 input:checked + .slider:before { transform: translateX(24px); }
 
-/* Music Controls */
+/* Music */
 .music-controls {
     background: var(--light-bg);
     border: 1px solid var(--border-color);
@@ -456,7 +476,7 @@ input:checked + .slider:before { transform: translateX(24px); }
     margin-bottom: 12px;
 }
 .music-title {
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 600;
     margin: 0 0 10px 0;
     text-align: center;
@@ -488,7 +508,15 @@ input:checked + .slider:before { transform: translateX(24px); }
 }
 .select-song-btn:hover { text-decoration: underline; }
 
-/* Song Select */
+.song-subtitle {
+    font-size: 14px;
+    font-weight: 400;
+    color: #64748b;
+    margin: -6px 0 14px;
+    text-align: center;
+}
+body.dark-mode .song-subtitle { color: #94a3b8; }
+
 .song-list { display: flex; flex-direction: column; gap: 10px; margin: 16px 0; }
 .song-option {
     background: var(--light-bg) !important;
@@ -496,33 +524,95 @@ input:checked + .slider:before { transform: translateX(24px); }
     border: 1px solid var(--border-color) !important;
     padding: 14px !important;
     font-size: 15px !important;
-    text-align: left !important;
+    text-align: center !important;
 }
 
-/* Hint Modal */
+/* Options Sections */
+.options-section {
+    margin: 14px 0;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    overflow: hidden;
+}
+.section-header {
+    background: var(--light-bg);
+    padding: 12px 14px;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    color: var(--primary-color);
+}
+.section-content {
+    padding: 14px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+.lang-desc { margin-bottom: 12px; color: #64748b; }
+body.dark-mode .lang-desc { color: #94a3b8; }
+
+.lang-title {
+    text-align: center;
+    font-weight: 700;
+    margin: 12px 0 10px;
+    color: var(--primary-color);
+}
+.lang-entry {
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 13.5px;
+}
+.lang-entry:last-child { border-bottom: none; }
+.lang-entry .orig {
+    font-size: 15px;
+    display: block;
+    margin: 4px 0;
+    direction: rtl; /* helps Hebrew display */
+}
+.updates-date {
+    text-align: center;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+/* Custom Verse Box */
+.custom-verse-box {
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    padding: 16px;
+    margin-top: 16px;
+    background: var(--light-bg);
+}
+.custom-verse-box h4 {
+    margin: 0 0 12px;
+    text-align: center;
+    color: var(--primary-color);
+}
+
+/* Hint */
 .hint-phrase {
     font-size: 18px;
-    font-weight: 400;               /* Un-bolded */
+    font-weight: 400;
     color: var(--primary-color);
     margin: 12px 0;
     font-style: italic;
 }
 
 .btn-see-full {
-    background: linear-gradient(135deg, #10b981, #059669) !important; /* Green */
+    background: linear-gradient(135deg, #10b981, #059669) !important;
     margin-bottom: 12px;
     font-size: 14px !important;
     padding: 10px !important;
 }
 .btn-see-full.hide-mode {
-    background: linear-gradient(135deg, #3b82f6, #2563eb) !important; /* Blue when Hide */
+    background: linear-gradient(135deg, #3b82f6, #2563eb) !important;
 }
 
 .full-verse {
     font-size: 16px;
     line-height: 1.6;
-    text-align: center;             /* Centered */
-    font-style: italic;             /* Italics */
+    text-align: center;
+    font-style: italic;
     background: var(--light-bg);
     padding: 14px;
     border-radius: 10px;
@@ -569,7 +659,7 @@ input:checked + .slider:before { transform: translateX(24px); }
 }
 
 .devotional-verse-select {
-    margin: 20px 0 16px;
+    margin: 8px 0 16px;
     text-align: left;
 }
 .devotional-verse-select label {
@@ -595,6 +685,13 @@ input:checked + .slider:before { transform: translateX(24px); }
     font-size: 15px;
     line-height: 1.55;
     margin-top: 8px;
+    text-align: center;
+    font-style: italic;
+}
+.devotional-verse-display strong {
+    display: block;
+    margin-bottom: 6px;
+    font-style: normal;
 }
 
 /* Mobile */
