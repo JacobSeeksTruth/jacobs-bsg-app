@@ -211,6 +211,11 @@ body.dark-mode .btn-options {
     font-size: 14px;
     font-weight: 600;
     text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    font-family: inherit;
 }
 .text-link-btn:hover { text-decoration: underline; }
 
@@ -241,7 +246,7 @@ body.dark-mode .btn-hint { background: #334155 !important; color: #e2e8f0 !impor
     color: white !important;
 }
 
-/* Custom verse Back button – gray */
+/* Custom verse Back button – gray, centered */
 .btn-custom-back {
     background: #e2e8f0 !important;
     color: var(--text-color) !important;
@@ -249,6 +254,11 @@ body.dark-mode .btn-hint { background: #334155 !important; color: #e2e8f0 !impor
 body.dark-mode .btn-custom-back {
     background: #334155 !important;
     color: #e2e8f0 !important;
+}
+
+.custom-bottom-back {
+    text-align: center;
+    margin-top: 8px;
 }
 
 .verse-header {
@@ -574,10 +584,27 @@ body.dark-mode .lang-desc { color: #94a3b8; }
 .instruction-text {
     font-size: 13px;
     color: #64748b;
-    margin: 8px 0 14px;
+    margin: 8px 0 10px;
     font-style: italic;
+    text-align: center;
 }
 body.dark-mode .instruction-text { color: #94a3b8; }
+
+.btn-expand-all {
+    display: block;
+    width: auto;
+    margin: 0 auto 14px;
+    padding: 6px 14px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    background: #e2e8f0 !important;
+    color: var(--text-color) !important;
+    border-radius: 6px !important;
+}
+body.dark-mode .btn-expand-all {
+    background: #334155 !important;
+    color: #e2e8f0 !important;
+}
 
 .divider {
     height: 1px;
@@ -637,6 +664,11 @@ body.dark-mode .verse-title {
     display: block;
     margin: 4px 0;
     direction: rtl;
+}
+.english-line {
+    margin-top: 10px;
+    font-size: 13px;
+    color: var(--text-color);
 }
 
 /* Latest Updates */
