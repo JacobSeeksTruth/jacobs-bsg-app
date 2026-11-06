@@ -52,14 +52,18 @@
                 <button class="btn-back-main" id="newVerseBtn">Back to Main</button>
             </div>
             
-            <div class="drop-title">Your Verse <span class="hint-text">(Tap to remove • Hold a word to insert before/after)</span></div>
+            <div class="drop-title">Your Verse <span class="hint-text">(Tap to remove • Hold a word to insert/move • Cancel to close)</span></div>
             
             <div id="insertControls" class="insert-controls hidden">
                 <span class="insert-label">Insert relative to highlighted word:</span>
                 <div class="insert-buttons">
                     <button id="insertBeforeBtn" class="btn-insert">Insert Before</button>
                     <button id="insertAfterBtn" class="btn-insert">Insert After</button>
+                </div>
+                <div class="move-row">
+                    <button id="moveLeftBtn" class="btn-move">←</button>
                     <button id="cancelInsertBtn" class="btn-cancel-insert">Cancel</button>
+                    <button id="moveRightBtn" class="btn-move">→</button>
                 </div>
             </div>
             
@@ -103,7 +107,7 @@
             <h3>Options</h3>
             
             <div class="option-row">
-                <label for="darkModeToggle"><strong>Night Mode</strong></label>
+                <label for="darkModeToggle"><strong id="modeLabel">Night Mode</strong></label>
                 <label class="switch">
                     <input type="checkbox" id="darkModeToggle">
                     <span class="slider"></span>
