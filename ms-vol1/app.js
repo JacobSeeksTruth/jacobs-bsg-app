@@ -95,9 +95,41 @@ let insertPosition = null;
 let longPressTimer = null;
 let rewardLongPressTimer = null;
 let isMusicMuted = false;
+let allExpanded = false;
 
 function getSelectedTranslation() {
     return document.getElementById('versionSelect')?.value || 'ESV';
+}
+
+function updateEnglishLines() {
+    const t = getSelectedTranslation();
+    document.querySelectorAll('.verse-dropdown').forEach(dropdown => {
+        const ref = dropdown.getAttribute('data-ref');
+        const verseObj = curriculumVerses.find(v => v.ref === ref);
+        const englishEl = dropdown.querySelector('.english-line');
+        if (verseObj && englishEl && verseObj.translations[t]) {
+            englishEl.innerHTML = `<br><strong>English (${t}):</strong> ${verseObj.translations[t]}`;
+        }
+    });
+}
+
+function setExpandAllState(expanded) {
+    allExpanded = expanded;
+    const topBtn = document.getElementById('expandAllTop');
+    const bottomBtn = document.getElementById('expandAllBottom');
+    if (topBtn) topBtn.textContent = expanded ? 'Collapse All' : 'Expand All';
+    if (bottomBtn) bottomBtn.textContent = expanded ? 'Collapse All' : 'Expand All';
+
+    // Toggle Hebrew & Greek sections
+    const hebrewContent = document.getElementById('hebrewContent');
+    const greekContent = document.getElementById('greekContent');
+    if (hebrewContent) hebrewContent.classList.toggle('hidden', !expanded);
+    if (greekContent) greekContent.classList.toggle('hidden', !expanded);
+
+    // Toggle every individual verse body
+    document.querySelectorAll('.verse-body').forEach(body => {
+        body.classList.toggle('hidden', !expanded);
+    });
 }
 
 function renderCurriculum() {
@@ -140,6 +172,9 @@ function renderCurriculum() {
         rewardBtn.addEventListener('mouseleave', cancelRewardLongPress);
     }
     rewardContainer.appendChild(rewardBtn);
+
+    // Keep English lines in sync
+    updateEnglishLines();
 }
 
 function startRewardLongPress() {
@@ -177,15 +212,19 @@ function clearInsertMode() {
 
 function updatePuzzleStatus() {
     const statusEl = document.getElementById('puzzleStatus');
+    const customBottom = document.getElementById('customBottomBack');
     if (!statusEl) return;
 
-    // Hide status completely for custom verses
     if (currentActiveId === null) {
+        // Custom verse mode
         statusEl.classList.add('hidden');
+        if (customBottom) customBottom.classList.remove('hidden');
         return;
     }
 
+    // Curriculum mode
     statusEl.classList.remove('hidden');
+    if (customBottom) customBottom.classList.add('hidden');
     const isMastered = masteredVerses.includes(currentActiveId);
     statusEl.textContent = isMastered ? "Status: Mastered" : "Status: Not Done";
     statusEl.classList.toggle('mastered', isMastered);
@@ -224,10 +263,15 @@ function initGame() {
     
     document.getElementById('successBlock').classList.add('hidden');
 
-    // Show correct controls based on custom vs curriculum
     const isCustom = currentActiveId === null;
+
+    // Controls
     document.getElementById('gameControls').classList.toggle('hidden', isCustom);
     document.getElementById('customControls').classList.toggle('hidden', !isCustom);
+
+    // Success navs
+    document.getElementById('curriculumSuccessNav').classList.toggle('hidden', isCustom);
+    document.getElementById('customSuccessNav').classList.toggle('hidden', !isCustom);
 
     let indexedWords = originalWordsArray.map((word, index) => ({ word, index }));
     for (let i = indexedWords.length - 1; i > 0; i--) {
@@ -346,7 +390,6 @@ function goToOptionsFromCustom() {
     document.getElementById('setupView').classList.remove('hidden');
     document.getElementById('successBlock').classList.add('hidden');
     currentActiveId = null;
-    // Re-open Options modal and expand the Custom Verse section
     toggleOptions(true);
     document.getElementById('customVerseContent').classList.remove('hidden');
 }
@@ -472,8 +515,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     renderCurriculum();
     setupMusic();
+    updateEnglishLines();
 
-    document.getElementById('versionSelect')?.addEventListener('change', renderCurriculum);
+    document.getElementById('versionSelect')?.addEventListener('change', () => {
+        renderCurriculum();
+        updateEnglishLines();
+    });
 
     document.getElementById('optionsBtn')?.addEventListener('click', () => toggleOptions(true));
     document.getElementById('closeOptionsBtn')?.addEventListener('click', () => toggleOptions(false));
@@ -481,7 +528,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target.id === 'optionsModal') toggleOptions(false);
     });
 
-    // Main section toggles
+    // Section toggles
     document.getElementById('customVerseToggleBtn')?.addEventListener('click', () => {
         document.getElementById('customVerseContent').classList.toggle('hidden');
     });
@@ -495,7 +542,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('updatesContent').classList.toggle('hidden');
     });
 
-    // Hebrew / Greek subsection toggles
+    // Hebrew / Greek
     document.getElementById('hebrewToggleBtn')?.addEventListener('click', () => {
         document.getElementById('hebrewContent').classList.toggle('hidden');
     });
@@ -503,7 +550,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('greekContent').classList.toggle('hidden');
     });
 
-    // Individual verse dropdowns
+    // Individual verses
     document.querySelectorAll('[data-verse-toggle]').forEach(title => {
         title.addEventListener('click', () => {
             const body = title.nextElementSibling;
@@ -511,17 +558,29 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Expand / Collapse All
+    document.getElementById('expandAllTop')?.addEventListener('click', () => {
+        setExpandAllState(!allExpanded);
+    });
+    document.getElementById('expandAllBottom')?.addEventListener('click', () => {
+        setExpandAllState(!allExpanded);
+    });
+
     document.getElementById('darkModeToggle')?.addEventListener('change', (e) => {
         applyDarkMode(e.target.checked);
     });
 
     document.getElementById('generateBtn')?.addEventListener('click', () => {
-        currentActiveId = null; // mark as custom
+        currentActiveId = null;
         initGame();
     });
 
-    // Custom Back button → return to Options
+    // Custom Back buttons
     document.getElementById('customBackBtn')?.addEventListener('click', goToOptionsFromCustom);
+    document.getElementById('customBottomBackBtn')?.addEventListener('click', goToOptionsFromCustom);
+
+    // Custom Retry
+    document.getElementById('customRetryBtn')?.addEventListener('click', retryPuzzle);
 
     document.getElementById('insertBeforeBtn')?.addEventListener('click', () => {
         insertPosition = 'before';
