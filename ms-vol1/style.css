@@ -234,9 +234,6 @@ button {
 button:active { transform: scale(0.98); }
 
 .control-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.control-buttons.custom-only {
-    grid-template-columns: 1fr;
-}
 
 .btn-hint { background: #e2e8f0 !important; color: var(--text-color) !important; }
 body.dark-mode .btn-hint { background: #334155 !important; color: #e2e8f0 !important; }
@@ -246,10 +243,11 @@ body.dark-mode .btn-hint { background: #334155 !important; color: #e2e8f0 !impor
     color: white !important;
 }
 
-/* Custom verse Back button – gray, centered */
+/* Custom verse Back button – gray */
 .btn-custom-back {
     background: #e2e8f0 !important;
     color: var(--text-color) !important;
+    margin-top: 8px;
 }
 body.dark-mode .btn-custom-back {
     background: #334155 !important;
@@ -257,8 +255,7 @@ body.dark-mode .btn-custom-back {
 }
 
 .custom-bottom-back {
-    text-align: center;
-    margin-top: 8px;
+    margin-top: 4px;
 }
 
 .verse-header {
@@ -590,20 +587,22 @@ body.dark-mode .lang-desc { color: #94a3b8; }
 }
 body.dark-mode .instruction-text { color: #94a3b8; }
 
+/* Expand / Collapse buttons – borderless, left-aligned, light gray */
 .btn-expand-all {
     display: block;
     width: auto;
-    margin: 0 auto 14px;
-    padding: 6px 14px !important;
-    font-size: 12px !important;
-    font-weight: 600 !important;
-    background: #e2e8f0 !important;
-    color: var(--text-color) !important;
-    border-radius: 6px !important;
+    margin: 0 0 14px 0;
+    padding: 4px 0 !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    background: transparent !important;
+    color: #94a3b8 !important;
+    border: none !important;
+    text-align: left !important;
+    cursor: pointer;
 }
 body.dark-mode .btn-expand-all {
-    background: #334155 !important;
-    color: #e2e8f0 !important;
+    color: #64748b !important;
 }
 
 .divider {
@@ -678,6 +677,32 @@ body.dark-mode .verse-title {
     color: var(--text-color);
     margin: 0;
 }
+
+/* Reset section */
+.reset-desc {
+    font-size: 13.5px;
+    line-height: 1.5;
+    margin-bottom: 12px;
+    color: var(--text-color);
+}
+.btn-reset {
+    background: linear-gradient(135deg, #ef4444, #dc2626) !important;
+    margin-bottom: 8px;
+}
+.hint-toggle {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--primary-color);
+    cursor: pointer;
+    padding: 6px 0;
+}
+.hint-content {
+    font-size: 13.5px;
+    line-height: 1.55;
+    padding: 8px 0 4px;
+    color: var(--text-color);
+}
+.hint-content p { margin: 0 0 10px; }
 
 /* Hint */
 .hint-phrase {
