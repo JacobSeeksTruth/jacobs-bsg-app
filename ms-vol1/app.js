@@ -117,16 +117,14 @@ function setExpandAllState(expanded) {
     allExpanded = expanded;
     const topBtn = document.getElementById('expandAllTop');
     const bottomBtn = document.getElementById('expandAllBottom');
-    if (topBtn) topBtn.textContent = expanded ? 'Collapse All' : 'Expand All';
-    if (bottomBtn) bottomBtn.textContent = expanded ? 'Collapse All' : 'Expand All';
+    if (topBtn) topBtn.textContent = expanded ? 'Collapse ▾' : 'Expand ▾';
+    if (bottomBtn) bottomBtn.textContent = expanded ? 'Collapse ▾' : 'Expand ▾';
 
-    // Toggle Hebrew & Greek sections
     const hebrewContent = document.getElementById('hebrewContent');
     const greekContent = document.getElementById('greekContent');
     if (hebrewContent) hebrewContent.classList.toggle('hidden', !expanded);
     if (greekContent) greekContent.classList.toggle('hidden', !expanded);
 
-    // Toggle every individual verse body
     document.querySelectorAll('.verse-body').forEach(body => {
         body.classList.toggle('hidden', !expanded);
     });
@@ -173,7 +171,6 @@ function renderCurriculum() {
     }
     rewardContainer.appendChild(rewardBtn);
 
-    // Keep English lines in sync
     updateEnglishLines();
 }
 
@@ -267,7 +264,6 @@ function initGame() {
 
     // Controls
     document.getElementById('gameControls').classList.toggle('hidden', isCustom);
-    document.getElementById('customControls').classList.toggle('hidden', !isCustom);
 
     // Success navs
     document.getElementById('curriculumSuccessNav').classList.toggle('hidden', isCustom);
@@ -369,7 +365,7 @@ function checkWinState() {
         }
         document.getElementById('successBlock').classList.remove('hidden');
         document.getElementById('gameControls').classList.add('hidden');
-        document.getElementById('customControls').classList.add('hidden');
+        // Keep custom bottom Back button visible
         updatePuzzleStatus();
         clearInsertMode();
     }
@@ -436,6 +432,17 @@ function applyDarkMode(enabled) {
     localStorage.setItem('darkMode', enabled ? 'true' : 'false');
 }
 
+function resetAllProgress() {
+    if (!confirm("Are you sure you want to reset all Mastered verses and lock the Devotional again?")) return;
+
+    masteredVerses = [];
+    forceUnlocked = false;
+    localStorage.setItem('masteredScriptures', JSON.stringify([]));
+    localStorage.setItem('forceUnlockedDevotional', 'false');
+    renderCurriculum();
+    alert("All progress has been reset.");
+}
+
 function setupMusic() {
     const audio = document.getElementById('bgMusic');
     const source = document.getElementById('audioSource');
@@ -447,13 +454,20 @@ function setupMusic() {
     const closeSongSelectBtn = document.getElementById('closeSongSelectBtn');
     const currentSongTitle = document.getElementById('currentSongTitle');
 
+    // Ensure we never autoplay on load
+    audio.pause();
+    audio.currentTime = 0;
+
     playPauseBtn.addEventListener('click', () => {
         if (audio.paused) {
             audio.play().then(() => {
                 playPauseBtn.textContent = 'Pause';
                 playPauseBtn.classList.remove('btn-play');
                 playPauseBtn.classList.add('btn-pause');
-            }).catch(() => alert('Unable to play audio.'));
+            }).catch(() => {
+                // Only show the message on actual user interaction failure
+                alert('Unable to play audio. Please try again or select a different song.');
+            });
         } else {
             audio.pause();
             playPauseBtn.textContent = 'Play';
@@ -541,6 +555,9 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('updatesToggleBtn')?.addEventListener('click', () => {
         document.getElementById('updatesContent').classList.toggle('hidden');
     });
+    document.getElementById('resetToggleBtn')?.addEventListener('click', () => {
+        document.getElementById('resetContent').classList.toggle('hidden');
+    });
 
     // Hebrew / Greek
     document.getElementById('hebrewToggleBtn')?.addEventListener('click', () => {
@@ -558,12 +575,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Expand / Collapse All
+    // Expand / Collapse
     document.getElementById('expandAllTop')?.addEventListener('click', () => {
         setExpandAllState(!allExpanded);
     });
     document.getElementById('expandAllBottom')?.addEventListener('click', () => {
         setExpandAllState(!allExpanded);
+    });
+
+    // Reset
+    document.getElementById('resetProgressBtn')?.addEventListener('click', resetAllProgress);
+    document.getElementById('devotionalHintToggle')?.addEventListener('click', () => {
+        document.getElementById('devotionalHintContent').classList.toggle('hidden');');
     });
 
     document.getElementById('darkModeToggle')?.addEventListener('change', (e) => {
@@ -575,9 +598,8 @@ document.addEventListener('DOMContentLoaded', () => {
         initGame();
     });
 
-    // Custom Back buttons
+    // Custom Back button (always at bottom)
     document.getElementById('customBackBtn')?.addEventListener('click', goToOptionsFromCustom);
-    document.getElementById('customBottomBackBtn')?.addEventListener('click', goToOptionsFromCustom);
 
     // Custom Retry
     document.getElementById('customRetryBtn')?.addEventListener('click', retryPuzzle);
