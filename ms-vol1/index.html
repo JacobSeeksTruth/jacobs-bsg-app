@@ -51,11 +51,6 @@
                 <button class="btn-hint" id="showHintBtn">💡 Look at Hint</button>
                 <button class="btn-back-main" id="newVerseBtn">Back to Main</button>
             </div>
-
-            <!-- Custom verse controls -->
-            <div class="control-buttons custom-only hidden" id="customControls">
-                <button class="btn-custom-back" id="customBackBtn">Back to Options</button>
-            </div>
             
             <div class="drop-title">Your Verse <span class="hint-text">(Tap to remove • Hold a word to insert before/after)</span></div>
             
@@ -73,7 +68,7 @@
             <div class="pool-title">Scrambled Word Pieces <span class="hint-text">(Tap cards to pick)</span></div>
             <div id="wordPool" class="word-pool"></div>
             
-            <!-- Success block – different content for custom vs curriculum -->
+            <!-- Success block -->
             <div id="successBlock" class="success-message hidden">
                 <span>🎉 Well done! You've perfectly completed the verse from memory!</span>
                 
@@ -95,9 +90,9 @@
             <!-- Status (curriculum only) -->
             <div id="puzzleStatus" class="puzzle-status">Status: Not Done</div>
 
-            <!-- Custom only – text style Back to Options -->
+            <!-- Custom verse – Back to Options always at the very bottom -->
             <div id="customBottomBack" class="custom-bottom-back hidden">
-                <button class="text-link-btn" id="customBottomBackBtn">Back to Options</button>
+                <button class="btn-custom-back" id="customBackBtn">Back to Options</button>
             </div>
         </div>
     </div>
@@ -108,7 +103,7 @@
             <h3>Options</h3>
             
             <div class="option-row">
-                <label for="darkModeToggle"><strong>Dark Mode</strong></label>
+                <label for="darkModeToggle"><strong>Night Mode</strong></label>
                 <label class="switch">
                     <input type="checkbox" id="darkModeToggle">
                     <span class="slider"></span>
@@ -137,7 +132,7 @@
                     
                     <div class="divider"></div>
                     <p class="instruction-text">Select drop-down to see verse translation.</p>
-                    <button class="btn-expand-all" id="expandAllTop">Expand All</button>
+                    <button class="btn-expand-all" id="expandAllTop">Expand ▾</button>
 
                     <!-- Hebrew -->
                     <div class="lang-subsection">
@@ -261,7 +256,7 @@
                         </div>
                     </div>
 
-                    <button class="btn-expand-all" id="expandAllBottom">Expand All</button>
+                    <button class="btn-expand-all" id="expandAllBottom">Expand ▾</button>
                 </div>
             </div>
 
@@ -294,6 +289,31 @@
                 <div class="section-header" id="updatesToggleBtn">Latest Updates ▾</div>
                 <div id="updatesContent" class="section-content hidden">
                     <p class="updates-date">Published on 11/5/2026</p>
+                </div>
+            </div>
+
+            <!-- 5. Reset -->
+            <div class="options-section">
+                <div class="section-header" id="resetToggleBtn">Reset ▾</div>
+                <div id="resetContent" class="section-content hidden">
+                    <p class="reset-desc">
+                        This will reset all verses that are currently marked as “Mastered” back to “Not Done”. 
+                        It will also clear the unlocked Devotional so it becomes locked again until you complete every verse (or use the secret unlock).
+                    </p>
+                    <button id="resetProgressBtn" class="btn-reset">Reset All Progress</button>
+
+                    <div class="divider"></div>
+
+                    <div class="hint-toggle" id="devotionalHintToggle">Devotional Hint ▾</div>
+                    <div id="devotionalHintContent" class="hint-content hidden">
+                        <p>
+                            <strong>Secret unlock:</strong> On the main screen, press and hold the locked Devotional button for about 3 seconds. 
+                            It will unlock even if you have not finished every verse.
+                        </p>
+                        <p>
+                            If you are having trouble completing the full curriculum, you can use this hint (or “cheat”) to unlock the Devotional message at any time.
+                        </p>
+                    </div>
                 </div>
             </div>
 
