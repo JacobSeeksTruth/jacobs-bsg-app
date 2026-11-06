@@ -46,15 +46,15 @@
         <div id="gameView" class="game-zone hidden">
             <div id="verseDisplayHeader" class="verse-header"></div>
             
-            <!-- Normal curriculum controls -->
+            <!-- Curriculum controls -->
             <div class="control-buttons" id="gameControls">
                 <button class="btn-hint" id="showHintBtn">💡 Look at Hint</button>
                 <button class="btn-back-main" id="newVerseBtn">Back to Main</button>
             </div>
 
-            <!-- Custom verse only – single gray Back button -->
+            <!-- Custom verse controls -->
             <div class="control-buttons custom-only hidden" id="customControls">
-                <button class="btn-custom-back" id="customBackBtn">Back</button>
+                <button class="btn-custom-back" id="customBackBtn">Back to Options</button>
             </div>
             
             <div class="drop-title">Your Verse <span class="hint-text">(Tap to remove • Hold a word to insert before/after)</span></div>
@@ -73,19 +73,32 @@
             <div class="pool-title">Scrambled Word Pieces <span class="hint-text">(Tap cards to pick)</span></div>
             <div id="wordPool" class="word-pool"></div>
             
+            <!-- Success block – different content for custom vs curriculum -->
             <div id="successBlock" class="success-message hidden">
                 <span>🎉 Well done! You've perfectly completed the verse from memory!</span>
-                <div class="success-nav">
+                
+                <!-- Curriculum success buttons -->
+                <div class="success-nav" id="curriculumSuccessNav">
                     <button class="btn-next" id="nextTrackBtn">Next Verse ➔</button>
                     <div class="success-second-row">
                         <button class="btn-retry" id="retryBtn">Retry</button>
                         <button class="btn-back-menu" id="backToDirBtn">Back to Menu</button>
                     </div>
                 </div>
+
+                <!-- Custom success – only Retry -->
+                <div class="success-nav hidden" id="customSuccessNav">
+                    <button class="btn-next" id="customRetryBtn">Retry</button>
+                </div>
             </div>
 
-            <!-- Status – hidden for custom verses -->
+            <!-- Status (curriculum only) -->
             <div id="puzzleStatus" class="puzzle-status">Status: Not Done</div>
+
+            <!-- Custom only – text style Back to Options -->
+            <div id="customBottomBack" class="custom-bottom-back hidden">
+                <button class="text-link-btn" id="customBottomBackBtn">Back to Options</button>
+            </div>
         </div>
     </div>
 
@@ -124,47 +137,52 @@
                     
                     <div class="divider"></div>
                     <p class="instruction-text">Select drop-down to see verse translation.</p>
+                    <button class="btn-expand-all" id="expandAllTop">Expand All</button>
 
                     <!-- Hebrew -->
                     <div class="lang-subsection">
                         <div class="lang-header hebrew-header" id="hebrewToggleBtn">Hebrew ▾</div>
                         <div id="hebrewContent" class="lang-subcontent hidden">
-                            <div class="verse-dropdown">
+                            <div class="verse-dropdown" data-ref="Genesis 1:1">
                                 <div class="verse-title" data-verse-toggle>Genesis 1:1 ▾</div>
                                 <div class="verse-body hidden">
                                     <span class="orig">בְּרֵאשִׁית בָּרָא אֱלֹהִים אֵת הַשָּׁמַיִם וְאֵת הָאָרֶץ</span><br>
                                     <em>Bereshit bara Elohim et hashamayim ve-et ha-aretz</em><br><br>
                                     <strong>Literal:</strong> “In beginning created God the heavens and the earth.”
+                                    <div class="english-line"></div>
                                 </div>
                             </div>
                             <div class="divider"></div>
 
-                            <div class="verse-dropdown">
+                            <div class="verse-dropdown" data-ref="Proverbs 3:5">
                                 <div class="verse-title" data-verse-toggle>Proverbs 3:5 ▾</div>
                                 <div class="verse-body hidden">
                                     <span class="orig">בְּטַח אֶל־יְהוָה בְּכָל־לִבֶּךָ וְאֶל־בִּינָתְךָ אַל־תִּשָּׁעֵן</span><br>
                                     <em>Betach el-YHWH bechol-libbecha ve-el-binatecha al-tishaen</em><br><br>
                                     <strong>Literal:</strong> “Trust in Yahweh with all your heart, and on your understanding do not lean.”
+                                    <div class="english-line"></div>
                                 </div>
                             </div>
                             <div class="divider"></div>
 
-                            <div class="verse-dropdown">
+                            <div class="verse-dropdown" data-ref="Psalm 23:1">
                                 <div class="verse-title" data-verse-toggle>Psalm 23:1 ▾</div>
                                 <div class="verse-body hidden">
                                     <span class="orig">יְהוָה רֹעִי לֹא אֶחְסָר</span><br>
                                     <em>YHWH ro’i lo echsar</em><br><br>
                                     <strong>Literal:</strong> “Yahweh is my shepherd; I shall not lack.”
+                                    <div class="english-line"></div>
                                 </div>
                             </div>
                             <div class="divider"></div>
 
-                            <div class="verse-dropdown">
+                            <div class="verse-dropdown" data-ref="Joshua 1:9">
                                 <div class="verse-title" data-verse-toggle>Joshua 1:9 ▾</div>
                                 <div class="verse-body hidden">
                                     <span class="orig">הֲלֹוא צִוִּיתִיךָ חֲזַק וֶאֱמָץ אַל־תַּעֲרֹץ וְאַל־תֵּחָת כִּי עִמְּךָ יְהוָה אֱלֹהֶיךָ בְּכֹל אֲשֶׁר תֵּלֵךְ</span><br>
                                     <em>Halo tziviti’cha chazak ve-ematz al-ta’arotz ve-al-techat ki imm’cha YHWH elohecha bechol asher telech</em><br><br>
                                     <strong>Literal:</strong> “Have I not commanded you? Be strong and courageous. Do not be afraid, and do not be dismayed, for Yahweh your God is with you wherever you go.”
+                                    <div class="english-line"></div>
                                 </div>
                             </div>
                             <div class="divider"></div>
@@ -175,67 +193,75 @@
                     <div class="lang-subsection">
                         <div class="lang-header greek-header" id="greekToggleBtn">Greek ▾</div>
                         <div id="greekContent" class="lang-subcontent hidden">
-                            <div class="verse-dropdown">
+                            <div class="verse-dropdown" data-ref="John 3:16">
                                 <div class="verse-title" data-verse-toggle>John 3:16 ▾</div>
                                 <div class="verse-body hidden">
                                     <span class="orig">Οὕτως γὰρ ἠγάπησεν ὁ Θεὸς τὸν κόσμον, ὥστε τὸν Υἱὸν τὸν μονογενῆ ἔδωκεν, ἵνα πᾶς ὁ πιστεύων εἰς αὐτὸν μὴ ἀπόληται ἀλλ’ ἔχῃ ζωὴν αἰώνιον.</span><br>
                                     <em>Houtōs gar ēgapēsen ho Theos ton kosmon, hōste ton Huion ton monogenē edōken, hina pas ho pisteuōn eis auton mē apolētai all’ echē zōēn aiōnion.</em><br><br>
                                     <strong>Literal:</strong> “For thus God loved the world, that He gave the only-begotten Son, so that everyone believing in Him should not perish but have eternal life.”
+                                    <div class="english-line"></div>
                                 </div>
                             </div>
                             <div class="divider"></div>
 
-                            <div class="verse-dropdown">
+                            <div class="verse-dropdown" data-ref="Romans 3:23">
                                 <div class="verse-title" data-verse-toggle>Romans 3:23 ▾</div>
                                 <div class="verse-body hidden">
                                     <span class="orig">πάντες γὰρ ἥμαρτον καὶ ὑστεροῦνται τῆς δόξης τοῦ Θεοῦ</span><br>
                                     <em>Pantes gar hēmarton kai hysterountai tēs doxēs tou Theou</em><br><br>
                                     <strong>Literal:</strong> “For all sinned and fall short of the glory of God”
+                                    <div class="english-line"></div>
                                 </div>
                             </div>
                             <div class="divider"></div>
 
-                            <div class="verse-dropdown">
+                            <div class="verse-dropdown" data-ref="Romans 6:23">
                                 <div class="verse-title" data-verse-toggle>Romans 6:23 ▾</div>
                                 <div class="verse-body hidden">
                                     <span class="orig">τὰ γὰρ ὀψώνια τῆς ἁμαρτίας θάνατος, τὸ δὲ χάρισμα τοῦ Θεοῦ ζωὴ αἰώνιος ἐν Χριστῷ Ἰησοῦ τῷ Κυρίῳ ἡμῶν.</span><br>
                                     <em>Ta gar opsōnia tēs hamartias thanatos, to de charisma tou Theou zōē aiōnios en Christō Iēsou tō Kyriō hēmōn.</em><br><br>
                                     <strong>Literal:</strong> “For the wages of sin is death, but the gift of God is eternal life in Christ Jesus our Lord.”
+                                    <div class="english-line"></div>
                                 </div>
                             </div>
                             <div class="divider"></div>
 
-                            <div class="verse-dropdown">
+                            <div class="verse-dropdown" data-ref="Philippians 4:13">
                                 <div class="verse-title" data-verse-toggle>Philippians 4:13 ▾</div>
                                 <div class="verse-body hidden">
                                     <span class="orig">πάντα ἰσχύω ἐν τῷ ἐνδυναμοῦντί με</span><br>
                                     <em>Panta ischyō en tō endynamounti me</em><br><br>
                                     <strong>Literal:</strong> “I have strength for all things in the one strengthening me”
+                                    <div class="english-line"></div>
                                 </div>
                             </div>
                             <div class="divider"></div>
 
-                            <div class="verse-dropdown">
+                            <div class="verse-dropdown" data-ref="Romans 8:28">
                                 <div class="verse-title" data-verse-toggle>Romans 8:28 ▾</div>
                                 <div class="verse-body hidden">
                                     <span class="orig">Οἴδαμεν δὲ ὅτι τοῖς ἀγαπῶσιν τὸν Θεὸν πάντα συνεργεῖ εἰς ἀγαθόν, τοῖς κατὰ πρόθεσιν κλητοῖς οὖσιν.</span><br>
                                     <em>Oidamen de hoti tois agapōsin ton Theon panta synergei eis agathon, tois kata prothesin klētois ousin.</em><br><br>
                                     <strong>Literal:</strong> “We know that to those loving God all things work together for good, to those being called according to purpose.”
+                                    <div class="english-line"></div>
                                 </div>
                             </div>
                             <div class="divider"></div>
 
-                            <div class="verse-dropdown">
+                            <div class="verse-dropdown" data-ref="Matthew 6:33">
                                 <div class="verse-title" data-verse-toggle>Matthew 6:33 ▾</div>
                                 <div class="verse-body hidden">
                                     <span class="orig">ζητεῖτε δὲ πρῶτον τὴν βασιλείαν καὶ τὴν δικαιοσύνην αὐτοῦ, καὶ ταῦτα πάντα προστεθήσεται ὑμῖν.</span><br>
                                     <em>Zēteite de prōton tēn basileian kai tēn dikaiosynēn autou, kai tauta panta prostethēsetai hymin.</em><br><br>
                                     <strong>Literal:</strong> “But seek first the kingdom and His righteousness, and all these things will be added to you.”
+                                    <div class="english-line"></div>
                                 </div>
                             </div>
                             <div class="divider"></div>
                         </div>
                     </div>
+
+                    <button class="btn-expand-all" id="expandAllBottom">Expand All</button>
                 </div>
             </div>
 
@@ -244,7 +270,7 @@
                 <div class="section-header" id="musicSectionToggleBtn">Background Music ▾</div>
                 <div id="musicSectionContent" class="section-content hidden">
                     <div id="musicControls" class="music-controls">
-                        <p class="music-title" id="currentSongTitle">Your Strong Mind</p>
+                        <p class="music-title" id="currentSongTitle">Apricot Tree</p>
                         
                         <div class="music-buttons">
                             <button id="playPauseBtn" class="btn-music btn-play">Play</button>
@@ -257,7 +283,7 @@
                         <button id="selectSongBtn" class="text-btn select-song-btn">Select Song</button>
                         
                         <audio id="bgMusic" loop preload="none">
-                            <source id="audioSource" src="https://archive.org/download/06-your-strong-mind/46.%20I%20Will%20Not%20Be%20Sad%20In%20This%20World%20-%20Djivan%20Gasparyan%20%28CD%20RIP%29/06%20Your%20Strong%20Mind.FLAC" type="audio/flac">
+                            <source id="audioSource" src="https://archive.org/download/09-apricot-tree/59.%20Djivan%20Gasparyan%20-%20Moon%20Shines%20At%20Night%20%28CD%20RIP%29/09%20Apricot%20Tree.FLAC" type="audio/flac">
                         </audio>
                     </div>
                 </div>
