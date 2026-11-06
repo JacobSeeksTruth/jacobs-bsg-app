@@ -339,7 +339,15 @@ body.dark-mode .insert-controls { background: #0c4a6e; border-color: #0369a1; }
 .insert-label { font-size: 13px; font-weight: 600; color: #0369a1; }
 body.dark-mode .insert-label { color: #7dd3fc; }
 
-.insert-buttons { display: grid; grid-template-columns: 1fr 1fr auto; gap: 8px; }
+.insert-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+
+.move-row {
+    display: grid;
+    grid-template-columns: 48px 1fr 48px;
+    gap: 8px;
+    align-items: center;
+}
+
 .btn-insert {
     background: linear-gradient(135deg, #0ea5e9, #0284c7) !important;
     padding: 10px 8px !important;
@@ -352,6 +360,19 @@ body.dark-mode .insert-label { color: #7dd3fc; }
     font-size: 14px !important;
 }
 body.dark-mode .btn-cancel-insert { background: #334155 !important; color: #e2e8f0 !important; }
+
+.btn-move {
+    background: #cbd5e1 !important;
+    color: #1e293b !important;
+    padding: 10px 0 !important;
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    min-width: 48px;
+}
+body.dark-mode .btn-move {
+    background: #475569 !important;
+    color: #e2e8f0 !important;
+}
 
 .success-message {
     text-align: center;
@@ -817,5 +838,5 @@ body.dark-mode .verse-title {
     .sub-line1 { font-size: 15px; }
     .sub-line2 { font-size: 14px; }
     .insert-buttons { grid-template-columns: 1fr 1fr; }
-    .btn-cancel-insert { grid-column: 1 / -1; }
+    .move-row { grid-template-columns: 44px 1fr 44px; }
 }
