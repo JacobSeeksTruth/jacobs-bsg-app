@@ -586,7 +586,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Reset
     document.getElementById('resetProgressBtn')?.addEventListener('click', resetAllProgress);
     document.getElementById('devotionalHintToggle')?.addEventListener('click', () => {
-        document.getElementById('devotionalHintContent').classList.toggle('hidden');');
+        document.getElementById('devotionalHintContent').classList.toggle('hidden');
     });
 
     document.getElementById('darkModeToggle')?.addEventListener('change', (e) => {
