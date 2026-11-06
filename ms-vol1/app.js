@@ -205,6 +205,9 @@ function clearInsertMode() {
     insertTarget = null;
     insertPosition = null;
     document.getElementById('insertControls')?.classList.add('hidden');
+    // clear outlines
+    document.getElementById('insertBeforeBtn').style.outline = 'none';
+    document.getElementById('insertAfterBtn').style.outline = 'none';
 }
 
 function updatePuzzleStatus() {
@@ -213,13 +216,11 @@ function updatePuzzleStatus() {
     if (!statusEl) return;
 
     if (currentActiveId === null) {
-        // Custom verse mode
         statusEl.classList.add('hidden');
         if (customBottom) customBottom.classList.remove('hidden');
         return;
     }
 
-    // Curriculum mode
     statusEl.classList.remove('hidden');
     if (customBottom) customBottom.classList.add('hidden');
     const isMastered = masteredVerses.includes(currentActiveId);
@@ -262,10 +263,7 @@ function initGame() {
 
     const isCustom = currentActiveId === null;
 
-    // Controls
     document.getElementById('gameControls').classList.toggle('hidden', isCustom);
-
-    // Success navs
     document.getElementById('curriculumSuccessNav').classList.toggle('hidden', isCustom);
     document.getElementById('customSuccessNav').classList.toggle('hidden', !isCustom);
 
@@ -350,6 +348,22 @@ function performInsert(poolPiece) {
     checkWinState();
 }
 
+function moveSelectedWord(direction) {
+    if (!insertTarget) return;
+    const dropZone = document.getElementById('dropZone');
+    const children = Array.from(dropZone.children);
+    const index = children.indexOf(insertTarget);
+    if (index === -1) return;
+
+    if (direction === 'left' && index > 0) {
+        dropZone.insertBefore(insertTarget, children[index - 1]);
+    } else if (direction === 'right' && index < children.length - 1) {
+        dropZone.insertBefore(children[index + 1], insertTarget);
+    }
+    // keep the panel open and the highlight
+    checkWinState();
+}
+
 function checkWinState() {
     const dropZone = document.getElementById('dropZone');
     const placedWords = Array.from(dropZone.children).map(el => el.innerText);
@@ -365,7 +379,6 @@ function checkWinState() {
         }
         document.getElementById('successBlock').classList.remove('hidden');
         document.getElementById('gameControls').classList.add('hidden');
-        // Keep custom bottom Back button visible
         updatePuzzleStatus();
         clearInsertMode();
     }
@@ -430,6 +443,12 @@ function toggleOptions(show) {
 function applyDarkMode(enabled) {
     document.body.classList.toggle('dark-mode', enabled);
     localStorage.setItem('darkMode', enabled ? 'true' : 'false');
+
+    // Update the label text
+    const label = document.getElementById('modeLabel');
+    if (label) {
+        label.textContent = enabled ? 'Light Mode' : 'Night Mode';
+    }
 }
 
 function resetAllProgress() {
@@ -454,7 +473,6 @@ function setupMusic() {
     const closeSongSelectBtn = document.getElementById('closeSongSelectBtn');
     const currentSongTitle = document.getElementById('currentSongTitle');
 
-    // Ensure we never autoplay on load
     audio.pause();
     audio.currentTime = 0;
 
@@ -465,7 +483,6 @@ function setupMusic() {
                 playPauseBtn.classList.remove('btn-play');
                 playPauseBtn.classList.add('btn-pause');
             }).catch(() => {
-                // Only show the message on actual user interaction failure
                 alert('Unable to play audio. Please try again or select a different song.');
             });
         } else {
@@ -598,12 +615,13 @@ document.addEventListener('DOMContentLoaded', () => {
         initGame();
     });
 
-    // Custom Back button (always at bottom)
+    // Custom Back button
     document.getElementById('customBackBtn')?.addEventListener('click', goToOptionsFromCustom);
 
     // Custom Retry
     document.getElementById('customRetryBtn')?.addEventListener('click', retryPuzzle);
 
+    // Insert / Move controls
     document.getElementById('insertBeforeBtn')?.addEventListener('click', () => {
         insertPosition = 'before';
         document.getElementById('insertBeforeBtn').style.outline = '2px solid #0369a1';
@@ -615,6 +633,9 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('insertBeforeBtn').style.outline = 'none';
     });
     document.getElementById('cancelInsertBtn')?.addEventListener('click', clearInsertMode);
+
+    document.getElementById('moveLeftBtn')?.addEventListener('click', () => moveSelectedWord('left'));
+    document.getElementById('moveRightBtn')?.addEventListener('click', () => moveSelectedWord('right'));
 
     document.getElementById('showHintBtn')?.addEventListener('click', () => toggleHint(true));
     document.getElementById('closeHintBtn')?.addEventListener('click', () => toggleHint(false));
