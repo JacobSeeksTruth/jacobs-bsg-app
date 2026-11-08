@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // ===== Elements =====
     const learnMoreBtn = document.getElementById('learnMoreBtn');
     const learnMoreModal = document.getElementById('learnMoreModal');
     const closeLearnMoreBtn = document.getElementById('closeLearnMoreBtn');
@@ -11,7 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const enochModal = document.getElementById('enochModal');
     const closeEnochBtn = document.getElementById('closeEnochBtn');
 
-    // ===== Helper =====
     function formatTime(seconds) {
         if (isNaN(seconds) || !isFinite(seconds)) return '0:00';
         const m = Math.floor(seconds / 60);
@@ -19,14 +17,14 @@ document.addEventListener('DOMContentLoaded', () => {
         return `${m}:${s.toString().padStart(2, '0')}`;
     }
 
-    // ===== Learn More =====
+    // Learn More
     learnMoreBtn?.addEventListener('click', () => learnMoreModal.classList.add('open'));
     closeLearnMoreBtn?.addEventListener('click', () => learnMoreModal.classList.remove('open'));
     learnMoreModal?.addEventListener('click', e => {
         if (e.target === learnMoreModal) learnMoreModal.classList.remove('open');
     });
 
-    // ===== Theme =====
+    // Theme
     function applyTheme(isDark) {
         document.body.classList.toggle('dark-mode', isDark);
         if (themeToggleBtn) themeToggleBtn.textContent = isDark ? 'Light Mode' : 'Night Mode';
@@ -37,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         applyTheme(!document.body.classList.contains('dark-mode'));
     });
 
-    // ===== Coming Soon =====
+    // Coming Soon
     comingSoonBtns.forEach(btn => {
         btn.addEventListener('click', () => comingSoonModal.classList.add('open'));
     });
@@ -46,11 +44,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target === comingSoonModal) comingSoonModal.classList.remove('open');
     });
 
-    // ===== Enoch Modal =====
+    // Enoch Modal
     enochBtn?.addEventListener('click', () => enochModal.classList.add('open'));
     closeEnochBtn?.addEventListener('click', () => {
         enochModal.classList.remove('open');
-        // Pause all audio
         document.querySelectorAll('audio').forEach(a => {
             a.pause();
             const btn = a.closest('.chapter-block')?.querySelector('.play-pause-btn');
@@ -68,21 +65,24 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // ===== Accordion (works for both main + nested) =====
+    // Accordion (supports nested levels)
     document.querySelectorAll('.accordion-header').forEach(header => {
         header.addEventListener('click', () => {
             const targetId = header.getAttribute('data-target');
             const content = document.getElementById(targetId);
-            const isOpen = content.classList.contains('open');
+            if (!content) return;
 
-            // Close only siblings at the same level
-            const parent = header.closest('.accordion-item').parentElement;
-            parent.querySelectorAll(':scope > .accordion-item > .accordion-content').forEach(c => {
-                c.classList.remove('open');
-            });
-            parent.querySelectorAll(':scope > .accordion-item > .accordion-header').forEach(h => {
-                h.classList.remove('active');
-            });
+            const isOpen = content.classList.contains('open');
+            const parent = header.closest('.accordion-item')?.parentElement;
+
+            if (parent) {
+                parent.querySelectorAll(':scope > .accordion-item > .accordion-content').forEach(c => {
+                    c.classList.remove('open');
+                });
+                parent.querySelectorAll(':scope > .accordion-item > .accordion-header').forEach(h => {
+                    h.classList.remove('active');
+                });
+            }
 
             if (!isOpen) {
                 content.classList.add('open');
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // ===== Audio Players (all chapters) =====
+    // Audio Players
     document.querySelectorAll('.chapter-block').forEach(block => {
         const audio = block.querySelector('audio');
         const playBtn = block.querySelector('.play-pause-btn');
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const restartBtn = block.querySelector('.restart-btn');
         const forwardBtn = block.querySelector('.forward-btn');
 
-        if (!audio) return;
+        if (!audio || !playBtn) return;
 
         audio.addEventListener('loadedmetadata', () => {
             totalTimeEl.textContent = formatTime(audio.duration);
@@ -126,7 +126,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         playBtn.addEventListener('click', () => {
-            // Pause all other players first
             document.querySelectorAll('audio').forEach(other => {
                 if (other !== audio && !other.paused) {
                     other.pause();
@@ -138,8 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (audio.paused) {
                 audio.play().then(() => {
                     playBtn.textContent = 'Pause';
-                }).catch(err => {
-                    console.error(err);
+                }).catch(() => {
                     alert('Unable to play this audio. Please try again.');
                 });
             } else {
@@ -148,22 +146,22 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        progressBar.addEventListener('input', () => {
+        progressBar?.addEventListener('input', () => {
             audio.currentTime = progressBar.value;
             currentTimeEl.textContent = formatTime(audio.currentTime);
         });
 
-        rewindBtn.addEventListener('click', () => {
+        rewindBtn?.addEventListener('click', () => {
             audio.currentTime = Math.max(0, audio.currentTime - 15);
         });
 
-        restartBtn.addEventListener('click', () => {
+        restartBtn?.addEventListener('click', () => {
             audio.currentTime = 0;
             currentTimeEl.textContent = '0:00';
             progressBar.value = 0;
         });
 
-        forwardBtn.addEventListener('click', () => {
+        forwardBtn?.addEventListener('click', () => {
             audio.currentTime = Math.min(audio.duration || 0, audio.currentTime + 15);
         });
     });
