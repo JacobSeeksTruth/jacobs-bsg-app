@@ -122,20 +122,12 @@ function setExpandAllState(expanded) {
 
     const hebrewContent = document.getElementById('hebrewContent');
     const greekContent = document.getElementById('greekContent');
-    const aramaicContent = document.getElementById('aramaicContent');
     if (hebrewContent) hebrewContent.classList.toggle('hidden', !expanded);
     if (greekContent) greekContent.classList.toggle('hidden', !expanded);
-    if (aramaicContent) aramaicContent.classList.toggle('hidden', !expanded);
 
     document.querySelectorAll('.verse-body').forEach(body => {
         body.classList.toggle('hidden', !expanded);
     });
-
-    if (expanded) {
-        document.querySelectorAll('.word-breakdown-body, .untranslatable-body').forEach(b => {
-            b.classList.remove('hidden');
-        });
-    }
 }
 
 function renderCurriculum() {
@@ -213,6 +205,7 @@ function clearInsertMode() {
     insertTarget = null;
     insertPosition = null;
     document.getElementById('insertControls')?.classList.add('hidden');
+    // clear outlines
     document.getElementById('insertBeforeBtn').style.outline = 'none';
     document.getElementById('insertAfterBtn').style.outline = 'none';
 }
@@ -367,6 +360,7 @@ function moveSelectedWord(direction) {
     } else if (direction === 'right' && index < children.length - 1) {
         dropZone.insertBefore(children[index + 1], insertTarget);
     }
+    // keep the panel open and the highlight
     checkWinState();
 }
 
@@ -450,6 +444,7 @@ function applyDarkMode(enabled) {
     document.body.classList.toggle('dark-mode', enabled);
     localStorage.setItem('darkMode', enabled ? 'true' : 'false');
 
+    // Update the label text
     const label = document.getElementById('modeLabel');
     if (label) {
         label.textContent = enabled ? 'Light Mode' : 'Night Mode';
@@ -581,35 +576,16 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('resetContent').classList.toggle('hidden');
     });
 
-    // Hebrew / Greek / Aramaic
+    // Hebrew / Greek
     document.getElementById('hebrewToggleBtn')?.addEventListener('click', () => {
         document.getElementById('hebrewContent').classList.toggle('hidden');
     });
     document.getElementById('greekToggleBtn')?.addEventListener('click', () => {
         document.getElementById('greekContent').classList.toggle('hidden');
     });
-    document.getElementById('aramaicToggleBtn')?.addEventListener('click', () => {
-        document.getElementById('aramaicContent').classList.toggle('hidden');
-    });
 
     // Individual verses
     document.querySelectorAll('[data-verse-toggle]').forEach(title => {
-        title.addEventListener('click', () => {
-            const body = title.nextElementSibling;
-            if (body) body.classList.toggle('hidden');
-        });
-    });
-
-    // Word Breakdown toggles
-    document.querySelectorAll('[data-wb-toggle]').forEach(title => {
-        title.addEventListener('click', () => {
-            const body = title.nextElementSibling;
-            if (body) body.classList.toggle('hidden');
-        });
-    });
-
-    // Untranslatable Word toggles
-    document.querySelectorAll('[data-ut-toggle]').forEach(title => {
         title.addEventListener('click', () => {
             const body = title.nextElementSibling;
             if (body) body.classList.toggle('hidden');
@@ -639,9 +615,13 @@ document.addEventListener('DOMContentLoaded', () => {
         initGame();
     });
 
+    // Custom Back button
     document.getElementById('customBackBtn')?.addEventListener('click', goToOptionsFromCustom);
+
+    // Custom Retry
     document.getElementById('customRetryBtn')?.addEventListener('click', retryPuzzle);
 
+    // Insert / Move controls
     document.getElementById('insertBeforeBtn')?.addEventListener('click', () => {
         insertPosition = 'before';
         document.getElementById('insertBeforeBtn').style.outline = '2px solid #0369a1';
