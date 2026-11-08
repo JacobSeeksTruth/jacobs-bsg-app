@@ -11,7 +11,6 @@
 
 body.dark-mode {
     --bg-color: #0f172a;
-    --a;
     --primary-color: #93c5fd;
     --accent-color: #60a5fa;
     --text-color: #e2e8f0;
@@ -71,24 +70,69 @@ h2 {
     font-size: 16px;
     font-weight: 500;
     color: var(--muted-text);
-    margin: 0 0 14px 0;
+    margin: 0 0 16px 0;
 }
 
-.text-btn {
+/* Buttons row (Learn More + Night Mode) */
+.header-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+.theme-btn {
     background: none;
-    border: none;
-    color: var(--accent-color);
-    font-size: 14px;
+    border: 1px solid var(--border-color);
+    color: var(--muted-text);
+    font-size: 13px;
     font-weight: 600;
     cursor: pointer;
-    padding: 6px 12px;
-    border-radius: 6px;
-    transition: background 0.2s;
+    padding: 8px 18px;
+    border-radius: 20px;
+    transition: all 0.2s;
     font-family: inherit;
 }
 
-.text-btn:hover {
-    background: rgba(58, 123, 213, 0.1);
+.theme-btn:hover {
+    background: var(--light-bg);
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+/* App Switcher Dropdown */
+.app-switcher {
+    margin-top: 4px;
+}
+
+.app-switcher select {
+    width: 100%;
+    max-width: 280px;
+    padding: 10px 14px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-color);
+    background: var(--light-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2364748b' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    transition: border-color 0.2s, background-color 0.2s;
+    font-family: inherit;
+}
+
+.app-switcher select:hover,
+.app-switcher select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+body.dark-mode .app-switcher select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2394a3b8' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
 }
 
 /* Volume Section */
@@ -133,30 +177,12 @@ h2 {
     transform: scale(0.98);
 }
 
-/* Footer / Theme Toggle */
+/* Footer */
 .footer {
     text-align: center;
     padding-top: 8px;
     border-top: 1px solid var(--border-color);
-}
-
-.theme-btn {
-    background: none;
-    border: 1px solid var(--border-color);
-    color: var(--muted-text);
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    padding: 8px 18px;
-    border-radius: 20px;
-    transition: all 0.2s;
-    font-family: inherit;
-}
-
-.theme-btn:hover {
-    background: var(--light-bg);
-    color: var(--primary-color);
-    border-color: var(--primary-color);
+    min-height: 1px;
 }
 
 /* Modal */
@@ -260,5 +286,9 @@ body.dark-mode .btn-back:hover {
     
     h2 {
         font-size: 15px;
+    }
+
+    .header-buttons {
+        gap: 10px;
     }
 }
