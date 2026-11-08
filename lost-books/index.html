@@ -1,1 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jacob’s Bible Study Guide – Main Menu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Jacob’s Bible Study Guide</h1>
+            <h2>Memorize Scripture App</h2>
 
+            <div class="header-buttons">
+                <button id="learnMoreBtn" class="theme-btn">Learn More</button>
+                <button id="themeToggleBtn" class="theme-btn">Night Mode</button>
+            </div>
+
+            <!-- App Switcher Dropdown -->
+            <div class="app-switcher">
+                <select id="appSelect">
+                    <option value="memorize" selected>Memorize Scripture App</option>
+                    <option value="lost">Lost Books of Scripture</option>
+                </select>
+            </div>
+        </header>
+
+        <section class="volume-section">
+            <div class="section-title">📖 SELECT A VOLUME:</div>
+            
+            <a href="https://jacobseekstruth.github.io/jacobs-bsg-app/ms-vol1/" class="volume-btn">
+                1. Walking in God’s Love
+            </a>
+            
+            <!-- Future volumes will go here -->
+        </section>
+
+        <footer class="footer">
+            <!-- Theme button moved to header -->
+        </footer>
+    </div>
+
+    <!-- ABOUT THIS APP MODAL -->
+    <div id="learnMoreModal" class="modal">
+        <div class="modal-content">
+            <h3>About This App</h3>
+            
+            <div class="learn-more-text">
+                <p>Hi, I'm Jacob. I created this App to help me study and learn God’s Word, and now I want to share it with you for free.</p>
+                
+                <p>Join me on this journey as we explore these Bible study guides together and grow closer to God through Scripture.</p>
+                
+                <p><strong>Volume Selection:</strong><br>
+                Each volume is a dedicated study guide featuring verses to study and memorize, along with a devotional to read once you complete the curriculum.</p>
+                
+                <p><strong>Free Download:</strong><br>
+                Every study guide volume includes a free, downloadable PDF, accessible by clicking the <strong>“Download Full Study Guide”</strong> button.</p>
+                
+                <p>These PDFs not only contain the scripture verses featured in the app, but also include extra information, exclusive study content, and a special message from me that isn't available anywhere else.</p>
+                
+                <p>Happy studying, and may God bless your journey!</p>
+                
+                <p class="signature">Blessings,<br><strong>Jacob Seeks Truth</strong></p>
+            </div>
+            
+            <button id="closeLearnMoreBtn" class="btn-back">Back</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
