@@ -11,7 +11,19 @@
         <header class="header">
             <h1>Jacob’s Bible Study Guide</h1>
             <h2>Memorize Scripture App</h2>
-            <button id="learnMoreBtn" class="text-btn">Learn More</button>
+
+            <div class="header-buttons">
+                <button id="learnMoreBtn" class="theme-btn">Learn More</button>
+                <button id="themeToggleBtn" class="theme-btn">Night Mode</button>
+            </div>
+
+            <!-- App Switcher Dropdown -->
+            <div class="app-switcher">
+                <select id="appSelect">
+                    <option value="memorize" selected>Memorize Scripture App</option>
+                    <option value="lost">Lost Books of Scripture</option>
+                </select>
+            </div>
         </header>
 
         <section class="volume-section">
@@ -25,7 +37,7 @@
         </section>
 
         <footer class="footer">
-            <button id="themeToggleBtn" class="theme-btn">Dark Mode</button>
+            <!-- Theme button moved to header -->
         </footer>
     </div>
 
