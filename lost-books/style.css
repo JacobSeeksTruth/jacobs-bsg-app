@@ -20,13 +20,9 @@ body.dark-mode {
     --muted-text: #94a3b8;
 }
 
-*, *::before, *::after {
-    box-sizing: border-box;
-}
+*, *::before, *::after { box-sizing: border-box; }
 
-html {
-    -webkit-text-size-adjust: 100%;
-}
+html { -webkit-text-size-adjust: 100%; }
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -51,12 +47,9 @@ body {
     display: flex;
     flex-direction: column;
     gap: 28px;
-    transition: background-color 0.3s;
 }
 
-.header {
-    text-align: center;
-}
+.header { text-align: center; }
 
 h1 {
     font-size: 24px;
@@ -135,28 +128,39 @@ h2 {
     font-family: inherit;
 }
 
-.book-btn:hover {
-    opacity: 0.93;
-}
-
-.book-btn:active {
-    transform: scale(0.98);
-}
+.book-btn:hover { opacity: 0.93; }
+.book-btn:active { transform: scale(0.98); }
 
 .footer {
     text-align: center;
-    padding-top: 8px;
+    padding-top: 12px;
     border-top: 1px solid var(--border-color);
-    min-height: 1px;
+}
+
+.main-menu-btn {
+    display: inline-block;
+    background: none;
+    border: none;
+    color: var(--accent-color);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.2s;
+    font-family: inherit;
+}
+
+.main-menu-btn:hover {
+    background: rgba(58, 123, 213, 0.1);
 }
 
 /* Modal */
 .modal {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
     background: rgba(0, 0, 0, 0.55);
     display: flex;
     justify-content: center;
@@ -192,14 +196,8 @@ h2 {
     text-align: center;
 }
 
-.coming-soon-content {
-    text-align: center;
-}
-
-.coming-soon-content p {
-    margin: 0 0 20px 0;
-    font-size: 16px;
-}
+.coming-soon-content { text-align: center; }
+.coming-soon-content p { margin: 0 0 20px 0; font-size: 16px; }
 
 .learn-more-text p {
     font-size: 15.5px;
@@ -207,10 +205,7 @@ h2 {
     margin: 0 0 14px 0;
 }
 
-.signature {
-    margin-top: 20px !important;
-    font-style: italic;
-}
+.signature { margin-top: 20px !important; font-style: italic; }
 
 .btn-back {
     display: block;
@@ -232,13 +227,8 @@ body.dark-mode .btn-back {
     color: #e2e8f0;
 }
 
-.btn-back:hover {
-    background: #cbd5e1;
-}
-
-body.dark-mode .btn-back:hover {
-    background: #475569;
-}
+.btn-back:hover { background: #cbd5e1; }
+body.dark-mode .btn-back:hover { background: #475569; }
 
 /* Accordion */
 .accordion-item {
@@ -274,9 +264,7 @@ body.dark-mode .btn-back:hover {
     padding: 12px 14px;
 }
 
-.accordion-header:hover {
-    background: var(--border-color);
-}
+.accordion-header:hover { background: var(--border-color); }
 
 .accordion-icon {
     font-size: 12px;
@@ -295,15 +283,49 @@ body.dark-mode .btn-back:hover {
 }
 
 .accordion-content.open {
-    max-height: 5000px; /* large enough for all chapters */
+    max-height: 8000px;
 }
 
 .nested-content.open {
-    max-height: 400px;
+    max-height: 1200px;
 }
 
-.chapter-block {
+.chapter-block { padding: 14px; }
+
+.book-section-header {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 18px 12px 8px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.about-text {
+    padding: 16px;
+    font-size: 15px;
+    line-height: 1.65;
+}
+
+.about-text p { margin: 0 0 12px 0; }
+
+.summary-block {
     padding: 14px;
+    font-size: 14.5px;
+    line-height: 1.6;
+}
+
+.contents-list {
+    padding: 12px 16px;
+    font-size: 13.5px;
+    line-height: 1.5;
+}
+
+.contents-list p {
+    margin: 0 0 6px 0;
+    color: var(--text-color);
 }
 
 /* Audio Player */
@@ -371,24 +393,19 @@ body.dark-mode .btn-back:hover {
     margin-bottom: 10px;
 }
 
-.player-btn.primary:hover {
-    opacity: 0.9;
-}
+.player-btn.primary:hover { opacity: 0.9; }
 
 .seek-controls {
     display: flex;
     gap: 8px;
+    margin-bottom: 12px;
 }
 
-.seek-controls .player-btn {
-    flex: 1;
-}
+.seek-controls .player-btn { flex: 1; }
 
-.player-btn:hover {
-    background: var(--border-color);
-}
+.player-btn:hover { background: var(--border-color); }
 
-/* Download Buttons */
+/* Download / Wiki Buttons */
 .download-btn {
     display: block;
     margin: 12px 16px;
@@ -404,12 +421,12 @@ body.dark-mode .btn-back:hover {
     transition: opacity 0.2s;
 }
 
-.download-btn:hover {
-    opacity: 0.9;
-}
+.download-btn:hover { opacity: 0.9; }
 
-.download-btn + .download-btn {
-    margin-top: 10px;
+.download-btn + .download-btn { margin-top: 10px; }
+
+.wiki-btn {
+    background: linear-gradient(135deg, #4a5568, #2d3748);
 }
 
 @media (max-width: 480px) {
