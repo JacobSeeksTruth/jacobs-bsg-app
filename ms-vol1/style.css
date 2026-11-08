@@ -1,7 +1,3 @@
-:root {
-    --bg-color: #f4f7f6;
-    --primary-color: #3a6073;
-    --accent-color: #3a7bd5;
     --piece-color: #ffffff;
     --text-color: #2c3e50;
     --success-color: #10b981;
@@ -178,6 +174,7 @@ body.dark-mode .reward-item.unlocked {
 }
 .reward-item.unlocked .devotional-blue { color: var(--link-blue); }
 
+/* Options button – gray */
 .btn-options {
     background: #e2e8f0 !important;
     color: var(--text-color) !important;
@@ -242,6 +239,7 @@ body.dark-mode .btn-hint { background: #334155 !important; color: #e2e8f0 !impor
     color: white !important;
 }
 
+/* Custom verse Back button – gray */
 .btn-custom-back {
     background: #e2e8f0 !important;
     color: var(--text-color) !important;
@@ -606,6 +604,7 @@ body.dark-mode .lang-desc { color: #94a3b8; }
 }
 body.dark-mode .instruction-text { color: #94a3b8; }
 
+/* Expand / Collapse buttons – borderless, left-aligned, light gray */
 .btn-expand-all {
     display: block;
     width: auto;
@@ -629,7 +628,7 @@ body.dark-mode .btn-expand-all {
     margin: 12px 0;
 }
 
-/* Hebrew / Greek / Aramaic headers */
+/* Hebrew / Greek headers */
 .lang-header {
     padding: 10px 12px;
     font-weight: 700;
@@ -640,14 +639,12 @@ body.dark-mode .btn-expand-all {
     text-align: center;
 }
 .hebrew-header,
-.greek-header,
-.aramaic-header {
+.greek-header {
     background: #dbeafe;
     color: #1e40af;
 }
 body.dark-mode .hebrew-header,
-body.dark-mode .greek-header,
-body.dark-mode .aramaic-header {
+body.dark-mode .greek-header {
     background: #1e3a5f;
     color: #93c5fd;
 }
@@ -684,43 +681,10 @@ body.dark-mode .verse-title {
     margin: 4px 0;
     direction: rtl;
 }
-.verse-body .aramaic-orig {
-    direction: rtl;
-    font-size: 16px;
-}
 .english-line {
     margin-top: 10px;
     font-size: 13px;
     color: var(--text-color);
-}
-
-/* Word Breakdown & Untranslatable */
-.word-breakdown-toggle,
-.untranslatable-toggle {
-    font-weight: 600;
-    font-size: 13px;
-    color: var(--primary-color);
-    cursor: pointer;
-    padding: 8px 0 4px;
-    margin-top: 6px;
-}
-.word-breakdown-body,
-.untranslatable-body {
-    font-size: 13px;
-    line-height: 1.5;
-    padding: 4px 0 8px 8px;
-    border-left: 3px solid var(--border-color);
-    margin-left: 4px;
-}
-.wb-list {
-    margin: 4px 0;
-    padding-left: 18px;
-}
-.wb-list li {
-    margin-bottom: 3px;
-}
-.untranslatable-body p {
-    margin: 0 0 8px;
 }
 
 /* Latest Updates */
@@ -728,7 +692,7 @@ body.dark-mode .verse-title {
     text-align: left;
     font-weight: 400;
     color: var(--text-color);
-    margin: 0 0 6px;
+    margin: 0;
 }
 
 /* Reset section */
