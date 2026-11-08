@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Accordion (supports nested levels)
+    // Accordion
     document.querySelectorAll('.accordion-header').forEach(header => {
         header.addEventListener('click', () => {
             const targetId = header.getAttribute('data-target');
@@ -76,12 +76,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const parent = header.closest('.accordion-item')?.parentElement;
 
             if (parent) {
-                parent.querySelectorAll(':scope > .accordion-item > .accordion-content').forEach(c => {
-                    c.classList.remove('open');
-                });
-                parent.querySelectorAll(':scope > .accordion-item > .accordion-header').forEach(h => {
-                    h.classList.remove('active');
-                });
+                parent.querySelectorAll(':scope > .accordion-item > .accordion-content').forEach(c => c.classList.remove('open'));
+                parent.querySelectorAll(':scope > .accordion-item > .accordion-header').forEach(h => h.classList.remove('active'));
             }
 
             if (!isOpen) {
@@ -135,11 +131,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             if (audio.paused) {
-                audio.play().then(() => {
-                    playBtn.textContent = 'Pause';
-                }).catch(() => {
-                    alert('Unable to play this audio. Please try again.');
-                });
+                audio.play().then(() => playBtn.textContent = 'Pause')
+                    .catch(() => alert('Unable to play this audio. Please try again.'));
             } else {
                 audio.pause();
                 playBtn.textContent = 'Play';
