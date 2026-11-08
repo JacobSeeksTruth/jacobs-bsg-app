@@ -3,42 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jacob’s Bible Study Guide – Main Menu</title>
+    <title>Jacob’s Bible Study Guide – Lost Books of Scripture</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <header class="header">
             <h1>Jacob’s Bible Study Guide</h1>
-            <h2>Memorize Scripture App</h2>
+            <h2>Lost Books of Scripture</h2>
 
             <div class="header-buttons">
                 <button id="learnMoreBtn" class="theme-btn">Learn More</button>
                 <button id="themeToggleBtn" class="theme-btn">Night Mode</button>
             </div>
-
-            <!-- App Switcher Dropdown -->
-            <div class="app-switcher">
-                <select id="appSelect">
-                    <option value="memorize" selected>Memorize Scripture App</option>
-                    <option value="lost">Lost Books of Scripture</option>
-                </select>
-            </div>
         </header>
 
         <section class="volume-section">
-            <div class="section-title">📖 SELECT A VOLUME:</div>
+            <div class="section-title">📖 SELECT A BOOK:</div>
             
-            <a href="https://jacobseekstruth.github.io/jacobs-bsg-app/ms-vol1/" class="volume-btn">
-                1. Walking in God’s Love
-            </a>
-            
-            <!-- Future volumes will go here -->
+            <!-- Books in alphabetical order -->
+            <button class="book-btn coming-soon-btn">Book of Adam &amp; Eve</button>
+            <button class="book-btn" id="enochBtn">Book of Enoch</button>
+            <button class="book-btn coming-soon-btn">Book of Jasher</button>
+            <button class="book-btn coming-soon-btn">Book of Jubilee</button>
+            <button class="book-btn coming-soon-btn">Book of Judith</button>
+            <button class="book-btn coming-soon-btn">Book of Maccabees</button>
+            <button class="book-btn coming-soon-btn">Book of the Bee</button>
+            <button class="book-btn coming-soon-btn">Book of Tobit</button>
+            <button class="book-btn coming-soon-btn">The Psalms of Solomon</button>
         </section>
 
-        <footer class="footer">
-            <!-- Theme button moved to header -->
-        </footer>
+        <footer class="footer"></footer>
     </div>
 
     <!-- ABOUT THIS APP MODAL -->
@@ -65,6 +60,72 @@
             </div>
             
             <button id="closeLearnMoreBtn" class="btn-back">Back</button>
+        </div>
+    </div>
+
+    <!-- COMING SOON MODAL -->
+    <div id="comingSoonModal" class="modal">
+        <div class="modal-content coming-soon-content">
+            <h3>Coming Soon!</h3>
+            <p>This book is not available yet. Check back later.</p>
+            <button id="closeComingSoonBtn" class="btn-back">Back</button>
+        </div>
+    </div>
+
+    <!-- BOOK OF ENOCH MODAL -->
+    <div id="enochModal" class="modal">
+        <div class="modal-content">
+            <h3>Book of Enoch</h3>
+
+            <!-- Listen to Audio Section -->
+            <div class="accordion-item">
+                <button class="accordion-header" data-target="listenContent">
+                    Listen to Audio
+                    <span class="accordion-icon">▼</span>
+                </button>
+                <div class="accordion-content" id="listenContent">
+                    <div class="chapter-block">
+                        <h4>Chapters 1-11</h4>
+
+                        <!-- Replace the src below with your real audio URL -->
+                        <audio id="enochAudio" preload="metadata">
+                            <source src="YOUR_AUDIO_URL_HERE.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+
+                        <!-- Progress Bar -->
+                        <div class="progress-container">
+                            <span id="currentTime">0:00</span>
+                            <input type="range" id="progressBar" value="0" min="0" max="100" step="0.1">
+                            <span id="totalTime">0:00</span>
+                        </div>
+
+                        <!-- Play / Pause -->
+                        <button id="playPauseBtn" class="player-btn primary">Play</button>
+
+                        <!-- Seek Controls -->
+                        <div class="seek-controls">
+                            <button id="rewindBtn" class="player-btn">−15s</button>
+                            <button id="restartBtn" class="player-btn">Restart</button>
+                            <button id="forwardBtn" class="player-btn">+15s</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Read the Book Section -->
+            <div class="accordion-item">
+                <button class="accordion-header" data-target="readContent">
+                    Read the Book
+                    <span class="accordion-icon">▼</span>
+                </button>
+                <div class="accordion-content" id="readContent">
+                    <!-- Replace the href with your real PDF link when ready -->
+                    <a href="#" class="download-btn" id="downloadPdfBtn">Download PDF</a>
+                </div>
+            </div>
+
+            <button id="closeEnochBtn" class="btn-back">Back</button>
         </div>
     </div>
 
