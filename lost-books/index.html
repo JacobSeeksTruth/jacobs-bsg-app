@@ -21,7 +21,6 @@
         <section class="volume-section">
             <div class="section-title">📖 SELECT A BOOK:</div>
             
-            <!-- Books in alphabetical order -->
             <button class="book-btn coming-soon-btn">Book of Adam &amp; Eve</button>
             <button class="book-btn" id="enochBtn">Book of Enoch</button>
             <button class="book-btn coming-soon-btn">Book of Jasher</button>
@@ -40,25 +39,17 @@
     <div id="learnMoreModal" class="modal">
         <div class="modal-content">
             <h3>About This App</h3>
-            
             <div class="learn-more-text">
                 <p>Hi, I'm Jacob. I created this App to help me study and learn God’s Word, and now I want to share it with you for free.</p>
-                
                 <p>Join me on this journey as we explore these Bible study guides together and grow closer to God through Scripture.</p>
-                
                 <p><strong>Volume Selection:</strong><br>
                 Each volume is a dedicated study guide featuring verses to study and memorize, along with a devotional to read once you complete the curriculum.</p>
-                
                 <p><strong>Free Download:</strong><br>
                 Every study guide volume includes a free, downloadable PDF, accessible by clicking the <strong>“Download Full Study Guide”</strong> button.</p>
-                
                 <p>These PDFs not only contain the scripture verses featured in the app, but also include extra information, exclusive study content, and a special message from me that isn't available anywhere else.</p>
-                
                 <p>Happy studying, and may God bless your journey!</p>
-                
                 <p class="signature">Blessings,<br><strong>Jacob Seeks Truth</strong></p>
             </div>
-            
             <button id="closeLearnMoreBtn" class="btn-back">Back</button>
         </div>
     </div>
@@ -77,49 +68,448 @@
         <div class="modal-content">
             <h3>Book of Enoch</h3>
 
-            <!-- Listen to Audio Section -->
+            <!-- Listen to Audio -->
             <div class="accordion-item">
-                <button class="accordion-header" data-target="listenContent">
+                <button class="accordion-header main-header" data-target="listenContent">
                     Listen to Audio
                     <span class="accordion-icon">▼</span>
                 </button>
                 <div class="accordion-content" id="listenContent">
-                    <div class="chapter-block">
-                        <h4>Chapters 1-11</h4>
-
-                        <audio id="enochAudio" preload="metadata">
-                            <source src="https://www.archive.org/download/bookofenoch_1812_librivox/bookofenoch_02_charles_128kb.mp3" type="audio/mpeg">
-                            Your browser does not support the audio element.
-                        </audio>
-
-                        <!-- Progress Bar -->
-                        <div class="progress-container">
-                            <span id="currentTime">0:00</span>
-                            <input type="range" id="progressBar" value="0" min="0" max="100" step="0.1">
-                            <span id="totalTime">0:00</span>
-                        </div>
-
-                        <!-- Play / Pause -->
-                        <button id="playPauseBtn" class="player-btn primary">Play</button>
-
-                        <!-- Seek Controls -->
-                        <div class="seek-controls">
-                            <button id="rewindBtn" class="player-btn">−15s</button>
-                            <button id="restartBtn" class="player-btn">Restart</button>
-                            <button id="forwardBtn" class="player-btn">+15s</button>
+                    
+                    <!-- Chapters 1-11 -->
+                    <div class="accordion-item nested">
+                        <button class="accordion-header nested-header" data-target="ch1">
+                            Chapters 1-11
+                            <span class="accordion-icon">▼</span>
+                        </button>
+                        <div class="accordion-content nested-content" id="ch1">
+                            <div class="chapter-block" data-player="1">
+                                <audio id="audio1" preload="metadata">
+                                    <source src="https://www.archive.org/download/bookofenoch_1812_librivox/bookofenoch_02_charles_128kb.mp3" type="audio/mpeg">
+                                </audio>
+                                <div class="progress-container">
+                                    <span class="current-time">0:00</span>
+                                    <input type="range" class="progress-bar" value="0" min="0" max="100" step="0.1">
+                                    <span class="total-time">0:00</span>
+                                </div>
+                                <button class="player-btn primary play-pause-btn">Play</button>
+                                <div class="seek-controls">
+                                    <button class="player-btn rewind-btn">−15s</button>
+                                    <button class="player-btn restart-btn">Restart</button>
+                                    <button class="player-btn forward-btn">+15s</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
+                    <!-- Chapters 12-19 -->
+                    <div class="accordion-item nested">
+                        <button class="accordion-header nested-header" data-target="ch2">
+                            Chapters 12-19
+                            <span class="accordion-icon">▼</span>
+                        </button>
+                        <div class="accordion-content nested-content" id="ch2">
+                            <div class="chapter-block" data-player="2">
+                                <audio id="audio2" preload="metadata">
+                                    <source src="https://www.archive.org/download/bookofenoch_1812_librivox/bookofenoch_03_charles_128kb.mp3" type="audio/mpeg">
+                                </audio>
+                                <div class="progress-container">
+                                    <span class="current-time">0:00</span>
+                                    <input type="range" class="progress-bar" value="0" min="0" max="100" step="0.1">
+                                    <span class="total-time">0:00</span>
+                                </div>
+                                <button class="player-btn primary play-pause-btn">Play</button>
+                                <div class="seek-controls">
+                                    <button class="player-btn rewind-btn">−15s</button>
+                                    <button class="player-btn restart-btn">Restart</button>
+                                    <button class="player-btn forward-btn">+15s</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chapters 20-25 -->
+                    <div class="accordion-item nested">
+                        <button class="accordion-header nested-header" data-target="ch3">
+                            Chapters 20-25
+                            <span class="accordion-icon">▼</span>
+                        </button>
+                        <div class="accordion-content nested-content" id="ch3">
+                            <div class="chapter-block" data-player="3">
+                                <audio id="audio3" preload="metadata">
+                                    <source src="https://www.archive.org/download/bookofenoch_1812_librivox/bookofenoch_03_charles_128kb.mp3" type="audio/mpeg">
+                                </audio>
+                                <div class="progress-container">
+                                    <span class="current-time">0:00</span>
+                                    <input type="range" class="progress-bar" value="0" min="0" max="100" step="0.1">
+                                    <span class="total-time">0:00</span>
+                                </div>
+                                <button class="player-btn primary play-pause-btn">Play</button>
+                                <div class="seek-controls">
+                                    <button class="player-btn rewind-btn">−15s</button>
+                                    <button class="player-btn restart-btn">Restart</button>
+                                    <button class="player-btn forward-btn">+15s</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chapters 26-36 -->
+                    <div class="accordion-item nested">
+                        <button class="accordion-header nested-header" data-target="ch4">
+                            Chapters 26-36
+                            <span class="accordion-icon">▼</span>
+                        </button>
+                        <div class="accordion-content nested-content" id="ch4">
+                            <div class="chapter-block" data-player="4">
+                                <audio id="audio4" preload="metadata">
+                                    <source src="https://www.archive.org/download/bookofenoch_1812_librivox/bookofenoch_05_charles_128kb.mp3" type="audio/mpeg">
+                                </audio>
+                                <div class="progress-container">
+                                    <span class="current-time">0:00</span>
+                                    <input type="range" class="progress-bar" value="0" min="0" max="100" step="0.1">
+                                    <span class="total-time">0:00</span>
+                                </div>
+                                <button class="player-btn primary play-pause-btn">Play</button>
+                                <div class="seek-controls">
+                                    <button class="player-btn rewind-btn">−15s</button>
+                                    <button class="player-btn restart-btn">Restart</button>
+                                    <button class="player-btn forward-btn">+15s</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chapters 37-44 -->
+                    <div class="accordion-item nested">
+                        <button class="accordion-header nested-header" data-target="ch5">
+                            Chapters 37-44
+                            <span class="accordion-icon">▼</span>
+                        </button>
+                        <div class="accordion-content nested-content" id="ch5">
+                            <div class="chapter-block" data-player="5">
+                                <audio id="audio5" preload="metadata">
+                                    <source src="https://www.archive.org/download/bookofenoch_1812_librivox/bookofenoch_06_charles_128kb.mp3" type="audio/mpeg">
+                                </audio>
+                                <div class="progress-container">
+                                    <span class="current-time">0:00</span>
+                                    <input type="range" class="progress-bar" value="0" min="0" max="100" step="0.1">
+                                    <span class="total-time">0:00</span>
+                                </div>
+                                <button class="player-btn primary play-pause-btn">Play</button>
+                                <div class="seek-controls">
+                                    <button class="player-btn rewind-btn">−15s</button>
+                                    <button class="player-btn restart-btn">Restart</button>
+                                    <button class="player-btn forward-btn">+15s</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chapters 45-59 -->
+                    <div class="accordion-item nested">
+                        <button class="accordion-header nested-header" data-target="ch6">
+                            Chapters 45-59
+                            <span class="accordion-icon">▼</span>
+                        </button>
+                        <div class="accordion-content nested-content" id="ch6">
+                            <div class="chapter-block" data-player="6">
+                                <audio id="audio6" preload="metadata">
+                                    <source src="https://www.archive.org/download/bookofenoch_1812_librivox/bookofenoch_07_charles_128kb.mp3" type="audio/mpeg">
+                                </audio>
+                                <div class="progress-container">
+                                    <span class="current-time">0:00</span>
+                                    <input type="range" class="progress-bar" value="0" min="0" max="100" step="0.1">
+                                    <span class="total-time">0:00</span>
+                                </div>
+                                <button class="player-btn primary play-pause-btn">Play</button>
+                                <div class="seek-controls">
+                                    <button class="player-btn rewind-btn">−15s</button>
+                                    <button class="player-btn restart-btn">Restart</button>
+                                    <button class="player-btn forward-btn">+15s</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chapters 60-64 -->
+                    <div class="accordion-item nested">
+                        <button class="accordion-header nested-header" data-target="ch7">
+                            Chapters 60-64
+                            <span class="accordion-icon">▼</span>
+                        </button>
+                        <div class="accordion-content nested-content" id="ch7">
+                            <div class="chapter-block" data-player="7">
+                                <audio id="audio7" preload="metadata">
+                                    <source src="https://www.archive.org/download/bookofenoch_1812_librivox/bookofenoch_08_charles_128kb.mp3" type="audio/mpeg">
+                                </audio>
+                                <div class="progress-container">
+                                    <span class="current-time">0:00</span>
+                                    <input type="range" class="progress-bar" value="0" min="0" max="100" step="0.1">
+                                    <span class="total-time">0:00</span>
+                                </div>
+                                <button class="player-btn primary play-pause-btn">Play</button>
+                                <div class="seek-controls">
+                                    <button class="player-btn rewind-btn">−15s</button>
+                                    <button class="player-btn restart-btn">Restart</button>
+                                    <button class="player-btn forward-btn">+15s</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chapters 65-71 -->
+                    <div class="accordion-item nested">
+                        <button class="accordion-header nested-header" data-target="ch8">
+                            Chapters 65-71
+                            <span class="accordion-icon">▼</span>
+                        </button>
+                        <div class="accordion-content nested-content" id="ch8">
+                            <div class="chapter-block" data-player="8">
+                                <audio id="audio8" preload="metadata">
+                                    <source src="https://www.archive.org/download/bookofenoch_1812_librivox/bookofenoch_09_charles_128kb.mp3" type="audio/mpeg">
+                                </audio>
+                                <div class="progress-container">
+                                    <span class="current-time">0:00</span>
+                                    <input type="range" class="progress-bar" value="0" min="0" max="100" step="0.1">
+                                    <span class="total-time">0:00</span>
+                                </div>
+                                <button class="player-btn primary play-pause-btn">Play</button>
+                                <div class="seek-controls">
+                                    <button class="player-btn rewind-btn">−15s</button>
+                                    <button class="player-btn restart-btn">Restart</button>
+                                    <button class="player-btn forward-btn">+15s</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chapters 72-75 -->
+                    <div class="accordion-item nested">
+                        <button class="accordion-header nested-header" data-target="ch9">
+                            Chapters 72-75
+                            <span class="accordion-icon">▼</span>
+                        </button>
+                        <div class="accordion-content nested-content" id="ch9">
+                            <div class="chapter-block" data-player="9">
+                                <audio id="audio9" preload="metadata">
+                                    <source src="https://www.archive.org/download/bookofenoch_1812_librivox/bookofenoch_10_charles_128kb.mp3" type="audio/mpeg">
+                                </audio>
+                                <div class="progress-container">
+                                    <span class="current-time">0:00</span>
+                                    <input type="range" class="progress-bar" value="0" min="0" max="100" step="0.1">
+                                    <span class="total-time">0:00</span>
+                                </div>
+                                <button class="player-btn primary play-pause-btn">Play</button>
+                                <div class="seek-controls">
+                                    <button class="player-btn rewind-btn">−15s</button>
+                                    <button class="player-btn restart-btn">Restart</button>
+                                    <button class="player-btn forward-btn">+15s</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chapters 76-82 -->
+                    <div class="accordion-item nested">
+                        <button class="accordion-header nested-header" data-target="ch10">
+                            Chapters 76-82
+                            <span class="accordion-icon">▼</span>
+                        </button>
+                        <div class="accordion-content nested-content" id="ch10">
+                            <div class="chapter-block" data-player="10">
+                                <audio id="audio10" preload="metadata">
+                                    <source src="https://www.archive.org/download/bookofenoch_1812_librivox/bookofenoch_11_charles_128kb.mp3" type="audio/mpeg">
+                                </audio>
+                                <div class="progress-container">
+                                    <span class="current-time">0:00</span>
+                                    <input type="range" class="progress-bar" value="0" min="0" max="100" step="0.1">
+                                    <span class="total-time">0:00</span>
+                                </div>
+                                <button class="player-btn primary play-pause-btn">Play</button>
+                                <div class="seek-controls">
+                                    <button class="player-btn rewind-btn">−15s</button>
+                                    <button class="player-btn restart-btn">Restart</button>
+                                    <button class="player-btn forward-btn">+15s</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chapters 83-88 -->
+                    <div class="accordion-item nested">
+                        <button class="accordion-header nested-header" data-target="ch11">
+                            Chapters 83-88
+                            <span class="accordion-icon">▼</span>
+                        </button>
+                        <div class="accordion-content nested-content" id="ch11">
+                            <div class="chapter-block" data-player="11">
+                                <audio id="audio11" preload="metadata">
+                                    <source src="https://www.archive.org/download/bookofenoch_1812_librivox/bookofenoch_12_charles_128kb.mp3" type="audio/mpeg">
+                                </audio>
+                                <div class="progress-container">
+                                    <span class="current-time">0:00</span>
+                                    <input type="range" class="progress-bar" value="0" min="0" max="100" step="0.1">
+                                    <span class="total-time">0:00</span>
+                                </div>
+                                <button class="player-btn primary play-pause-btn">Play</button>
+                                <div class="seek-controls">
+                                    <button class="player-btn rewind-btn">−15s</button>
+                                    <button class="player-btn restart-btn">Restart</button>
+                                    <button class="player-btn forward-btn">+15s</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chapters 89 -->
+                    <div class="accordion-item nested">
+                        <button class="accordion-header nested-header" data-target="ch12">
+                            Chapters 89
+                            <span class="accordion-icon">▼</span>
+                        </button>
+                        <div class="accordion-content nested-content" id="ch12">
+                            <div class="chapter-block" data-player="12">
+                                <audio id="audio12" preload="metadata">
+                                    <source src="https://www.archive.org/download/bookofenoch_1812_librivox/bookofenoch_13_charles_128kb.mp3" type="audio/mpeg">
+                                </audio>
+                                <div class="progress-container">
+                                    <span class="current-time">0:00</span>
+                                    <input type="range" class="progress-bar" value="0" min="0" max="100" step="0.1">
+                                    <span class="total-time">0:00</span>
+                                </div>
+                                <button class="player-btn primary play-pause-btn">Play</button>
+                                <div class="seek-controls">
+                                    <button class="player-btn rewind-btn">−15s</button>
+                                    <button class="player-btn restart-btn">Restart</button>
+                                    <button class="player-btn forward-btn">+15s</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chapters 90 -->
+                    <div class="accordion-item nested">
+                        <button class="accordion-header nested-header" data-target="ch13">
+                            Chapters 90
+                            <span class="accordion-icon">▼</span>
+                        </button>
+                        <div class="accordion-content nested-content" id="ch13">
+                            <div class="chapter-block" data-player="13">
+                                <audio id="audio13" preload="metadata">
+                                    <source src="https://www.archive.org/download/bookofenoch_1812_librivox/bookofenoch_09_charles_128kb.mp3" type="audio/mpeg">
+                                </audio>
+                                <div class="progress-container">
+                                    <span class="current-time">0:00</span>
+                                    <input type="range" class="progress-bar" value="0" min="0" max="100" step="0.1">
+                                    <span class="total-time">0:00</span>
+                                </div>
+                                <button class="player-btn primary play-pause-btn">Play</button>
+                                <div class="seek-controls">
+                                    <button class="player-btn rewind-btn">−15s</button>
+                                    <button class="player-btn restart-btn">Restart</button>
+                                    <button class="player-btn forward-btn">+15s</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chapters 91-97 -->
+                    <div class="accordion-item nested">
+                        <button class="accordion-header nested-header" data-target="ch14">
+                            Chapters 91-97
+                            <span class="accordion-icon">▼</span>
+                        </button>
+                        <div class="accordion-content nested-content" id="ch14">
+                            <div class="chapter-block" data-player="14">
+                                <audio id="audio14" preload="metadata">
+                                    <source src="https://www.archive.org/download/bookofenoch_1812_librivox/bookofenoch_15_charles_128kb.mp3" type="audio/mpeg">
+                                </audio>
+                                <div class="progress-container">
+                                    <span class="current-time">0:00</span>
+                                    <input type="range" class="progress-bar" value="0" min="0" max="100" step="0.1">
+                                    <span class="total-time">0:00</span>
+                                </div>
+                                <button class="player-btn primary play-pause-btn">Play</button>
+                                <div class="seek-controls">
+                                    <button class="player-btn rewind-btn">−15s</button>
+                                    <button class="player-btn restart-btn">Restart</button>
+                                    <button class="player-btn forward-btn">+15s</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chapters 98-105 -->
+                    <div class="accordion-item nested">
+                        <button class="accordion-header nested-header" data-target="ch15">
+                            Chapters 98-105
+                            <span class="accordion-icon">▼</span>
+                        </button>
+                        <div class="accordion-content nested-content" id="ch15">
+                            <div class="chapter-block" data-player="15">
+                                <audio id="audio15" preload="metadata">
+                                    <source src="https://www.archive.org/download/bookofenoch_1812_librivox/bookofenoch_16_charles_128kb.mp3" type="audio/mpeg">
+                                </audio>
+                                <div class="progress-container">
+                                    <span class="current-time">0:00</span>
+                                    <input type="range" class="progress-bar" value="0" min="0" max="100" step="0.1">
+                                    <span class="total-time">0:00</span>
+                                </div>
+                                <button class="player-btn primary play-pause-btn">Play</button>
+                                <div class="seek-controls">
+                                    <button class="player-btn rewind-btn">−15s</button>
+                                    <button class="player-btn restart-btn">Restart</button>
+                                    <button class="player-btn forward-btn">+15s</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chapters 106-108 -->
+                    <div class="accordion-item nested">
+                        <button class="accordion-header nested-header" data-target="ch16">
+                            Chapters 106-108
+                            <span class="accordion-icon">▼</span>
+                        </button>
+                        <div class="accordion-content nested-content" id="ch16">
+                            <div class="chapter-block" data-player="16">
+                                <audio id="audio16" preload="metadata">
+                                    <source src="https://www.archive.org/download/bookofenoch_1812_librivox/bookofenoch_17_charles_128kb.mp3" type="audio/mpeg">
+                                </audio>
+                                <div class="progress-container">
+                                    <span class="current-time">0:00</span>
+                                    <input type="range" class="progress-bar" value="0" min="0" max="100" step="0.1">
+                                    <span class="total-time">0:00</span>
+                                </div>
+                                <button class="player-btn primary play-pause-btn">Play</button>
+                                <div class="seek-controls">
+                                    <button class="player-btn rewind-btn">−15s</button>
+                                    <button class="player-btn restart-btn">Restart</button>
+                                    <button class="player-btn forward-btn">+15s</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
-            <!-- Read the Book Section -->
+            <!-- Read the Book -->
             <div class="accordion-item">
-                <button class="accordion-header" data-target="readContent">
+                <button class="accordion-header main-header" data-target="readContent">
                     Read the Book
                     <span class="accordion-icon">▼</span>
                 </button>
                 <div class="accordion-content" id="readContent">
-                    <a href="#" class="download-btn" id="downloadPdfBtn">Download PDF</a>
+                    <a href="https://archive.org/download/bookofenoch0000unse/bookofenoch0000unse.pdf" 
+                       class="download-btn" target="_blank" rel="noopener">
+                        Download PDF (English)
+                    </a>
+                    <a href="https://archive.org/download/ethiopicversiono00charuoft/ethiopicversiono00charuoft.pdf" 
+                       class="download-btn" target="_blank" rel="noopener">
+                        Download PDF (Ethiopic)
+                    </a>
                 </div>
             </div>
 
