@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const learnMoreModal = document.getElementById('learnMoreModal');
     const closeLearnMoreBtn = document.getElementById('closeLearnMoreBtn');
     const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const appSelect = document.getElementById('appSelect');
 
     // ===== Learn More Modal =====
     learnMoreBtn?.addEventListener('click', () => {
@@ -19,10 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // ===== Dark / Light Mode =====
+    // ===== Night / Light Mode =====
     function applyTheme(isDark) {
         document.body.classList.toggle('dark-mode', isDark);
-        themeToggleBtn.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+        themeToggleBtn.textContent = isDark ? 'Light Mode' : 'Night Mode';
         localStorage.setItem('mainMenuDarkMode', isDark ? 'true' : 'false');
     }
 
@@ -33,5 +34,20 @@ document.addEventListener('DOMContentLoaded', () => {
     themeToggleBtn?.addEventListener('click', () => {
         const isCurrentlyDark = document.body.classList.contains('dark-mode');
         applyTheme(!isCurrentlyDark);
+    });
+
+    // ===== App Switcher Dropdown =====
+    appSelect?.addEventListener('change', () => {
+        const value = appSelect.value;
+
+        if (value === 'memorize') {
+            // Already on the Memorize Scripture App main menu – do nothing
+        } else if (value === 'lost') {
+            // Placeholder until you provide the real link
+            appSelect.value = 'memorize';
+
+            // Optional: uncomment the line below if you want a temporary alert
+            // alert('Lost Books of Scripture – Coming soon!');
+        }
     });
 });
