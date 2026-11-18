@@ -413,24 +413,20 @@ body.dark-mode .btn-back:hover { background: #475569; }
     h1 { font-size: 22px; }
     h2 { font-size: 15px; }
 }
-/* ===== Main Book Image – centered on all devices ===== */
+/* ===== Main Book Image – full width like the buttons ===== */
 .main-book-image-wrapper {
     width: 100%;
-    margin: 20px 0 12px;
-    text-align: center;          /* forces centering */
+    margin: 18px 0 14px;
 }
 
 .main-book-image {
     width: 100%;
-    max-width: 100%;
     height: auto;
     display: block;
-    margin: 0 auto;              /* centers the image */
     border-radius: 14px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
     border: 1px solid var(--border-color);
 }
-
 /* Optional: make it slightly smaller on very small screens */
 @media (max-width: 400px) {
     .main-book-image-wrapper {
