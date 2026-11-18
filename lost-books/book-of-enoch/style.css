@@ -85,7 +85,6 @@ h2 { font-size: 16px; font-weight: 500; color: var(--muted-text); margin: 0 0 16
     display: flex;
     flex-direction: column;
     gap: 12px;
-    overflow: hidden;          /* ← add this line */
 }
 
 .section-title {
@@ -418,23 +417,22 @@ body.dark-mode .btn-back:hover { background: #475569; }
     border: 1px solid var(--border-color);
 }
 
-/* ===== Main Book Image – safe full-width version ===== */
+/* ===== Main Book Image – final clean version ===== */
 .main-book-image-wrapper {
+    display: flex;
+    justify-content: center;
     width: 100%;
-    max-width: 100%;
-    margin: 0 0 16px 0;
-    overflow: hidden;          /* prevents any overflow */
+    margin: 0 0 18px 0;
 }
 
 .main-book-image {
     width: 100%;
-    max-width: 100%;
+    max-width: 300px;          /* looks good on phones */
     height: auto;
     display: block;
     border-radius: 12px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
     border: 1px solid var(--border-color);
-    box-sizing: border-box;
 }
 
 /* Optional: make it slightly smaller on very small screens */
