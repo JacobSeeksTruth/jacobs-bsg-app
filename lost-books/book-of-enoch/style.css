@@ -413,10 +413,10 @@ body.dark-mode .btn-back:hover { background: #475569; }
     h1 { font-size: 22px; }
     h2 { font-size: 15px; }
 }
-/* ===== Main Book Image – full width like the buttons ===== */
+/* Main Book Image – now matches buttons perfectly */
 .main-book-image-wrapper {
     width: 100%;
-    margin: 18px 0 14px;
+    margin: 0 0 18px 0;
 }
 
 .main-book-image {
