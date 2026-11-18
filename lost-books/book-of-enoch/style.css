@@ -401,9 +401,10 @@ body.dark-mode .btn-back:hover { background: #475569; }
     border-radius: 10px;
 /* ===== FORCE full-width + centered image ===== */
 .main-book-image-wrapper {
+    display: flex;
+    justify-content: center;
     width: 100%;
     margin: 0 0 16px 0;
-    padding: 0;
 }
 
 .main-book-image {
