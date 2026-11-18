@@ -101,9 +101,102 @@ h2 {
     border-color: var(--primary-color);
 }
 
+/* ===== App Switcher Dropdown ===== */
 .app-switcher {
     position: relative;
     display: inline-block;
+    margin: 8px auto 0;
+    text-align: left;
+}
+
+/* Trigger button */
+.dropdown-trigger {
+    list-style: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--light-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 18px;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+    font-family: inherit;
+    user-select: none;
+}
+
+.dropdown-trigger:hover {
+    border-color: var(--primary-color);
+    background: var(--card-bg);
+}
+
+/* Hide default marker */
+.dropdown-trigger::-webkit-details-marker {
+    display: none;
+}
+
+/* Chevron */
+.chevron {
+    font-size: 12px;
+    opacity: 0.7;
+    transition: transform 0.2s ease;
+}
+
+.app-switcher[open] .chevron {
+    transform: rotate(180deg);
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 100%;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    padding: 6px;
+    z-index: 100;
+    animation: fadeIn 0.18s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+/* Menu items */
+.dropdown-item {
+    display: block;
+    padding: 11px 16px;
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 8px;
+    white-space: nowrap;
+    transition: background 0.15s ease;
+}
+
+.dropdown-item:hover {
+    background: var(--light-bg);
+    color: var(--primary-color);
+}
+
+/* Dark mode adjustments (already handled by CSS variables, but just in case) */
+body.dark-mode .dropdown-menu {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
 /* Removes default arrow and button styling from the main trigger */
