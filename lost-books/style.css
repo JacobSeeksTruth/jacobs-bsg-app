@@ -176,11 +176,41 @@ h2 { font-size: 16px; font-weight: 500; color: var(--muted-text); margin: 0 0 16
 .coming-soon-content { text-align: center; }
 .coming-soon-content p { margin: 0 0 20px 0; font-size: 16px; }
 
+/* Learn More content */
 .learn-more-text p {
     font-size: 15.5px;
     line-height: 1.65;
     margin: 0 0 14px 0;
 }
+
+.learn-more-image {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    display: block;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.learn-more-text h4 {
+    margin: 22px 0 12px 0;
+    color: var(--primary-color);
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.learn-more-text ul {
+    margin: 0 0 18px 0;
+    padding-left: 22px;
+}
+
+.learn-more-text li {
+    margin-bottom: 12px;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
 .signature { margin-top: 20px !important; font-style: italic; }
 
 .btn-back {
