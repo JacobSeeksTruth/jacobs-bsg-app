@@ -417,7 +417,7 @@ body.dark-mode .btn-back:hover { background: #475569; }
     border: 1px solid var(--border-color);
 }
 
-/* ===== Mobile-optimized Book Image ===== */
+/* ===== FINAL Mobile Book Image ===== */
 .main-book-image-wrapper {
     display: flex;
     justify-content: center;
@@ -427,11 +427,11 @@ body.dark-mode .btn-back:hover { background: #475569; }
 
 .main-book-image {
     width: 100%;
-    max-width: 280px;     /* safe size for iPhone */
+    max-width: 260px;          /* safe size for all iPhones */
     height: auto;
     display: block;
     border-radius: 12px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
     border: 1px solid var(--border-color);
 }
 
