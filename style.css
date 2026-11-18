@@ -103,7 +103,27 @@ h2 {
 
 /* App Switcher Dropdown */
 .app-switcher {
-    margin-top: 4px;
+    display: flex;
+    gap: 16px; /* Adds space between the two items */
+    align-items: center;
+}
+
+.plain-link {
+    text-decoration: none; /* Removes the underline */
+    color: inherit;        /* Keeps your normal text color instead of blue */
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+}
+
+/* Optional: keeps the link undecorated even when hovered or visited */
+.plain-link:hover,
+.plain-link:visited,
+.plain-link:active {
+    text-decoration: none;
+    color: inherit;
 }
 
 .app-switcher select {
