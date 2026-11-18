@@ -78,7 +78,7 @@ h2 {
     display: flex;
     justify-content: center;
     gap: 12px;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
     flex-wrap: wrap;
 }
 
@@ -105,7 +105,7 @@ h2 {
 .app-switcher {
     position: relative;
     display: inline-block;
-    margin: 8px auto 0;
+    margin: 4px auto 0;
     text-align: left;
 }
 
@@ -194,87 +194,9 @@ h2 {
     color: var(--primary-color);
 }
 
-/* Dark mode adjustments (already handled by CSS variables, but just in case) */
+/* Dark mode adjustments */
 body.dark-mode .dropdown-menu {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-}
-
-/* Removes default arrow and button styling from the main trigger */
-.dropdown-trigger {
-    list-style: none;
-    cursor: pointer;
-    font: inherit;
-    color: inherit;
-    background: none;
-    border: none;
-    padding: 0;
-}
-
-/* Hides default triangle in Chrome/Safari */
-.dropdown-trigger::-webkit-details-marker {
-    display: none;
-}
-
-/* Dropdown box layout */
-.dropdown-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    margin-top: 6px;
-    padding: 8px 12px;
-    background: #ffffff; /* Change to match your page/night-mode background */
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    z-index: 100;
-    white-space: nowrap;
-}
-
-/* Completely undecorated link inside the dropdown */
-.plain-btn {
-    display: block;
-    text-decoration: none;
-    color: inherit;
-    background: none;
-    border: none;
-    padding: 0;
-    font: inherit;
-    cursor: pointer;
-}
-
-.plain-btn:hover,
-.plain-btn:visited {
-    text-decoration: none;
-    color: inherit;
-}
-
-
-.app-switcher select {
-    width: 100%;
-    max-width: 280px;
-    padding: 10px 14px;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text-color);
-    background: var(--light-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 10px;
-    cursor: pointer;
-    appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2364748b' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 12px center;
-    transition: border-color 0.2s, background-color 0.2s;
-    font-family: inherit;
-}
-
-.app-switcher select:hover,
-.app-switcher select:focus {
-    border-color: var(--primary-color);
-    outline: none;
-}
-
-body.dark-mode .app-switcher select {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2394a3b8' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
 }
 
 /* Volume Section */
