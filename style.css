@@ -101,16 +101,46 @@ h2 {
     border-color: var(--primary-color);
 }
 
-/* App Switcher Dropdown */
 .app-switcher {
-    display: flex;
-    gap: 16px; /* Adds space between the two items */
-    align-items: center;
+    position: relative;
+    display: inline-block;
 }
 
-.plain-link {
-    text-decoration: none; /* Removes the underline */
-    color: inherit;        /* Keeps your normal text color instead of blue */
+/* Removes default arrow and button styling from the main trigger */
+.dropdown-trigger {
+    list-style: none;
+    cursor: pointer;
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+/* Hides default triangle in Chrome/Safari */
+.dropdown-trigger::-webkit-details-marker {
+    display: none;
+}
+
+/* Dropdown box layout */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 6px;
+    padding: 8px 12px;
+    background: #ffffff; /* Change to match your page/night-mode background */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    z-index: 100;
+    white-space: nowrap;
+}
+
+/* Completely undecorated link inside the dropdown */
+.plain-btn {
+    display: block;
+    text-decoration: none;
+    color: inherit;
     background: none;
     border: none;
     padding: 0;
@@ -118,13 +148,12 @@ h2 {
     cursor: pointer;
 }
 
-/* Optional: keeps the link undecorated even when hovered or visited */
-.plain-link:hover,
-.plain-link:visited,
-.plain-link:active {
+.plain-btn:hover,
+.plain-btn:visited {
     text-decoration: none;
     color: inherit;
 }
+
 
 .app-switcher select {
     width: 100%;
