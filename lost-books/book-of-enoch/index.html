@@ -1,1 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jacob’s Bible Study Guide – The Book of Enoch</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Jacob’s Bible Study Guide</h1>
+            <h2>The Book of Enoch</h2>
+
+            <div class="header-buttons">
+                <button id="learnMoreBtn" class="theme-btn">Learn More</button>
+                <button id="themeToggleBtn" class="theme-btn">Night Mode</button>
+            </div>
+        </header>
+
+        <section class="volume-section">
+            <div class="section-title">📖 SELECT A BOOK:</div>
+            
+            <button class="book-btn" id="enochBtn">Book of Enoch</button>
+            <button class="book-btn coming-soon-btn">Book of Giants</button>
+            <button class="book-btn coming-soon-btn">Book of Secrets</button>
+            <button class="book-btn coming-soon-btn">Book of Palaces</button>
+        </section>
+
+        <footer class="footer">
+            <a href="https://jacobseekstruth.github.io/jacobs-bsg-app/" class="main-menu-btn">Main Menu</a>
+        </footer>
+    </div>
+
+    <!-- LEARN MORE MODAL -->
+    <div id="learnMoreModal" class="modal">
+        <div class="modal-content">
+            <h3>About This App</h3>
+            <div class="learn-more-text">
+                <img src="http://jacobseekstruth.com/wp-content/uploads/2026/11/D33D8821-728E-4BF5-BC9B-6DC1CE300473.jpeg" 
+                     alt="The Book of Enoch" 
+                     class="learn-more-image">
+
+                <p>The Book of Enoch isn't just one single text—it’s actually a collection of three distinct books plus the Book of Giants. To get the full picture, read them in this order: 1 Enoch, the Book of Giants, 2 Enoch, and 3 Enoch.</p>
+
+                <p>The best place to pause your Bible reading and dive into these texts is right between Genesis 5:24 and Genesis 6:8, just before the Great Flood begins. In Genesis, Enoch’s entire life is covered in just four brief verses (Genesis 5:21–24), followed immediately by the mysterious mention of the "sons of God" and the Nephilim in Genesis 6:1–4. These four Enochic books zoom in on that exact window of time to fill in the blanks.</p>
+
+                <h4>How to Read Them Alongside Genesis</h4>
+
+                <p><strong>Genesis 5:21–24 (Enoch Walks with God):</strong><br>
+                Genesis simply states that Enoch lived 365 years, walked faithfully with God, and then "was no more, because God took him away."</p>
+
+                <ul>
+                    <li><strong>Read 2 Enoch (The Book of Secrets) here:</strong> This picks up at the exact moment God takes Enoch, detailing his journey through the ten heavens, his brief return to Earth to instruct his sons, and his final assumption into heaven.</li>
+                    <li><strong>Read 3 Enoch (The Book of Palaces) here:</strong> Though framed as a much later vision by Rabbi Ishmael, the backstory it tells happens right at this point in Genesis—explaining Enoch's transformation into the supreme archangel Metatron.</li>
+                </ul>
+
+                <p><strong>Genesis 6:1–4 (The Fallen Angels and the Nephilim):</strong><br>
+                Genesis briefly mentions the "sons of God" having children with human women, producing the mighty Nephilim (giants) as human wickedness begins to spiral out of control.</p>
+
+                <ul>
+                    <li><strong>Read 1 Enoch (The Book of Enoch) here:</strong> Specifically, the opening section (The Book of the Watchers) dramatically expands on these four verses, telling the full story of the 200 fallen angels, the forbidden knowledge they taught humanity, and Enoch acting as an intermediary between them and God.</li>
+                    <li><strong>Read The Book of Giants here:</strong> Fitting directly alongside 1 Enoch, this text shifts the perspective to the Nephilim themselves as they are plagued by nightmares and realize their violent reign is about to be ended by God's judgment.</li>
+                </ul>
+
+                <p><strong>Genesis 6:5–8 (The Coming of the Flood):</strong><br>
+                At this point in Genesis, God sees how corrupt the earth has become and decides to wipe it clean, sparing only Noah.</p>
+
+                <ul>
+                    <li><strong>Return to Genesis here:</strong> All four Enochic texts build up to this exact moment. Once you finish them, resuming Genesis at verse 6:5 seamlessly transitions you into the story of Noah and the Ark.</li>
+                </ul>
+            </div>
+            <button id="closeLearnMoreBtn" class="btn-back">Back</button>
+        </div>
+    </div>
+
+    <!-- COMING SOON MODAL -->
+    <div id="comingSoonModal" class="modal">
+        <div class="modal-content coming-soon-content">
+            <h3>Coming Soon!</h3>
+            <p>This book is not available yet. Check back later.</p>
+            <button id="closeComingSoonBtn" class="btn-back">Back</button>
+        </div>
+    </div>
+
+    <!-- BOOK OF ENOCH MODAL -->
+    <div id="enochModal" class="modal">
+        <div class="modal-content">
+            <h3>Book of Enoch</h3>
+
+            <!-- ABOUT -->
+            <div class="accordion-item">
+                <button class="accordion-header main-header" data-target="aboutContent">
+                    About
+                    <span class="accordion-icon">▼</span>
+                </button>
+                <div class="accordion-content" id="aboutContent">
+                    <div class="about-text">
+                        <p>The Book of Enoch (also called 1 Enoch) is an ancient Jewish apocalyptic text traditionally ascribed to Enoch, the great-grandfather of Noah. Most scholars date the older sections (especially the Book of the Watchers) to approximately 300–200 BC, while the Book of Parables is generally placed around the 1st century BC. It is not included in the Jewish or most Christian canons, but it is regarded as scripture by the Ethiopian Orthodox Tewahedo Church and the Eritrean Orthodox Tewahedo Church.</p>
+                        <p>The book expands on Genesis 6 and contains unique material about the fall of the Watchers (angels), the origin of evil spirits and the Nephilim, the reasons for the Flood, heavenly journeys, astronomical secrets, dream visions, and the coming judgment and messianic kingdom.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LISTEN TO AUDIO -->
+            <div class="accordion-item">
+                <button class="accordion-header main-header" data-target="listenContent">
+                    Listen to Audio
+                    <span class="accordion-icon">▼</span>
+                </button>
+                <div class="accordion-content" id="listenContent">
+
+                    <!-- BOOK OF THE WATCHERS -->
+                    <div class="book-section-header">BOOK OF THE WATCHERS</div>
+
+                    <!-- Chapters 1-11 -->
+                    <div class="accordion-item nested">
+                        <button class="accordion-header nested-header" data-target="ch1">
+                            Chapters 1-11
+                            <span class="accordion-icon">▼</span>
+                        </button>
+                        <div class="accordion-content nested-content" id="ch1">
+                            <div class="chapter-block">
+                                <audio preload="metadata">
+                                    <source src="https://www.archive.org/download/bookofenoch_1812_librivox/bookofenoch_02_charles_128kb.mp3" type="audio/mpeg">
+                                </audio>
+                                <div class="progress-container">
+                                    <span class="current-time">0:00</span>
+                                    <input type="range" class="progress-bar" value="0" min="0" max="100" step="0.1">
+                                    <span class="total-time">0:00</span>
+                                </div>
+                                <button class="player-btn primary play-pause-btn">Play</button>
+                                <div class="seek-controls">
+                                    <button class="player-btn rewind-btn">−15s</button>
+                                    <button class="player-btn restart-btn">Restart</button>
+                                    <button class="player-btn forward-btn">+15s</button>
+                                </div>
+
+                                <div class="accordion-item nested">
+                                    <button class="accordion-header nested-header" data-target="sum-watchers">
+                                        Read Summary
+                                        <span class="accordion-icon">▼</span>
+                                    </button>
+                                    <div class="accordion-content nested-content" id="sum-watchers">
+                                        <div class="summary-block">
+                                            <p>Chapters 1–36. This is the oldest major section. It opens with Enoch’s blessing and a vision of the coming judgment.</p>
+                                            <p>The core narrative describes the fall of the Watchers (200 angels led by Semjaza and Azazel) who descend to earth, take human wives, and teach forbidden knowledge (weapon-making, cosmetics, astrology, etc.). Their offspring, the giants (Nephilim), bring violence and corruption.</p>
+                                            <p>The archangels report the chaos to God, who decrees judgment: the Flood will cleanse the earth, the Watchers will be bound, and the spirits of the giants will become evil spirits that afflict humanity. Enoch is taken on journeys through the cosmos and shown the places of punishment and blessing.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item nested">
+                                    <button class="accordion-header nested-header" data-target="contents1">
+                                        See Contents
+                                        <span class="accordion-icon">▼</span>
+                                    </button>
+                                    <div class="accordion-content nested-content" id="contents1">
+                                        <div class="contents-list">
+                                            <p>1: The Blessing of Enoch</p>
+                                            <p>2: The Order of Nature</p>
+                                            <p>3: The Heavenly Bodies</p>
+                                            <p>4: The Seasons and Elements</p>
+                                            <p>5: The Disobedience of Sinners</p>
+                                            <p>6: The Fall of the Watchers</p>
+                                            <p>7: The Deeds of the Giants</p>
+                                            <p>8: Forbidden Knowledge Taught</p>
+                                            <p>9: The Archangels’ Appeal</p>
+                                            <p>10: Judgment Pronounced</p>
+                                            <p>11: Promise of Restoration</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chapters 12-19 -->
+                    <div class="accordion-item nested">
+                        <button class="accordion-header nested-header" data-target="ch2">
+                            Chapters 12-19
+                            <span class="accordion-icon">▼</span>
+                        </button>
+                        <div class="accordion-content nested-content" id="ch2">
+                            <div class="chapter-block">
+                                <audio preload="metadata">
+                                    <source src="https://www.archive.org/download/bookofenoch_1812_librivox/bookofenoch_03_charles_128kb.mp3" type="audio/mpeg">
+                                </audio>
+                                <div class="progress-container">
+                                    <span class="current-time">0:00</span>
+                                    <input type="range" class="progress-bar" value="0" min="0" max="100" step="0.1">
+                                    <span class="total-time">0:00</span>
+                                </div>
+                                <button class="player-btn primary play-pause-btn">Play</button>
+                                <div class="seek-controls">
+                                    <button class="player-btn rewind-btn">−15s</button>
+                                    <button class="player-btn restart-btn">Restart</button>
+                                    <button class="player-btn forward-btn">+15s</button>
+                                </div>
+                                <div class="accordion-item nested">
+                                    <button class="accordion-header nested-header" data-target="contents2">
+                                        See Contents
+                                        <span class="accordion-icon">▼</span>
+                                    </button>
+                                    <div class="accordion-content nested-content" id="contents2">
+                                        <div class="contents-list">
+                                            <p>12: Enoch Taken by the Watchers</p>
+                                            <p>13: Enoch’s Intercession</p>
+                                            <p>14: Vision of the Heavenly Palace</p>
+                                            <p>15: Judgment on the Watchers</p>
+                                            <p>16: Final Sentence of the Angels</p>
+                                            <p>17: Journey to the West</p>
+                                            <p>18: The Ends of the Earth</p>
+                                            <p>19: The Prison of the Stars</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chapters 20-25 -->
+                    <div class="accordion-item nested">
+                        <button class="accordion-header nested-header" data-target="ch3">
+                            Chapters 20-25
+                            <span class="accordion-icon">▼</span>
+                        </button>
+                        <div class="accordion-content nested-content" id="ch3">
+                            <div class="chapter-block">
+                                <audio preload="metadata">
+                                    <source src="https://www.archive.org/download/bookofenoch_1812_librivox/bookofenoch_03_charles_128kb.mp3" type="audio/mpeg">
+                                </audio>
+                                <div class="progress-container">
+                                    <span class="current-time">0:00</span>
+                                    <input type="range" class="progress-bar" value="0" min="0" max="100" step="0.1">
+                                    <span class="total-time">0:00</span>
+                                </div>
+                                <button class="player-btn primary play-pause-btn">Play</button>
+                                <div class="seek-controls">
+                                    <button class="player-btn rewind-btn">−15s</button>
+                                    <button class="player-btn restart-btn">Restart</button>
+                                    <button class="player-btn forward-btn">+15s</button>
+                                </div>
+                                <div class="accordion-item nested">
+                                    <button class="accordion-header nested-header" data-target="contents3">
+                                        See Contents
+                                        <span class="accordion-icon">▼</span>
+                                    </button>
+                                    <div class="accordion-content nested-content" id="contents3">
+                                        <div class="contents-list">
+                                            <p>20: The Seven Archangels</p>
+                                            <p>21: The Prison of the Angels</p>
+                                            <p>22: The Abodes of the Dead</p>
+                                            <p>23: The Fire of the West</p>
+                                            <p>24: The Mountain of God</p>
+                                            <p>25: The Tree of Life</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chapters 26-36 -->
+                    <div class="accordion-item nested">
+                        <button class="accordion-header nested-header" data-target="ch4">
+                            Chapters 26-36
+                            <span class="accordion-icon">▼</span>
+                        </button>
+                        <div class="accordion-content nested-content" id="ch4">
+                            <div class="chapter-block">
+                                <audio preload="metadata">
+                                    <source src="https://www.archive.org/download/bookofenoch_1812_librivox/bookofenoch_05_charles_128kb.mp3" type="audio/mpeg">
+                                </audio>
+                                <div class="progress-container">
+                                    <span class="current-time">0:00</span>
+                                    <input type="range" class="progress-bar" value="0" min="0" max="100" step="0.1">
+                                    <span class="total-time">0:00</span>
+                                </div>
+                                <button class="player-btn primary play-pause-btn">Play</button>
+                                <div class="seek-controls">
+                                    <button class="player-btn rewind-btn">−15s</button>
+                                    <button class="player-btn restart-btn">Restart</button>
+                                    <button class="player-btn forward-btn">+15s</button>
+                                </div>
+                                <div class="accordion-item nested">
+                                    <button class="accordion-header nested-header" data-target="contents4">
+                                        See Contents
+                                        <span class="accordion-icon">▼</span>
+                                    </button>
+                                    <div class="accordion-content nested-content" id="contents4">
+                                        <div class="contents-list">
+                                            <p>26: The Center of the Earth</p>
+                                            <p>27: The Accursed Valley</p>
+                                            <p>28–32: Journey to the East</p>
+                                            <p>33: The Ends of the Earth</p>
+                                            <p>34–35: The Gates of the Winds</p>
+                                            <p>36: Closing Vision of the Watchers</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BOOK OF PARABLES -->
+                    <div class="book-section-header">BOOK OF PARABLES</div>
+
+                    <!-- Chapters 37-44 -->
+                    <div class="accordion-item nested">
+                        <button class="accordion-header nested-header" data-target="ch5">
+                            Chapters 37-44
+                            <span class="accordion-icon">▼</span>
+                        </button>
+                        <div class="accordion-content nested-content" id="ch5">
+                            <div class="chapter-block">
+                                <audio preload="metadata">
+                                    <source src="https://www.archive.org/download/bookofenoch_1812_librivox/bookofenoch_06_charles_128kb.mp3" type="audio/mpeg">
+                                </audio>
+                                <div class="progress-container">
+                                    <span class="current-time">0:00</span>
+                                    <input type="range" class="progress-bar" value="0" min="0" max="100" step="0.1">
+                                    <span class="total-time">0:00</span>
+                                </div>
+                                <button class="player-btn primary play-pause-btn">Play</button>
+                                <div class="seek-controls">
+                                    <button class="player-btn rewind-btn">−15s</button>
+                                    <button class="player-btn restart-btn">Restart</button>
+                                    <button class="player-btn forward-btn">+15s</button>
+                                </div>
+
+                                <div class="accordion-item nested">
+                                    <button class="accordion-header nested-header" data-target="sum-parables">
+                                        Read Summary
+                                        <span class="accordion-icon">▼</span>
+                                    </button>
+                                    <div class="accordion-content nested-content" id="sum-parables">
+                                        <div class="summary-block">
+                                            <p>Chapters 37–71. This section contains three parables (similitudes) focused on the coming judgment, the Son of Man / Elect One, and the vindication of the righteous.</p>
+                                            <p>It develops a strong messianic figure who is pre-existent, sits on the throne of glory, judges the kings and the mighty, and dwells with the righteous. Themes include the resurrection, the transformation of heaven and earth, and the final defeat of evil.</p>
+                                            <p>Many scholars see close parallels with later New Testament “Son of Man” language.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item nested">
+                                    <button class="accordion-header nested-header" data-target="contents5">
+                                        See Contents
+                                        <span class="accordion-icon">▼</span>
+                                    </button>
+                                    <div class="accordion-content nested-content" id="contents5">
+                                        <div class="contents-list">
+                                            <p>37: Introduction to the Parables</p>
+                                            <p>38: The First Parable – Coming Judgment</p>
+                                            <p>39: The Dwelling of the Righteous</p>
+                                            <p>40: The Four Archangels</p>
+                                            <p>41: Secrets of Heaven &amp; Lightning</p>
+                                            <p>42: Wisdom’s Dwelling</p>
+                                            <p>43–44: The Stars and Lightning</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chapters 45-59 -->
+                    <div class="accordion-item nested">
+                        <button class="accordion-header nested-header" data-target="ch6">
+                            Chapters 45-59
+                            <span class="accordion-icon">▼</span>
+                        </button>
+                        <div class="accordion-content nested-content" id="ch6">
+                            <div class="chapter-block">
+                                <audio preload="metadata">
+                                    <source src="https://www.archive.org/download/bookofenoch_1812_librivox/bookofenoch_07_charles_128kb.mp3" type="audio/mpeg">
+                                </audio>
+                                <div class="progress-container">
+                                    <span class="current-time">0:00</span>
+                                    <input type="range" class="progress-bar" value="0" min="0" max="100" step="0.1">
+                                    <span class="total-time">0:00</span>
+                                </div>
+                                <button class="player-btn primary play-pause-btn">Play</button>
+                                <div class="seek-controls">
+                                    <button class="player-btn rewind-btn">−15s</button>
+                                    <button class="player-btn restart-btn">Restart</button>
+                                    <button class="player-btn forward-btn">+15s</button>
+                                </div>
+                                <div class="accordion-item nested">
+                                    <button class="accordion-header nested-header" data-target="contents6">
+                                        See Contents
+                                        <span class="accordion-icon">▼</span>
+                                    </button>
+                                    <div class="accordion-content nested-content" id="contents6">
+                                        <div class="contents-list">
+                                            <p>45: The Second Parable Begins</p>
+                                            <p>46: The Head of Days &amp; Son of Man</p>
+                                            <p>47: Prayer of the Righteous</p>
+                                            <p>48: The Naming of the Son of Man</p>
+                                            <p>49–51: Power, Wisdom &amp; Resurrection</p>
+                                            <p>52–54: Mountains, Angels &amp; Judgment</p>
+                                            <p>55–57: Final Judgment Scenes</p>
+                                            <p>58–59: Lights and Lightning</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chapters 60-64 -->
+                    <div class="accordion-item nested">
+                        <button class="accordion-header nested-header" data-target="ch7">
+                            Chapters 60-64
+                            <span class="accordion-icon">▼</span>
+                        </button>
+                        <div class="accordion-content nested-content" id="ch7">
+                            <div class="chapter-block">
+                                <audio preload="metadata">
+                                    <source src="https://www.archive.org/download/bookofenoch_1812_librivox/bookofenoch_08_charles_128kb.mp3" type="audio/mpeg">
+                                </audio>
+                                <div class="progress-container">
+                                    <span class="current-time">0:00</span>
+                                    <input type="range" class="progress-bar" value="0" min="0" max="100" step="0.1">
+                                    <span class="total-time">0:00</span>
+                                </div>
+                                <button class="player-btn primary play-pause-btn">Play</button>
+                                <div class="seek-controls">
+                                    <button class="player-btn rewind-btn">−15s</button>
+                                    <button class="player-btn restart-btn">Restart</button>
+                                    <button class="player-btn forward-btn">+15s</button>
+                                </div>
+                                <div class="accordion-item nested">
+                                    <button class="accordion-header nested-header" data-target="contents7">
+                                        See Contents
+                                        <span class="accordion-icon">▼</span>
+                                    </button>
+                                    <div class="accordion-content nested-content" id="contents7">
+                                        <div class="contents-list">
+                                            <p>60: The Quaking of the Heaven</p>
+                                            <p>61: The Angels of Power</p>
+                                            <p>62: Judgment of the Kings</p>
+                                            <p>63: The Confession of the Mighty</p>
+                                            <p>64: The Fallen Angels’ Vision</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chapters 65-71 -->
+                    <div class="accordion-item nested">
+                        <button class="accordion-header nested-header" data-target="ch8">
+                            Chapters 65-71
+                            <span class="accordion-icon">▼</span>
+                        </button>
+                        <div class="accordion-content nested-content" id="ch8">
+                            <div class="chapter-block">
+                                <audio preload="metadata">
+                                    <source src="https://www.archive.org/download/bookofenoch_1812_librivox/bookofenoch_09_charles_128kb.mp3" type="audio/mpeg">
+                                </audio>
+                                <div class="progress-container">
+                                    <span class="current-time">0:00</span>
+                                    <input type="range" class="progress-bar" value="0" min="0" max="100" step="0.1">
+                                    <span class="total-time">0:00</span>
+                                </div>
+                                <button class="player-btn primary play-pause-btn">Play</button>
+                                <div class="seek-controls">
+                                    <button class="player-btn rewind-btn">−15s</button>
+                                    <button class="player-btn restart-btn">Restart</button>
+                                    <button class="player-btn forward-btn">+15s</button>
+                                </div>
+                                <div class="accordion-item nested">
+                                    <button class="accordion-header nested-header" data-target="contents8">
+                                        See Contents
+                                        <span class="accordion-icon">▼</span>
+                                    </button>
+                                    <div class="accordion-content nested-content" id="contents8">
+                                        <div class="contents-list">
+                                            <p>65: Noah’s Vision of the Flood</p>
+                                            <p>66: The Angels of the Waters</p>
+                                            <p>67: Punishment of the Angels</p>
+                                            <p>68: The Secrets of the Angels</p>
+                                            <p>69: The Chiefs of the Fallen</p>
+                                            <p>70: Enoch’s Final Translation</p>
+                                            <p>71: The Son of Man Revealed</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ASTRONOMICAL BOOK -->
+                    <div class="book-section-header">ASTRONOMICAL BOOK</div>
+
+                    <!-- Chapters 72-75 -->
+                    <div class="accordion-item nested">
+                        <button class="accordion-header nested-header" data-target="ch9">
+                            Chapters 72-75
+                            <span class="accordion-icon">▼</span>
+                        </button>
+                        <div class="accordion-content nested-content" id="ch9">
+                            <div class="chapter-block">
+                                <audio preload="metadata">
+                                    <source src="https://www.archive.org/download/bookofenoch_1812_librivox/bookofenoch_10_charles_128kb.mp3" type="audio/mpeg">
+                                </audio>
+                                <div class="progress-container">
+                                    <span class="current-time">0:00</span>
+                                    <input type="range" class="progress-bar" value="0" min="0" max="100" step="0.1">
+                                    <span class="total-time">0:00</span>
+                                </div>
+                                <button class="player-btn primary play-pause-btn">Play</button>
+                                <div class="seek-controls">
+                                    <button class="player-btn rewind-btn">−15s</button>
+                                    <button class="player-btn restart-btn">Restart</button>
+                                    <button class="player-btn forward-btn">+15s</button>
+                                </div>
+
+                                <div class="accordion-item nested">
+                                    <button class="accordion-header nested-header" data-target="sum-astro">
+                                        Read Summary
+                                        <span class="accordion-icon">▼</span>
+                                    </button>
+                                    <div class="accordion-content nested-content" id="sum-astro">
+                                        <div class="summary-block">
+                                            <p>Chapters 72–82. Also called the Book of the Heavenly Luminaries. The angel Uriel reveals to Enoch the laws of the sun, moon, stars, and calendar.</p>
+                                            <p>It strongly defends a 364-day solar calendar and criticizes those who follow a lunar calendar. Detailed descriptions of the gates of heaven, the winds, the seasons, and the movement of the luminaries are given.</p>
+                                            <p>The section ends with Enoch’s predictions about the moral decline of later generations.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item nested">
+                                    <button class="accordion-header nested-header" data-target="contents9">
+                                        See Contents
+                                        <span class="accordion-icon">▼</span>
+                                    </button>
+                                    <div class="accordion-content nested-content" id="contents9">
+                                        <div class="contents-list">
+                                            <p>72: The Sun and Its Gates</p>
+                                            <p>73: The Moon and Its Course</p>
+                                            <p>74: The Lunar Year</p>
+                                            <p>75: The Leaders of the Stars</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chapters 76-82 -->
+                    <div class="accordion-item nested">
+                        <button class="accordion-header nested-header" data-target="ch10">
+                            Chapters 76-82
+                            <span class="accordion-icon">▼</span>
+                        </button>
+                        <div class="accordion-content nested-content" id="ch10">
+                            <div class="chapter-block">
+                                <audio preload="metadata">
+                                    <source src="https://www.archive.org/download/bookofenoch_1812_librivox/bookofenoch_11_charles_128kb.mp3" type="audio/mpeg">
+                                </audio>
+                                <div class="progress-container">
+                                    <span class="current-time">0:00</span>
+                                    <input type="range" class="progress-bar" value="0" min="0" max="100" step="0.1">
+                                    <span class="total-time">0:00</span>
+                                </div>
+                                <button class="player-btn primary play-pause-btn">Play</button>
+                                <div class="seek-controls">
+                                    <button class="player-btn rewind-btn">−15s</button>
+                                    <button class="player-btn restart-btn">Restart</button>
+                                    <button class="player-btn forward-btn">+15s</button>
+                                </div>
+                                <div class="accordion-item nested">
+                                    <button class="accordion-header nested-header" data-target="contents10">
+                                        See Contents
+                                        <span class="accordion-icon">▼</span>
+                                    </button>
+                                    <div class="accordion-content nested-content" id="contents10">
+                                        <div class="contents-list">
+                                            <p>76: The Twelve Windows of the Winds</p>
+                                            <p>77: The Four Quarters of the Earth</p>
+                                            <p>78: Further Laws of the Moon</p>
+                                            <p>79–80: Signs of the Days</p>
+                                            <p>81: Enoch’s Charge to Methuselah</p>
+                                            <p>82: The Four Leaders of the Seasons</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BOOK OF DREAM VISIONS -->
+                    <div class="book-section-header">BOOK OF DREAM VISIONS</div>
+
+                    <!-- Chapters 83-88 -->
+                    <div class="accordion-item nested">
+                        <button class="accordion-header nested-header" data-target="ch11">
+                            Chapters 83-88
+                            <span class="accordion-icon">▼</span>
+                        </button>
+                        <div class="accordion-content nested-content" id="ch11">
+                            <div class="chapter-block">
+                                <audio preload="metadata">
+                                    <source src="https://www.archive.org/download/bookofenoch_1812_librivox/bookofenoch_12_charles_128kb.mp3" type="audio/mpeg">
+                                </audio>
+                                <div class="progress-container">
+                                    <span class="current-time">0:00</span>
+                                    <input type="range" class="progress-bar" value="0" min="0" max="100" step="0.1">
+                                    <span class="total-time">0:00</span>
+                                </div>
+                                <button class="player-btn primary play-pause-btn">Play</button>
+                                <div class="seek-controls">
+                                    <button class="player-btn rewind-btn">−15s</button>
+                                    <button class="player-btn restart-btn">Restart</button>
+                                    <button class="player-btn forward-btn">+15s</button>
+                                </div>
+
+                                <div class="accordion-item nested">
+                                    <button class="accordion-header nested-header" data-target="sum-dreams">
+                                        Read Summary
+                                        <span class="accordion-icon">▼</span>
+                                    </button>
+                                    <div class="accordion-content nested-content" id="sum-dreams">
+                                        <div class="summary-block">
+                                            <p>Chapters 83–90. Contains two dream visions. The first is a short vision of the Flood.</p>
+                                            <p>The second is the famous “Animal Apocalypse,” an allegorical history of the world from Adam to the Maccabean period (and beyond) in which humans are represented as animals and angels as stars or men.</p>
+                                            <p>It culminates in the judgment of the fallen stars, the building of a new house (temple), and the appearance of a white bull (messianic figure) who transforms all the animals.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item nested">
+                                    <button class="accordion-header nested-header" data-target="contents11">
+                                        See Contents
+                                        <span class="accordion-icon">▼</span>
+                                    </button>
+                                    <div class="accordion-content nested-content" id="contents11">
+                                        <div class="contents-list">
+                                            <p>83: First Dream Vision – The Flood</p>
+                                            <p>84: Enoch’s Prayer</p>
+                                            <p>85: Beginning of the Animal Apocalypse</p>
+                                            <p>86: The Fallen Stars</p>
+                                            <p>87: The Descent of the White Men</p>
+                                            <p>88: Judgment of the Stars</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chapters 89 -->
+                    <div class="accordion-item nested">
+                        <button class="accordion-header nested-header" data-target="ch12">
+                            Chapters 89
+                            <span class="accordion-icon">▼</span>
+                        </button>
+                        <div class="accordion-content nested-content" id="ch12">
+                            <div class="chapter-block">
+                                <audio preload="metadata">
+                                    <source src="https://www.archive.org/download/bookofenoch_1812_librivox/bookofenoch_13_charles_128kb.mp3" type="audio/mpeg">
+                                </audio>
+                                <div class="progress-container">
+                                    <span class="current-time">0:00</span>
+                                    <input type="range" class="progress-bar" value="0" min="0" max="100" step="0.1">
+                                    <span class="total-time">0:00</span>
+                                </div>
+                                <button class="player-btn primary play-pause-btn">Play</button>
+                                <div class="seek-controls">
+                                    <button class="player-btn rewind-btn">−15s</button>
+                                    <button class="player-btn restart-btn">Restart</button>
+                                    <button class="player-btn forward-btn">+15s</button>
+                                </div>
+                                <div class="accordion-item nested">
+                                    <button class="accordion-header nested-header" data-target="contents12">
+                                        See Contents
+                                        <span class="accordion-icon">▼</span>
+                                    </button>
+                                    <div class="accordion-content nested-content" id="contents12">
+                                        <div class="contents-list">
+                                            <p>89: The Animal Apocalypse Continued – From the Flood to the Maccabees</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chapters 90 -->
+                    <div class="accordion-item nested">
+                        <button class="accordion-header nested-header" data-target="ch13">
+                            Chapters 90
+                            <span class="accordion-icon">▼</span>
+                        </button>
+                        <div class="accordion-content nested-content" id="ch13">
+                            <div class="chapter-block">
+                                <audio preload="metadata">
+                                    <source src="https://www.archive.org/download/bookofenoch_1812_librivox/bookofenoch_09_charles_128kb.mp3" type="audio/mpeg">
+                                </audio>
+                                <div class="progress-container">
+                                    <span class="current-time">0:00</span>
+                                    <input type="range" class="progress-bar" value="0" min="0" max="100" step="0.1">
+                                    <span class="total-time">0:00</span>
+                                </div>
+                                <button class="player-btn primary play-pause-btn">Play</button>
+                                <div class="seek-controls">
+                                    <button class="player-btn rewind-btn">−15s</button>
+                                    <button class="player-btn restart-btn">Restart</button>
+                                    <button class="player-btn forward-btn">+15s</button>
+                                </div>
+                                <div class="accordion-item nested">
+                                    <button class="accordion-header nested-header" data-target="contents13">
+                                        See Contents
+                                        <span class="accordion-icon">▼</span>
+                                    </button>
+                                    <div class="accordion-content nested-content" id="contents13">
+                                        <div class="contents-list">
+                                            <p>90: The Final Judgment and New House (Temple) in the Animal Apocalypse</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- EPISTLE OF ENOCH -->
+                    <div class="book-section-header">EPISTLE OF ENOCH</div>
+
+                    <!-- Chapters 91-97 -->
+                    <div class="accordion-item nested">
+                        <button class="accordion-header nested-header" data-target="ch14">
+                            Chapters 91-97
+                            <span class="accordion-icon">▼</span>
+                        </button>
+                        <div class="accordion-content nested-content" id="ch14">
+                            <div class="chapter-block">
+                                <audio preload="metadata">
+                                    <source src="https://www.archive.org/download/bookofenoch_1812_librivox/bookofenoch_15_charles_128kb.mp3" type="audio/mpeg">
+                                </audio>
+                                <div class="progress-container">
+                                    <span class="current-time">0:00</span>
+                                    <input type="range" class="progress-bar" value="0" min="0" max="100" step="0.1">
+                                    <span class="total-time">0:00</span>
+                                </div>
+                                <button class="player-btn primary play-pause-btn">Play</button>
+                                <div class="seek-controls">
+                                    <button class="player-btn rewind-btn">−15s</button>
+                                    <button class="player-btn restart-btn">Restart</button>
+                                    <button class="player-btn forward-btn">+15s</button>
+                                </div>
+
+                                <div class="accordion-item nested">
+                                    <button class="accordion-header nested-header" data-target="sum-epistle">
+                                        Read Summary
+                                        <span class="accordion-icon">▼</span>
+                                    </button>
+                                    <div class="accordion-content nested-content" id="sum-epistle">
+                                        <div class="summary-block">
+                                            <p>Chapters 91–108. This final section includes the Apocalypse of Weeks (a schematic history divided into ten “weeks”), exhortations to the righteous, woes against sinners, teachings on the two ways, and additional material about the birth of Noah and future judgment.</p>
+                                            <p>It emphasizes moral instruction, the certainty of divine justice, and the ultimate blessing of the righteous.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item nested">
+                                    <button class="accordion-header nested-header" data-target="contents14">
+                                        See Contents
+                                        <span class="accordion-icon">▼</span>
+                                    </button>
+                                    <div class="accordion-content nested-content" id="contents14">
+                                        <div class="contents-list">
+                                            <p>91: Enoch’s Exhortation &amp; Apocalypse of Weeks Begins</p>
+                                            <p>92: The Birth of Noah (fragment)</p>
+                                            <p>93: The Apocalypse of Weeks</p>
+                                            <p>94–97: Woes Against Sinners &amp; Encouragement of the Righteous</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chapters 98-105 -->
+                    <div class="accordion-item nested">
+                        <button class="accordion-header nested-header" data-target="ch15">
+                            Chapters 98-105
+                            <span class="accordion-icon">▼</span>
+                        </button>
+                        <div class="accordion-content nested-content" id="ch15">
+                            <div class="chapter-block">
+                                <audio preload="metadata">
+                                    <source src="https://www.archive.org/download/bookofenoch_1812_librivox/bookofenoch_16_charles_128kb.mp3" type="audio/mpeg">
+                                </audio>
+                                <div class="progress-container">
+                                    <span class="current-time">0:00</span>
+                                    <input type="range" class="progress-bar" value="0" min="0" max="100" step="0.1">
+                                    <span class="total-time">0:00</span>
+                                </div>
+                                <button class="player-btn primary play-pause-btn">Play</button>
+                                <div class="seek-controls">
+                                    <button class="player-btn rewind-btn">−15s</button>
+                                    <button class="player-btn restart-btn">Restart</button>
+                                    <button class="player-btn forward-btn">+15s</button>
+                                </div>
+                                <div class="accordion-item nested">
+                                    <button class="accordion-header nested-header" data-target="contents15">
+                                        See Contents
+                                        <span class="accordion-icon">▼</span>
+                                    </button>
+                                    <div class="accordion-content nested-content" id="contents15">
+                                        <div class="contents-list">
+                                            <p>98–99: Further Woes and Judgments</p>
+                                            <p>100–102: The Fate of the Righteous and Sinners</p>
+                                            <p>103–104: Comfort for the Righteous</p>
+                                            <p>105: Final Blessing</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chapters 106-108 -->
+                    <div class="accordion-item nested">
+                        <button class="accordion-header nested-header" data-target="ch16">
+                            Chapters 106-108
+                            <span class="accordion-icon">▼</span>
+                        </button>
+                        <div class="accordion-content nested-content" id="ch16">
+                            <div class="chapter-block">
+                                <audio preload="metadata">
+                                    <source src="https://www.archive.org/download/bookofenoch_1812_librivox/bookofenoch_17_charles_128kb.mp3" type="audio/mpeg">
+                                </audio>
+                                <div class="progress-container">
+                                    <span class="current-time">0:00</span>
+                                    <input type="range" class="progress-bar" value="0" min="0" max="100" step="0.1">
+                                    <span class="total-time">0:00</span>
+                                </div>
+                                <button class="player-btn primary play-pause-btn">Play</button>
+                                <div class="seek-controls">
+                                    <button class="player-btn rewind-btn">−15s</button>
+                                    <button class="player-btn restart-btn">Restart</button>
+                                    <button class="player-btn forward-btn">+15s</button>
+                                </div>
+                                <div class="accordion-item nested">
+                                    <button class="accordion-header nested-header" data-target="contents16">
+                                        See Contents
+                                        <span class="accordion-icon">▼</span>
+                                    </button>
+                                    <div class="accordion-content nested-content" id="contents16">
+                                        <div class="contents-list">
+                                            <p>106–107: The Birth of Noah</p>
+                                            <p>108: Final Admonition and Conclusion</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- READ THE BOOK -->
+            <div class="accordion-item">
+                <button class="accordion-header main-header" data-target="readContent">
+                    Read the Book
+                    <span class="accordion-icon">▼</span>
+                </button>
+                <div class="accordion-content" id="readContent">
+                    <a href="https://archive.org/download/bookofenoch0000unse/bookofenoch0000unse.pdf" 
+                       class="download-btn" target="_blank" rel="noopener">
+                        Download PDF (English)
+                    </a>
+                    <a href="https://archive.org/download/ethiopicversiono00charuoft/ethiopicversiono00charuoft.pdf" 
+                       class="download-btn" target="_blank" rel="noopener">
+                        Download PDF (Ethiopic)
+                    </a>
+                </div>
+            </div>
+
+            <!-- REFERENCES -->
+            <div class="accordion-item">
+                <button class="accordion-header main-header" data-target="refContent">
+                    References
+                    <span class="accordion-icon">▼</span>
+                </button>
+                <div class="accordion-content" id="refContent">
+                    <a href="https://en.wikipedia.org/wiki/Book_of_Enoch" 
+                       class="download-btn wiki-btn" target="_blank" rel="noopener">
+                        Wiki
+                    </a>
+                </div>
+            </div>
+
+            <button id="closeEnochBtn" class="btn-back">Back</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
 
