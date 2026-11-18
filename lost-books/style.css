@@ -112,6 +112,7 @@ h2 { font-size: 16px; font-weight: 500; color: var(--muted-text); margin: 0 0 16
     transition: opacity 0.2s, transform 0.1s;
     box-shadow: 0 4px 12px rgba(58, 96, 115, 0.25);
     font-family: inherit;
+    text-decoration: none; /* important for the <a> version */
 }
 .book-btn:hover { opacity: 0.93; }
 .book-btn:active { transform: scale(0.98); }
@@ -176,41 +177,11 @@ h2 { font-size: 16px; font-weight: 500; color: var(--muted-text); margin: 0 0 16
 .coming-soon-content { text-align: center; }
 .coming-soon-content p { margin: 0 0 20px 0; font-size: 16px; }
 
-/* Learn More content */
 .learn-more-text p {
     font-size: 15.5px;
     line-height: 1.65;
     margin: 0 0 14px 0;
 }
-
-.learn-more-image {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    border-radius: 12px;
-    margin-bottom: 20px;
-    display: block;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.learn-more-text h4 {
-    margin: 22px 0 12px 0;
-    color: var(--primary-color);
-    font-size: 16px;
-    font-weight: 700;
-}
-
-.learn-more-text ul {
-    margin: 0 0 18px 0;
-    padding-left: 22px;
-}
-
-.learn-more-text li {
-    margin-bottom: 12px;
-    font-size: 15px;
-    line-height: 1.6;
-}
-
 .signature { margin-top: 20px !important; font-style: italic; }
 
 .btn-back {
@@ -231,7 +202,7 @@ body.dark-mode .btn-back { background: #334155; color: #e2e8f0; }
 .btn-back:hover { background: #cbd5e1; }
 body.dark-mode .btn-back:hover { background: #475569; }
 
-/* Accordion */
+/* Accordion (kept for potential future use) */
 .accordion-item {
     margin-bottom: 12px;
     border: 1px solid var(--border-color);
