@@ -6,9 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const comingSoonModal = document.getElementById('comingSoonModal');
     const closeComingSoonBtn = document.getElementById('closeComingSoonBtn');
     const comingSoonBtns = document.querySelectorAll('.coming-soon-btn');
-    const enochBtn = document.getElementById('enochBtn');
-    const enochModal = document.getElementById('enochModal');
-    const closeEnochBtn = document.getElementById('closeEnochBtn');
 
     function formatTime(seconds) {
         if (isNaN(seconds) || !isFinite(seconds)) return '0:00';
@@ -44,28 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target === comingSoonModal) comingSoonModal.classList.remove('open');
     });
 
-    // Enoch Modal
-    enochBtn?.addEventListener('click', () => enochModal.classList.add('open'));
-    closeEnochBtn?.addEventListener('click', () => {
-        enochModal.classList.remove('open');
-        document.querySelectorAll('audio').forEach(a => {
-            a.pause();
-            const btn = a.closest('.chapter-block')?.querySelector('.play-pause-btn');
-            if (btn) btn.textContent = 'Play';
-        });
-    });
-    enochModal?.addEventListener('click', e => {
-        if (e.target === enochModal) {
-            enochModal.classList.remove('open');
-            document.querySelectorAll('audio').forEach(a => {
-                a.pause();
-                const btn = a.closest('.chapter-block')?.querySelector('.play-pause-btn');
-                if (btn) btn.textContent = 'Play';
-            });
-        }
-    });
-
-    // Accordion
+    // Accordion (kept for future use)
     document.querySelectorAll('.accordion-header').forEach(header => {
         header.addEventListener('click', () => {
             const targetId = header.getAttribute('data-target');
@@ -87,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Audio Players
+    // Audio Players (kept for future use)
     document.querySelectorAll('.chapter-block').forEach(block => {
         const audio = block.querySelector('audio');
         const playBtn = block.querySelector('.play-pause-btn');
