@@ -46,7 +46,6 @@ body {
     display: flex;
     flex-direction: column;
     gap: 28px;
-    margin-bottom: 12px;
 }
 
 .header { text-align: center; }
