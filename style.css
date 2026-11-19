@@ -107,6 +107,7 @@ h2 {
     display: inline-block;
     margin: 4px auto 0;
     text-align: left;
+    margin-bottom: 12px; /* Adjust this number (e.g., 12px, 20px) for more or less space */
 }
 
 /* Trigger button */
